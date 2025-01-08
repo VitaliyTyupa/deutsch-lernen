@@ -1,5 +1,32 @@
 @use "@angular/material" as mat;
+@use './vars' as *;
 
+//https://themes.angular-material.dev/?seed-error=%23ff6f6f&seed-neutral=%23e0e0e0&seed-neutral-variant=%23737970&seed-primary=%23dfffd7&seed-secondary=%2387d3ff&seed-tertiary=%23ffdf80
+
+// possible values for color:
+//$red-palette
+//$green-palette
+//$blue-palette
+//$yellow-palette
+//$cyan-palette
+//$magenta-palette
+//$orange-palette
+//$chartreuse-palette
+//$spring-green-palette
+//$azure-palette
+//$violet-palette
+//$rose-palette
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$spring-green-palette,
+      tertiary: mat.$azure-palette,
+      theme-type: light,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
 
 /* Light Theme */
 :root, :host {
@@ -53,7 +80,7 @@
     error-container: #ffdad6,
     on-error: #ffffff,
     on-error-container: #410002,
-    surface-variant: #e1e3dc,
+    surface-variant: #ccebc48f,
     on-surface-variant: #444843,
     neutral-variant: #757872,
     neutral-variant20: #2e312d,
@@ -114,11 +141,18 @@
     error-container: #93000a,
     on-error: #690005,
     on-error-container: #ffdad6,
-    surface-variant: #444843,
+    surface-variant: #ccebc48f,
     on-surface-variant: #c5c7c0,
     neutral-variant: #757872,
     neutral-variant20: #2e312d,
     inverse-secondary: #00658b,
     inverse-tertiary: #735c04,
+  ));
+}
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: $primary-color,
+    standard-height: $toolbar-height,
   ));
 }

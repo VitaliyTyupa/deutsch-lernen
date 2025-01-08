@@ -1,0 +1,45 @@
+<form>
+  <section>
+    <mat-form-field>
+      <mat-label>Form control 1</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select me</mat-label>
+      <mat-select>
+        <mat-option>-- None --</mat-option>
+        @for (option of optionsList; track $index) {
+          <mat-option value="option">{{option}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Form control 1</mat-label>
+      <input matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select me</mat-label>
+      <mat-select>
+        <mat-option>-- None --</mat-option>
+        @for (option of optionsList; track $index) {
+          <mat-option value="option">{{option}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-checkbox>Check box 1</mat-checkbox>
+    <mat-checkbox>Check box 2</mat-checkbox>
+    <mat-checkbox>Check box 3</mat-checkbox>
+    <mat-checkbox>Check box 4</mat-checkbox>
+    <mat-checkbox>Check box 5</mat-checkbox>
+    <mat-button-toggle-group>
+      <mat-button-toggle value="red">Red</mat-button-toggle>
+      <mat-button-toggle value="green">Green</mat-button-toggle>
+      <mat-button-toggle value="blue">Blue</mat-button-toggle>
+    </mat-button-toggle-group>
+  </section>
+</form>
+<section>
+  <button mat-stroked-button>Generate</button>
+</section>

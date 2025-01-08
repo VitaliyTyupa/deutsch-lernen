@@ -1,12 +1,12 @@
+@use 'quill/dist/quill.snow.css';
 @use '@angular/material' as mat;
 @use './styles/material-custom-theme';
 
-html {
-  @include mat.theme((
-    typography: Roboto,
-    density: 0,
-  ));
+html, body {
+  height: 100%;
+  box-sizing: border-box;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
