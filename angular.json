@@ -64,10 +64,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "deutsch-lernen:build:production"
+              "buildTarget": "deutsch-lernen:build:production",
+              "proxyConfig": "proxy.conf.prod.json"
             },
             "development": {
-              "buildTarget": "deutsch-lernen:build:development"
+              "buildTarget": "deutsch-lernen:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

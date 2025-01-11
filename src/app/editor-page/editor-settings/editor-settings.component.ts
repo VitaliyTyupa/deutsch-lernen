@@ -4,7 +4,6 @@ import {MatInput} from '@angular/material/input';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {MatCheckbox} from '@angular/material/checkbox';
-import {MatButton, MatFabButton} from '@angular/material/button';
 
 @Component({
   selector: 'dl-editor-settings',
@@ -17,7 +16,6 @@ import {MatButton, MatFabButton} from '@angular/material/button';
     MatButtonToggleGroup,
     MatButtonToggle,
     MatCheckbox,
-    MatButton,
   ],
   templateUrl: './editor-settings.component.html',
   styleUrl: './editor-settings.component.scss'

@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://api.production.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -2,9 +2,13 @@
 <dl-editor-settings></dl-editor-settings>
 <dl-editor-guide></dl-editor-guide>
 <section>
+  <button mat-stroked-button (click)="getText()">Generate</button>
+  <button mat-button class="mat-accent">Get Text</button>
+</section>
+<section>
   <mat-card >
     <mat-card-content>
-      <quill-editor></quill-editor>
+      <quill-editor #quill></quill-editor>
     </mat-card-content>
   </mat-card>
   <mat-card></mat-card>
