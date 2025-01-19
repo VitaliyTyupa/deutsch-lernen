@@ -6,6 +6,8 @@ import {EditorSettingsComponent} from './editor-settings/editor-settings.compone
 import {EditorGuideComponent} from './editor-guide/editor-guide.component';
 import {MatButton} from '@angular/material/button';
 import {EditorPageService} from './services/editor-page.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {SettingsForm} from '../types/editor.interface';
 
 @Component({
   selector: 'dl-editor-page',
@@ -25,13 +27,19 @@ export class EditorPageComponent {
   @ViewChild('quill') quill!: QuillEditorComponent;
   editorPageService = inject(EditorPageService);
 
+  settingsForm: FormGroup<SettingsForm> = new FormGroup({
+    language: new FormControl('de'),
+    languageLevel: new FormControl('A2'),
+    count: new FormControl(5),
+    autogenerateText: new FormControl(false),
+    showAnswer: new FormControl(false),
+  })
+
   getText() {
-    const words = [
-      'herausfinden',
-      'anwenden',
-      'verwenden',
-    ]
-    this.editorPageService.generateText(words).subscribe((response) => {
+    const text = this.quill.quillEditor.getText();
+    console.log(text);
+    // this.quill.quillEditor.
+    this.editorPageService.generateText(text).subscribe((response) => {
       console.log(response);
     });
     return this.quill.quillEditor.getText();

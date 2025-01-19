@@ -10,8 +10,8 @@ export class EditorPageService {
     private textGeneratorApi: TextGeneratorApiService
   ) { }
 
-  generateText(words: any[]) {
-    return this.textGeneratorApi.generateText({targetWords: words});
+  generateText(words: any) {
+    return this.textGeneratorApi.generateText({text: words});
   }
 
 

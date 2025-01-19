@@ -6,4 +6,15 @@ section {
   display: flex;
   gap: 16px;
   justify-content: center;
+
+  .task-type {
+    width: 25%;
+  }
+  .task-subject {
+    width: 50%;
+  }
+  mat-expansion-panel {
+    width: 80%;
+    margin: 16px 0;
+  }
 }
