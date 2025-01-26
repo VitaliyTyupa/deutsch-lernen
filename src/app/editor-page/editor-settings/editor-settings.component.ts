@@ -122,10 +122,6 @@ export class EditorSettingsComponent implements OnInit{
     {
       id: 5,
       description: 'Generieren Sie Sätze zur Übersetzung.'
-    },
-    {
-      id: 6,
-      description: 'Generieren Sie Text mit den angegebenen Wörtern entsprechend dem angegebenen Kontext.'
     }
   ];
 
