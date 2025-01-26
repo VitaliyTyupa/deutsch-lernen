@@ -1,24 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
-import {MatInput} from '@angular/material/input';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {SettingsForm} from '../../types/editor.interface';
-import {
-  MatExpansionPanel,
-  MatExpansionPanelDescription,
-  MatExpansionPanelHeader,
-  MatExpansionPanelTitle
-} from '@angular/material/expansion';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'dl-editor-settings',
   imports: [
     MatFormField,
-    MatInput,
     MatLabel,
     MatSelect,
     MatOption,
@@ -28,24 +21,82 @@ import {
     MatRadioGroup,
     MatRadioButton,
     ReactiveFormsModule,
-    MatExpansionPanelTitle,
-    MatExpansionPanelDescription,
-    MatExpansionPanelHeader,
-    MatExpansionPanel,
   ],
   templateUrl: './editor-settings.component.html',
-  styleUrl: './editor-settings.component.scss'
+  styleUrl: './editor-settings.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditorSettingsComponent {
+
+export class EditorSettingsComponent implements OnInit{
 
   @Input() settingsForm!: FormGroup<SettingsForm>;
+  destroyRef = inject(DestroyRef);
 
-  optionsList = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4'
+  tenses = [
+    'Präteritum',
+    'Perfekt',
+    'Plusquamperfekt',
+    'Präsens',
+    'Futur 1',
+    'Futur 2'
   ];
+
+  konjunktiv = [
+    'Konjunktiv I',
+    'Konjunktiv II'
+  ];
+
+  helperVerbs = [
+    'sein',
+    'haben',
+    'werden'
+  ];
+
+  formTypes = [
+    'Aktiv',
+    'Passiv'
+  ];
+
+  kasus = [
+    'Nominativ',
+    'Genitiv',
+    'Dativ',
+    'Akkusativ',
+    'Plural',
+  ];
+
+  deklinationTypes = [
+    'unbestimmter Artikel',
+    'bestimmter Artikel',
+    'Possessivpronomen',
+    'Personalpronomen',
+    'Demonstrativpronomen',
+    'Relativpronomen',
+    'Interrogativpronomen',
+    'Indefinitpronomen',
+    'Reflexivpronomen',
+    'Negationspronomen',
+    'Präpositionen',
+    'Adjektive',
+    'Zahlwörter',
+    'Substantive',
+    'Nomen',
+    'Pronomen',
+    'Artikel',
+    'Adjektiv',
+    'Verb',
+    'Präposition',
+    'Konjunktion',
+    'Adverb',
+    'Interjektion',
+    'Partikel',
+    'Numerale',
+    'Pronominaladverb',
+    'Pronominaladverbien',
+    ];
+
+
+
 
   countList = [5, 7, 10, 15];
 
@@ -54,25 +105,41 @@ export class EditorSettingsComponent {
   taskTypesList = [
     {
       id: 1,
-      description: 'Generate new sentences using source words.'
+      description: 'Generieren Sie neue Sätze mit Quellwörtern.'
     },
     {
       id: 2,
-      description: 'Provide definitions of the source words.'
+      description: 'Geben Sie Definitionen der Quellwörter an.'
     },
     {
       id: 3,
-      description: 'Create True/False statements.'
+      description: 'Erstellen Sie Wahr/Falsch-Aussagen.'
     },
     {
       id: 4,
-      description: 'Generate questions to the text.'
+      description: 'Generieren Sie Fragen zum Text.'
     },
     {
       id: 5,
-      description: 'Generate sentences for translation.'
+      description: 'Generieren Sie Sätze zur Übersetzung.'
+    },
+    {
+      id: 6,
+      description: 'Generieren Sie Text mit den angegebenen Wörtern entsprechend dem angegebenen Kontext.'
     }
   ];
+
+  ngOnInit() {
+    this.settingsForm.get('autogenerateText')?.valueChanges.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe((value) => {
+      if (value) {
+        this.settingsForm.get('taskType')?.disable()
+      } else {
+        this.settingsForm.get('taskType')?.enable();
+      }
+    });
+  }
 
   test() {
     console.log(this.settingsForm.value);
