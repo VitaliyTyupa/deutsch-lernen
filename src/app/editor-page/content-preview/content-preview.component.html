@@ -1,0 +1,19 @@
+@for (task of content.outputTasks; track $index) {
+  @switch (task.id) {
+    @case ('1') {
+      <dl-gap-filling-text [content]="task.value"></dl-gap-filling-text>
+    }
+    @case ('2') {
+      <dl-word-definition [content]="task.value"></dl-word-definition>
+    }
+    @case ('3') {
+      <dl-statements [content]="task.value"></dl-statements>
+    }
+    @case ('4') {
+      <dl-question-answer [content]="task.value"></dl-question-answer>
+    }
+    @case ('5') {
+      <dl-translation [content]="task.value"></dl-translation>
+    }
+  }
+}

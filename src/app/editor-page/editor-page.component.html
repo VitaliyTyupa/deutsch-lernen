@@ -19,7 +19,5 @@
       <quill-editor #quillInput></quill-editor>
     }
   </mat-card>
-  <mat-card>
-    <quill-editor #quillOutput></quill-editor>
-  </mat-card>
 </section>
+<dl-content-preview *ngIf="generatedContent" [content]="generatedContent"></dl-content-preview>

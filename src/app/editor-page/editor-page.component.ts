@@ -6,12 +6,12 @@ import {EditorSettingsComponent} from './editor-settings/editor-settings.compone
 import {EditorGuideComponent} from './editor-guide/editor-guide.component';
 import {MatButton} from '@angular/material/button';
 import {EditorPageService} from './services/editor-page.service';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
-import {SettingsForm} from '../types/editor.interface';
+import {FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {NgIf} from '@angular/common';
+import {ContentPreviewComponent} from './content-preview/content-preview.component';
 
 @Component({
   selector: 'dl-editor-page',
@@ -28,6 +28,7 @@ import {NgIf} from '@angular/common';
     MatProgressBar,
     NgIf,
     ReactiveFormsModule,
+    ContentPreviewComponent,
   ],
   templateUrl: './editor-page.component.html',
   styleUrl: './editor-page.component.scss',
@@ -58,6 +59,8 @@ export class EditorPageComponent {
     sourceWords: []
   });
 
+  generatedContent: any;
+
   getControl(name: string): FormControl {
     return this.settingsForm.get(name) as FormControl;
   }
@@ -74,10 +77,19 @@ export class EditorPageComponent {
       params['text'] = text;
     }
     this.isLoading = true;
-    this.editorPageService.generateText(params).subscribe((response) => {
-      this.isLoading = false;
-      this.cdr.detectChanges();
-      console.log(response);
+    this.editorPageService.generateText(params).subscribe({
+      next: (data: any) => {
+        this.isLoading = false;
+        // todo: need to clarify the returned Type of the data. Is it really only JSON?
+        console.log(JSON.parse(data));
+        this.generatedContent = JSON.parse(data);
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.isLoading = false;
+        this.toastr.error('Beim Generieren der Aufgabe ist ein Fehler aufgetreten.');
+        this.cdr.detectChanges();
+      }
     });
   }
 }

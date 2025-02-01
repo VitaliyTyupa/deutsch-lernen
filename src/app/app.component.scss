@@ -1,6 +1,6 @@
 @use '../styles/vars' as *;
 
 main {
-  height: $main-height;
+  min-height: $main-height;
   background-color: $neutral-color;
 }
