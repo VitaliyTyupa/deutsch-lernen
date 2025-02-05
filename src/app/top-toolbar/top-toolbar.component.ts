@@ -3,7 +3,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {RouterLink} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {TextGeneratorApiService} from '../common-services/api-services/text-generator-api.service';
 
 @Component({
   selector: 'dl-top-toolbar',
@@ -18,9 +18,10 @@ import {HttpClient} from '@angular/common/http';
   styleUrl: './top-toolbar.component.scss'
 })
 export class TopToolbarComponent {
-  http = inject(HttpClient);
+  textGenerator = inject(TextGeneratorApiService);
+
   checkConnection() {
-    this.http.get('/api').subscribe((res: any) => {
+    this.textGenerator.checkConnection().subscribe((res: any) => {
       console.log('Status of connection:', res);
     });
   }
