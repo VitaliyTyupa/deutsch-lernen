@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {RouterLink} from '@angular/router';
+import {TextGeneratorApiService} from '../common-services/api-services/text-generator-api.service';
 
 @Component({
   selector: 'dl-top-toolbar',
@@ -17,5 +18,11 @@ import {RouterLink} from '@angular/router';
   styleUrl: './top-toolbar.component.scss'
 })
 export class TopToolbarComponent {
+  textGenerator = inject(TextGeneratorApiService);
 
+  checkConnection() {
+    this.textGenerator.checkConnection().subscribe((res: any) => {
+      console.log('Status of connection:', res);
+    });
+  }
 }

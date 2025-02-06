@@ -1,7 +1,7 @@
 {
   "/api": {
-    "target": "https://api.production.com",
-    "secure": true,
+    "target": "http://13.61.72.75:3000",
+    "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   }

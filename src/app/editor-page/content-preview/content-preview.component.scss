@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+  width: 100%;
+  * {
+    width: 49.5%;
+    margin-top: 16px;
+  }
+}

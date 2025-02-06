@@ -1,0 +1,20 @@
+<mat-card class="card-text">
+  <mat-card-header>
+    <h3>Frage Antwort</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <h4>Frage</h4>
+    @for (word of content; track $index) {
+      <p>{{$index + 1}}. {{word.question}}</p>
+    }
+  </mat-card-content>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title><h4>Antwort</h4></mat-panel-title>
+    </mat-expansion-panel-header>
+    @for (word of content; track $index) {
+      <p>{{$index + 1}}. {{word.answer}}</p>
+    }
+  </mat-expansion-panel>
+</mat-card>

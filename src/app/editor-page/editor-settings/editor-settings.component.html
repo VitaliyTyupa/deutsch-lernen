@@ -1,42 +1,93 @@
-<form>
+<form [formGroup]="settingsForm">
   <section>
-    <mat-form-field>
-      <mat-label>Form control 1</mat-label>
-      <input matInput placeholder="Placeholder">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Select me</mat-label>
-      <mat-select>
-        <mat-option>-- None --</mat-option>
-        @for (option of optionsList; track $index) {
-          <mat-option value="option">{{option}}</mat-option>
+    <mat-form-field class="task-type-field">
+      <mat-label>Aufgabentyp auswählen</mat-label>
+      <mat-select formControlName="taskType" multiple>
+        @for (task of taskTypesList; track $index) {
+          <mat-option [value]="task.id">{{task.description}}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Form control 1</mat-label>
-      <input matInput placeholder="Placeholder">
+      <mat-label>Zeitformen</mat-label>
+      <mat-select multiple formControlName="tenses">
+        @for (tens of tenses; track $index) {
+          <mat-option [value]="tens">{{tens}}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Select me</mat-label>
-      <mat-select>
-        <mat-option>-- None --</mat-option>
-        @for (option of optionsList; track $index) {
-          <mat-option value="option">{{option}}</mat-option>
+      <mat-label>Form</mat-label>
+      <mat-select formControlName="activeForm" multiple>
+        @for (type of formTypes; track $index) {
+          <mat-option [value]="type">{{ type }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
   </section>
   <section>
-    <mat-checkbox>Check box 1</mat-checkbox>
-    <mat-checkbox>Check box 2</mat-checkbox>
-    <mat-checkbox>Check box 3</mat-checkbox>
-    <mat-checkbox>Check box 4</mat-checkbox>
-    <mat-checkbox>Check box 5</mat-checkbox>
-    <mat-button-toggle-group>
-      <mat-button-toggle value="red">Red</mat-button-toggle>
-      <mat-button-toggle value="green">Green</mat-button-toggle>
-      <mat-button-toggle value="blue">Blue</mat-button-toggle>
+    <mat-form-field>
+      <mat-label>Kasus</mat-label>
+      <mat-select formControlName="kasus" multiple>
+        @for (item of kasus; track $index) {
+          <mat-option [value]="item">{{item}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Deklination</mat-label>
+      <mat-select formControlName="deklination" multiple>
+        @for (item of deklinationTypes; track $index) {
+          <mat-option [value]="item">{{item}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Konjunktiv</mat-label>
+      <mat-select formControlName="konjunktiv" multiple>
+        @for (kon of konjunktiv; track $index) {
+          <mat-option [value]="kon">{{kon}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Hilfsverben</mat-label>
+      <mat-select formControlName="helperVerbs" multiple>
+        @for (verb of helperVerbs; track $index) {
+          <mat-option [value]="verb">{{verb}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-button-toggle-group formControlName="count">
+      @for (item of countList; track $index) {
+        <mat-button-toggle [value]="item">{{item}} Sätze</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+    <mat-radio-group formControlName="language">
+      <mat-radio-button value="English">English</mat-radio-button>
+      <mat-radio-button value="German">Deutsch</mat-radio-button>
+    </mat-radio-group>
+    <mat-checkbox formControlName="autogenerateText">Text automatisch generieren</mat-checkbox>
+    <mat-checkbox formControlName="showAnswer">Antworten anzeigen</mat-checkbox>
+    <mat-button-toggle-group formControlName="languageLevel">
+      @for (language of languageLevelList; track $index) {
+        <mat-button-toggle [value]="language">{{language}}</mat-button-toggle>
+      }
     </mat-button-toggle-group>
   </section>
+<!--  <section>-->
+  <!--    <mat-expansion-panel>-->
+<!--      <mat-expansion-panel-header>-->
+<!--        <mat-panel-title> Aufgabentyp auswählen </mat-panel-title>-->
+<!--        <mat-panel-description> ausgewählt: *** </mat-panel-description>-->
+<!--      </mat-expansion-panel-header>-->
+<!--      <section formControlName="taskType">-->
+<!--        @for (task of taskTypesList; track task.id) {-->
+<!--          <p><mat-checkbox [value]="task.id">{{task.description}}</mat-checkbox></p>-->
+<!--        }-->
+<!--      </section>-->
+<!--    </mat-expansion-panel>-->
+<!--  </section>-->
 </form>
