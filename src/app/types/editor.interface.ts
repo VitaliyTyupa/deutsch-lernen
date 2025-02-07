@@ -18,3 +18,30 @@ export interface SettingsForm {
 export interface TaskTypeForm {
   [key: string]: FormControl<string | null>;
 }
+
+export interface TaskType {
+  id: number;
+  description: string;
+}
+
+export interface TaskRequest {
+  message: TaskOptions;
+}
+
+export interface TaskOptions {
+  language: string;
+  languageLevel: string;
+  count: number;
+  autogenerateText: boolean;
+  showAnswer: boolean;
+  tenses: string[] | null;
+  activeForm: string[] | null;
+  konjunktiv: string[] | null;
+  helperVerbs: string[] | null;
+  deklination: string[] | null;
+  kasus: string[] | null;
+  taskType: number[];
+  context: string;
+  sourceWords: string;
+  text: string;
+}

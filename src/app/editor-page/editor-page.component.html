@@ -1,9 +1,8 @@
 <dl-editor-settings [settingsForm]="settingsForm"></dl-editor-settings>
-<dl-editor-guide></dl-editor-guide>
 <section>
   <button mat-stroked-button class="generate-btn" (click)="submit()">Erzeugen</button>
 </section>
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
 <section>
   <mat-card>
     <mat-form-field>
@@ -18,6 +17,9 @@
     } @else {
       <quill-editor #quillInput></quill-editor>
     }
+  </mat-card>
+  <mat-card>
+    <dl-editor-guide></dl-editor-guide>
   </mat-card>
 </section>
 <dl-content-preview *ngIf="generatedContent" [content]="generatedContent"></dl-content-preview>

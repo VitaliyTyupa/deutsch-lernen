@@ -7,6 +7,7 @@ import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {SettingsForm} from '../../types/editor.interface';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TaskOptionsService} from '../services/task-options.service';
 
 @Component({
   selector: 'dl-editor-settings',
@@ -31,6 +32,7 @@ export class EditorSettingsComponent implements OnInit{
 
   @Input() settingsForm!: FormGroup<SettingsForm>;
   destroyRef = inject(DestroyRef);
+  taskOptionsService = inject(TaskOptionsService);
 
   tenses = [
     'Präteritum',
@@ -102,37 +104,18 @@ export class EditorSettingsComponent implements OnInit{
 
   languageLevelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
-  taskTypesList = [
-    {
-      id: 1,
-      description: 'Generieren Sie neue Sätze mit Quellwörtern.'
-    },
-    {
-      id: 2,
-      description: 'Geben Sie Definitionen der Quellwörter an.'
-    },
-    {
-      id: 3,
-      description: 'Erstellen Sie Wahr/Falsch-Aussagen.'
-    },
-    {
-      id: 4,
-      description: 'Generieren Sie Fragen zum Text.'
-    },
-    {
-      id: 5,
-      description: 'Generieren Sie Sätze zur Übersetzung.'
-    }
-  ];
+  taskTypesList = this.taskOptionsService.getTaskTypesList();
 
   ngOnInit() {
     this.settingsForm.get('autogenerateText')?.valueChanges.pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe((value) => {
       if (value) {
-        this.settingsForm.get('taskType')?.disable()
+        this.taskTypesList = this.taskOptionsService.getTaskTypesList('withoutText');
+        this.settingsForm.get('taskType')?.reset();
       } else {
-        this.settingsForm.get('taskType')?.enable();
+        this.taskTypesList = this.taskOptionsService.getTaskTypesList();
+        this.settingsForm.get('taskType')?.reset();
       }
     });
   }

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Antrag auf Aufgabenerstellung.</h2>
+<mat-dialog-content>
+  <p>Bitte vergewissern Sie sich, dass Ihr Antrag alle erforderlichen Bedingungen
+    enthält und Ihren Wünschen entspricht.</p>
+  @for (option of options; track $index) {
+    <p>
+      <span class="option-name">{{ option.key }}:</span>
+      <span class="option-value">{{ option.value }}</span>
+    </p>
+  }
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="close(false)">Zurück zur Auswahl der Optionen</button>
+  <button mat-button (click)="close(true)" cdkFocusInitial>Bestätige</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal, ViewChild} from '@angular/core';
 import {QuillEditorComponent} from "ngx-quill";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCard} from '@angular/material/card';
@@ -12,6 +12,9 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {NgIf} from '@angular/common';
 import {ContentPreviewComponent} from './content-preview/content-preview.component';
+import {MatDialog} from '@angular/material/dialog';
+import {PreviewRequestModalComponent} from './preview-request-modal/preview-request-modal.component';
+import {firstValueFrom, Observable} from 'rxjs';
 
 @Component({
   selector: 'dl-editor-page',
@@ -40,7 +43,9 @@ export class EditorPageComponent {
   toastr = inject(ToastrService);
   fb = inject(FormBuilder);
   cdr = inject(ChangeDetectorRef);
-  isLoading = false;
+  matDialog = inject(MatDialog);
+  isLoading = signal(false);
+
   // todo: at the end Form should be typed of FormGroup<SettingsForm>.
   settingsForm: UntypedFormGroup = this.fb.group({
     language: ['German'],
@@ -65,9 +70,13 @@ export class EditorPageComponent {
     return this.settingsForm.get(name) as FormControl;
   }
 
-  submit() {
+  async submit() {
     console.log(this.settingsForm.getRawValue());
     const params = this.settingsForm.getRawValue();
+    if (params.taskType?.includes(2) && !params.sourceWords) {
+      this.toastr.error('Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.');
+      return;
+    }
     if (!params.autogenerateText) {
       const text = this.quillInput.quillEditor.getText().trim();
       if (!text) {
@@ -76,20 +85,31 @@ export class EditorPageComponent {
       }
       params['text'] = text;
     }
-    this.isLoading = true;
+    const confirm = await firstValueFrom(this.confirmRequest(params));
+    if (!confirm) return;
+    this.isLoading.set(true);
     this.editorPageService.generateText(params).subscribe({
       next: (data: any) => {
-        this.isLoading = false;
         // todo: need to clarify the returned Type of the data. Is it really only JSON?
         console.log(JSON.parse(data));
+        this.toastr.success('Aufgabe erfolgreich generiert.');
         this.generatedContent = JSON.parse(data);
         this.cdr.detectChanges();
       },
       error: () => {
-        this.isLoading = false;
         this.toastr.error('Beim Generieren der Aufgabe ist ein Fehler aufgetreten.');
+      },
+      complete: () => {
+        this.isLoading.set(false);
         this.cdr.detectChanges();
       }
     });
+  }
+
+  confirmRequest(request: any): Observable<boolean> {
+    const dialogRef = this.matDialog.open(PreviewRequestModalComponent, {
+      data: request
+    });
+    return dialogRef.afterClosed();
   }
 }
