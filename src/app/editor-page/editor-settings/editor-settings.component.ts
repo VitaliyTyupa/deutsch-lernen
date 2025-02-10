@@ -1,13 +1,15 @@
 import {ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
-import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SettingsForm} from '../../types/editor.interface';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TaskOptionsService} from '../services/task-options.service';
+import {NgIf} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'dl-editor-settings',
@@ -22,6 +24,8 @@ import {TaskOptionsService} from '../services/task-options.service';
     MatRadioGroup,
     MatRadioButton,
     ReactiveFormsModule,
+    MatError,
+    NgIf,
   ],
   templateUrl: './editor-settings.component.html',
   styleUrl: './editor-settings.component.scss',
@@ -33,6 +37,7 @@ export class EditorSettingsComponent implements OnInit{
   @Input() settingsForm!: FormGroup<SettingsForm>;
   destroyRef = inject(DestroyRef);
   taskOptionsService = inject(TaskOptionsService);
+  toastr = inject(ToastrService);
 
   tenses = [
     'Präteritum',
@@ -113,10 +118,15 @@ export class EditorSettingsComponent implements OnInit{
       if (value) {
         this.taskTypesList = this.taskOptionsService.getTaskTypesList('withoutText');
         this.settingsForm.get('taskType')?.reset();
+        this.settingsForm.get('context')?.setValidators(Validators.required);
+        this.settingsForm.get('text')?.removeValidators(Validators.required);
       } else {
         this.taskTypesList = this.taskOptionsService.getTaskTypesList();
         this.settingsForm.get('taskType')?.reset();
+        this.settingsForm.get('text')?.setValidators(Validators.required);
+        this.settingsForm.get('context')?.removeValidators(Validators.required);
       }
+      this.toastr.info('Bitte beachten Sie, dass die Einstellungen für die Aufgabengenerierung geändert wurden. Bitte wählen Sie mindestens einen Aufgabentyp aus.');
     });
   }
 

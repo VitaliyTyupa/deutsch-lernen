@@ -1,21 +1,38 @@
 <dl-editor-settings [settingsForm]="settingsForm"></dl-editor-settings>
 <section>
   <button mat-stroked-button class="generate-btn" (click)="submit()">Erzeugen</button>
+  <button mat-button class="generate-btn" (click)="resetForm()">Zurücksetzen</button>
 </section>
 <mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
 <section>
   <mat-card>
-    <mat-form-field>
+    <mat-form-field class="input-text">
       <mat-label>Quellwörter</mat-label>
       <textarea matInput [formControl]="getControl('sourceWords')"></textarea>
+      <mat-error *ngIf="getControl('sourceWords').invalid">
+        Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+      </mat-error>
     </mat-form-field>
     @if (settingsForm.get('autogenerateText')?.value) {
       <mat-form-field>
         <mat-label>Betreff des Textes</mat-label>
         <input matInput [formControl]="getControl('context')" placeholder="Geben Sie den Betreff des Textes ein...">
+        <mat-error *ngIf="getControl('context').invalid">
+          Bitte geben Sie den Betreff des Textes ein.
+        </mat-error>
       </mat-form-field>
     } @else {
-      <quill-editor #quillInput></quill-editor>
+      <mat-form-field class="input-text">
+        <mat-label>Text</mat-label>
+        <textarea matInput
+                  #textInput
+                  placeholder="Beginnen Sie hier mit der Eingabe ..."
+                  rows="5"
+                  [formControl]="getControl('text')"></textarea>
+        <mat-error *ngIf="getControl('text').invalid">
+          Bitte geben Sie einen Text ein, bevor Sie eine Aufgabe generieren.
+        </mat-error>
+      </mat-form-field>
     }
   </mat-card>
   <mat-card>

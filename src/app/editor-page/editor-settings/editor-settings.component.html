@@ -7,6 +7,9 @@
           <mat-option [value]="task.id">{{task.description}}</mat-option>
         }
       </mat-select>
+      <mat-error *ngIf="settingsForm.get('taskType')?.invalid">
+        Bitte wählen Sie mindestens einen Aufgabentyp aus.
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Zeitformen</mat-label>

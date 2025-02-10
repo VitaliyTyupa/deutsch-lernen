@@ -1,25 +1,34 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, signal, ViewChild} from '@angular/core';
-import {QuillEditorComponent} from "ngx-quill";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component, DestroyRef,
+  OnInit,
+  signal,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCard} from '@angular/material/card';
 import {EditorSettingsComponent} from './editor-settings/editor-settings.component';
 import {EditorGuideComponent} from './editor-guide/editor-guide.component';
 import {MatButton} from '@angular/material/button';
 import {EditorPageService} from './services/editor-page.service';
-import {FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {NgIf} from '@angular/common';
 import {ContentPreviewComponent} from './content-preview/content-preview.component';
 import {MatDialog} from '@angular/material/dialog';
 import {PreviewRequestModalComponent} from './preview-request-modal/preview-request-modal.component';
-import {firstValueFrom, Observable} from 'rxjs';
+import {firstValueFrom, fromEvent, Observable} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TaskOptions} from '../types/editor.interface';
 
 @Component({
   selector: 'dl-editor-page',
   imports: [
-    QuillEditorComponent,
     MatSidenavModule,
     MatCard,
     EditorSettingsComponent,
@@ -28,6 +37,7 @@ import {firstValueFrom, Observable} from 'rxjs';
     MatInput,
     MatLabel,
     MatFormField,
+    MatError,
     MatProgressBar,
     NgIf,
     ReactiveFormsModule,
@@ -37,56 +47,92 @@ import {firstValueFrom, Observable} from 'rxjs';
   styleUrl: './editor-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditorPageComponent {
-  @ViewChild('quillInput') quillInput!: QuillEditorComponent;
-  editorPageService = inject(EditorPageService);
-  toastr = inject(ToastrService);
-  fb = inject(FormBuilder);
-  cdr = inject(ChangeDetectorRef);
-  matDialog = inject(MatDialog);
+export class EditorPageComponent implements OnInit, AfterViewInit{
+  @ViewChild('textInput') textInput!: ElementRef;
+
   isLoading = signal(false);
 
   // todo: at the end Form should be typed of FormGroup<SettingsForm>.
-  settingsForm: UntypedFormGroup = this.fb.group({
-    language: ['German'],
-    languageLevel: ['A2'],
-    count: [5],
-    autogenerateText: [false, {nonNullable: true}],
-    showAnswer: [false, {nonNullable: true}],
-    tenses: [],
-    activeForm: [],
-    konjunktiv: [],
-    helperVerbs: [],
-    deklination: [],
-    kasus: [],
-    taskType: [],
-    context: [''],
-    sourceWords: []
-  });
+  settingsForm!: UntypedFormGroup;
 
   generatedContent: any;
+
+  constructor(
+    private editorPageService: EditorPageService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+    private matDialog: MatDialog,
+    private destroyRef: DestroyRef,
+  ) {}
+
+  ngOnInit() {
+    this.settingsForm = this.fb.group({
+      language: ['German'],
+      languageLevel: ['A2'],
+      count: [5],
+      autogenerateText: [false, {nonNullable: true}],
+      showAnswer: [false, {nonNullable: true}],
+      tenses: [],
+      activeForm: [],
+      konjunktiv: [],
+      helperVerbs: [],
+      deklination: [],
+      kasus: [],
+      taskType: [null, Validators.required],
+      context: [null],
+      sourceWords: [null, Validators.required],
+      text: [null, Validators.required]
+    });
+
+  }
+
+  ngAfterViewInit() {
+    this.handleSelectedTextWord();
+  }
 
   getControl(name: string): FormControl {
     return this.settingsForm.get(name) as FormControl;
   }
 
   async submit() {
-    console.log(this.settingsForm.getRawValue());
+    this.settingsForm.markAllAsTouched()
+    if (this.settingsForm.invalid) return;
     const params = this.settingsForm.getRawValue();
-    if (params.taskType?.includes(2) && !params.sourceWords) {
-      this.toastr.error('Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.');
-      return;
-    }
-    if (!params.autogenerateText) {
-      const text = this.quillInput.quillEditor.getText().trim();
-      if (!text) {
-        this.toastr.error('Bitte geben Sie einen Text ein, bevor Sie eine Aufgabe generieren.');
-        return;
-      }
-      params['text'] = text;
-    }
     const confirm = await firstValueFrom(this.confirmRequest(params));
     if (!confirm) return;
+    this.generateTasks(params);
+  }
+
+  resetForm() {
+    this.settingsForm.reset();
+  }
+
+  confirmRequest(request: any): Observable<boolean> {
+    const dialogRef = this.matDialog.open(PreviewRequestModalComponent, {
+      data: request
+    });
+    return dialogRef.afterClosed();
+  }
+
+  handleSelectedTextWord() {
+    const dblClick = fromEvent(this.textInput.nativeElement, 'dblclick');
+    dblClick.pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(() => {
+      // take selected word in inputText
+      const start = this.textInput.nativeElement.selectionStart;
+      const end = this.textInput.nativeElement.selectionEnd;
+      const result = this.textInput.nativeElement.value.substring(start, end);
+      if (result?.length < 3) return;
+      // add selected word to sourceWords
+      const sourceWordField = this.settingsForm.get('sourceWords');
+      const newValue = sourceWordField?.value ? `${sourceWordField.value}, ${result}` : result;
+      this.settingsForm.get('sourceWords')?.setValue(newValue);
+    });
+  }
+
+  generateTasks(params: TaskOptions) {
     this.isLoading.set(true);
     this.editorPageService.generateText(params).subscribe({
       next: (data: any) => {
@@ -104,12 +150,5 @@ export class EditorPageComponent {
         this.cdr.detectChanges();
       }
     });
-  }
-
-  confirmRequest(request: any): Observable<boolean> {
-    const dialogRef = this.matDialog.open(PreviewRequestModalComponent, {
-      data: request
-    });
-    return dialogRef.afterClosed();
   }
 }
