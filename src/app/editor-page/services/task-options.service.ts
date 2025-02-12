@@ -6,18 +6,18 @@ import {TaskType} from '../../types/editor.interface';
 })
 export class TaskOptionsService {
 
-  taskTypesList: {[key: number]: TaskType} = {
-    1: { "id": 1, "description": "Generieren Sie neue Sätze mit Quellwörtern." },
-    2: { "id": 2, "description": "Geben Sie Definitionen der Quellwörter an." },
-    3: { "id": 3, "description": "Erstellen Sie Wahr/Falsch-Aussagen." },
-    4: { "id": 4, "description": "Generieren Sie Fragen zum Text." },
-    5: { "id": 5, "description": "Generieren Sie Sätze zur Übersetzung." }
+  taskTypesList: {[key: string]: TaskType} = {
+    1: { "id": '1', name: 'Lückentext', "description": "Generieren Sie neue Sätze mit Quellwörtern." },
+    2: { "id": '2', name: 'Wortdefinition', "description": "Geben Sie Definitionen der Quellwörter an." },
+    3: { "id": '3', name: 'Richtig/Falsch-Aussage', "description": "Erstellen Sie Wahr/Falsch-Aussagen." },
+    4: { "id": '4', name: 'Frage Antwort', "description": "Generieren Sie Fragen zum Text." },
+    5: { "id": '5', name: 'Übersetzung', "description": "Generieren Sie Sätze zur Übersetzung." }
   };
 
   constructor() { }
 
-  getTypeDescription(id: number): string {
-    return this.taskTypesList[id].description;
+  getTaskName(id: string): string {
+    return this.taskTypesList[id].name;
   }
 
   getTaskTypesList(condition?: string): TaskType[] {

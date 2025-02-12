@@ -34,7 +34,7 @@ export class PreviewRequestModalComponent implements OnInit {
   ngOnInit() {
     this.options = Object.keys(this.data).filter(key => !!this.data[key]).map(key => {
       if(key === 'taskType') {
-        const values = this.data.taskType.map((id: number) => `${id}. ${this.taskOptionsService.getTypeDescription(id)}`);
+        const values = this.data.taskType.map((id: string) => `${id}. ${this.taskOptionsService.getTaskName(id)}`);
         return { key: key, value: values.join(', ') };
       }
       return { key: key, value: this.data[key] };

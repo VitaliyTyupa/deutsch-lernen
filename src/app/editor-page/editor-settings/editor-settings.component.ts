@@ -10,6 +10,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TaskOptionsService} from '../services/task-options.service';
 import {NgIf} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {MatButton} from '@angular/material/button';
+import {PrintService} from '../services/print.service';
 
 @Component({
   selector: 'dl-editor-settings',
@@ -26,6 +28,7 @@ import {ToastrService} from 'ngx-toastr';
     ReactiveFormsModule,
     MatError,
     NgIf,
+    MatButton,
   ],
   templateUrl: './editor-settings.component.html',
   styleUrl: './editor-settings.component.scss',
@@ -35,9 +38,10 @@ import {ToastrService} from 'ngx-toastr';
 export class EditorSettingsComponent implements OnInit{
 
   @Input() settingsForm!: FormGroup<SettingsForm>;
-  destroyRef = inject(DestroyRef);
-  taskOptionsService = inject(TaskOptionsService);
-  toastr = inject(ToastrService);
+  private destroyRef = inject(DestroyRef);
+  private taskOptionsService = inject(TaskOptionsService);
+  private toastr = inject(ToastrService);
+  private printService = inject(PrintService);
 
   tenses = [
     'Präteritum',
@@ -130,7 +134,14 @@ export class EditorSettingsComponent implements OnInit{
     });
   }
 
-  test() {
-    console.log(this.settingsForm.value);
+  print() {
+    const text = this.settingsForm.get('text')?.value;
+    if (text) {
+      this.printService.printSelectedTextWithStyles(text);
+    } else {
+      this.toastr.error('Bitte geben Sie den Text ein, um ihn zu drucken.');
+      return
+    }
+
   }
 }

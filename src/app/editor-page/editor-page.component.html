@@ -1,7 +1,7 @@
 <dl-editor-settings [settingsForm]="settingsForm"></dl-editor-settings>
-<section>
-  <button mat-stroked-button class="generate-btn" (click)="submit()">Erzeugen</button>
-  <button mat-button class="generate-btn" (click)="resetForm()">Zurücksetzen</button>
+<section class="control-buttons">
+  <button mat-stroked-button (click)="submit()">Ausgewählte Aufgaben erzeugen</button>
+  <button mat-button (click)="resetForm()">Zurücksetzen</button>
 </section>
 <mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
 <section>

@@ -24,7 +24,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {PreviewRequestModalComponent} from './preview-request-modal/preview-request-modal.component';
 import {firstValueFrom, fromEvent, Observable} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TaskOptions} from '../types/editor.interface';
+import {GeneratedResponse, TaskOptions} from '../types/editor.interface';
 
 @Component({
   selector: 'dl-editor-page',
@@ -55,7 +55,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
   // todo: at the end Form should be typed of FormGroup<SettingsForm>.
   settingsForm!: UntypedFormGroup;
 
-  generatedContent: any;
+  generatedContent!: GeneratedResponse;
 
   constructor(
     private editorPageService: EditorPageService,
@@ -63,7 +63,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private matDialog: MatDialog,
-    private destroyRef: DestroyRef,
+    private destroyRef: DestroyRef
   ) {}
 
   ngOnInit() {
@@ -72,7 +72,6 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
       languageLevel: ['A2'],
       count: [5],
       autogenerateText: [false, {nonNullable: true}],
-      showAnswer: [false, {nonNullable: true}],
       tenses: [],
       activeForm: [],
       konjunktiv: [],
@@ -82,7 +81,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
       taskType: [null, Validators.required],
       context: [null],
       sourceWords: [null, Validators.required],
-      text: [null, Validators.required]
+      text: [null, Validators.required],
     });
 
   }

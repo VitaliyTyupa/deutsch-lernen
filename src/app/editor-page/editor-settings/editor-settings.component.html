@@ -73,12 +73,12 @@
       <mat-radio-button value="German">Deutsch</mat-radio-button>
     </mat-radio-group>
     <mat-checkbox formControlName="autogenerateText">Text automatisch generieren</mat-checkbox>
-    <mat-checkbox formControlName="showAnswer">Antworten anzeigen</mat-checkbox>
     <mat-button-toggle-group formControlName="languageLevel">
       @for (language of languageLevelList; track $index) {
         <mat-button-toggle [value]="language">{{language}}</mat-button-toggle>
       }
     </mat-button-toggle-group>
+    <button mat-stroked-button (click)="print()">Print Calligraphy</button>
   </section>
 <!--  <section>-->
   <!--    <mat-expansion-panel>-->

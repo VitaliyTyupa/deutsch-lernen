@@ -1,9 +1,12 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input, OnInit, signal, Signal, WritableSignal} from '@angular/core';
 import {GapFillingTextComponent} from './gap-filling-text/gap-filling-text.component';
 import {WordDefinitionComponent} from './word-definition/word-definition.component';
 import {StatementsComponent} from './statements/statements.component';
 import {QuestionAnswerComponent} from './question-answer/question-answer.component';
 import {TranslationComponent} from './translation/translation.component';
+import {ToastrService} from 'ngx-toastr';
+import {TaskOptionsService} from '../services/task-options.service';
+import {GeneratedResponse} from '../../types/editor.interface';
 
 @Component({
   selector: 'dl-content-preview',
@@ -17,6 +20,24 @@ import {TranslationComponent} from './translation/translation.component';
   templateUrl: './content-preview.component.html',
   styleUrl: './content-preview.component.scss'
 })
-export class ContentPreviewComponent {
-  @Input() content: any;
+export class ContentPreviewComponent implements OnInit {
+  @Input() set content(data: GeneratedResponse) {
+    if (!data) return;
+    const filteredTasks = data.outputTasks.filter(item => {
+      if (!Array.isArray(item.value)) {
+        this.toastr.warning(`Die Aufgabe ${this.taskOptionsService.getTaskName(item.id)} hat falsche format!`);
+        return false;
+      } else {
+        return true;
+      }
+    });
+    this.tasks.set(filteredTasks)
+  };
+  tasks: WritableSignal<{ id: string; value: any; }[]> = signal([]);
+  toastr = inject(ToastrService);
+  taskOptionsService = inject(TaskOptionsService);
+
+
+  ngOnInit() {
+  }
 }
