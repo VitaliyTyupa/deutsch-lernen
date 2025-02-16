@@ -21,9 +21,9 @@ import {GeneratedResponse} from '../../types/editor.interface';
   styleUrl: './content-preview.component.scss'
 })
 export class ContentPreviewComponent implements OnInit {
-  @Input() set content(data: GeneratedResponse) {
+  @Input() set content(data: GeneratedResponse | null) {
     if (!data) return;
-    const filteredTasks = data.outputTasks.filter(item => {
+    let filteredTasks = data.outputTasks.filter((item: {id: string, value: any}) => {
       if (!Array.isArray(item.value)) {
         this.toastr.warning(`Die Aufgabe ${this.taskOptionsService.getTaskName(item.id)} hat falsche format!`);
         return false;
@@ -31,6 +31,7 @@ export class ContentPreviewComponent implements OnInit {
         return true;
       }
     });
+    filteredTasks = filteredTasks.map(item => ({...item, id: `${item.id}`}));
     this.tasks.set(filteredTasks)
   };
   tasks: WritableSignal<{ id: string; value: any; }[]> = signal([]);

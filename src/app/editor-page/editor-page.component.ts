@@ -1,12 +1,9 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component, DestroyRef,
   OnInit,
-  signal,
-  ElementRef,
-  ViewChild
+  signal, WritableSignal,
 } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCard} from '@angular/material/card';
@@ -25,6 +22,9 @@ import {PreviewRequestModalComponent} from './preview-request-modal/preview-requ
 import {firstValueFrom, fromEvent, Observable} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {GeneratedResponse, TaskOptions} from '../types/editor.interface';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
+import {PrintService} from './services/print.service';
+import {TextInputComponent} from './text-input/text-input.component';
 
 @Component({
   selector: 'dl-editor-page',
@@ -42,20 +42,20 @@ import {GeneratedResponse, TaskOptions} from '../types/editor.interface';
     NgIf,
     ReactiveFormsModule,
     ContentPreviewComponent,
+    MatSlideToggle,
+    TextInputComponent,
   ],
   templateUrl: './editor-page.component.html',
   styleUrl: './editor-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EditorPageComponent implements OnInit, AfterViewInit{
-  @ViewChild('textInput') textInput!: ElementRef;
-
+export class EditorPageComponent implements OnInit{
   isLoading = signal(false);
 
   // todo: at the end Form should be typed of FormGroup<SettingsForm>.
   settingsForm!: UntypedFormGroup;
 
-  generatedContent!: GeneratedResponse;
+  generatedContent: WritableSignal<GeneratedResponse | null> = signal(null);
 
   constructor(
     private editorPageService: EditorPageService,
@@ -63,7 +63,8 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef,
     private matDialog: MatDialog,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    private printService: PrintService
   ) {}
 
   ngOnInit() {
@@ -83,11 +84,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
       sourceWords: [null, Validators.required],
       text: [null, Validators.required],
     });
-
-  }
-
-  ngAfterViewInit() {
-    this.handleSelectedTextWord();
+    this.checkIfAutogenerateText();
   }
 
   getControl(name: string): FormControl {
@@ -95,6 +92,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
   }
 
   async submit() {
+    console.log(this.settingsForm);
     this.settingsForm.markAllAsTouched()
     if (this.settingsForm.invalid) return;
     const params = this.settingsForm.getRawValue();
@@ -114,20 +112,29 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
     return dialogRef.afterClosed();
   }
 
-  handleSelectedTextWord() {
-    const dblClick = fromEvent(this.textInput.nativeElement, 'dblclick');
-    dblClick.pipe(
+  addSelectedWords(word: string) {
+    const sourceWordField = this.settingsForm.get('sourceWords');
+    const newValue = sourceWordField?.value ? `${sourceWordField.value}, ${word}` : word;
+    this.settingsForm.get('sourceWords')?.setValue(newValue);
+  }
+
+
+  checkIfAutogenerateText() {
+    this.settingsForm.get('autogenerateText')?.valueChanges.pipe(
       takeUntilDestroyed(this.destroyRef)
-    ).subscribe(() => {
-      // take selected word in inputText
-      const start = this.textInput.nativeElement.selectionStart;
-      const end = this.textInput.nativeElement.selectionEnd;
-      const result = this.textInput.nativeElement.value.substring(start, end);
-      if (result?.length < 3) return;
-      // add selected word to sourceWords
-      const sourceWordField = this.settingsForm.get('sourceWords');
-      const newValue = sourceWordField?.value ? `${sourceWordField.value}, ${result}` : result;
-      this.settingsForm.get('sourceWords')?.setValue(newValue);
+    ).subscribe((value) => {
+      if (value) {
+        this.settingsForm.get('context')?.setValidators(Validators.required);
+        this.settingsForm.get('text')?.removeValidators(Validators.required);
+        this.settingsForm.get('text')?.updateValueAndValidity();
+        this.settingsForm.get('context')?.updateValueAndValidity();
+      } else {
+        this.settingsForm.get('text')?.setValidators(Validators.required);
+        this.settingsForm.get('context')?.removeValidators(Validators.required);
+        this.settingsForm.get('text')?.updateValueAndValidity();
+        this.settingsForm.get('context')?.updateValueAndValidity();
+      }
+      this.toastr.info('Bitte beachten Sie, dass die Einstellungen für die Aufgabengenerierung geändert wurden. Bitte wählen Sie mindestens einen Aufgabentyp aus.');
     });
   }
 
@@ -138,8 +145,7 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
         // todo: need to clarify the returned Type of the data. Is it really only JSON?
         console.log(JSON.parse(data));
         this.toastr.success('Aufgabe erfolgreich generiert.');
-        this.generatedContent = JSON.parse(data);
-        this.cdr.detectChanges();
+        this.generatedContent.set(JSON.parse(data));
       },
       error: () => {
         this.toastr.error('Beim Generieren der Aufgabe ist ein Fehler aufgetreten.');
@@ -149,5 +155,15 @@ export class EditorPageComponent implements OnInit, AfterViewInit{
         this.cdr.detectChanges();
       }
     });
+  }
+
+  print() {
+    const text = this.settingsForm.get('text')?.value;
+    if (text) {
+      this.printService.printSelectedTextWithStyles(text);
+    } else {
+      this.toastr.error('Bitte geben Sie den Text ein, um ihn zu drucken.');
+      return
+    }
   }
 }

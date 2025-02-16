@@ -1,0 +1,11 @@
+<mat-form-field class="input-text">
+  <mat-label>Text</mat-label>
+  <textarea matInput
+            #textInput
+            placeholder="Beginnen Sie hier mit der Eingabe ..."
+            rows="5"
+            [formControl]="textControl"></textarea>
+  <mat-error *ngIf="textControl?.invalid">
+    Bitte geben Sie einen Text ein, bevor Sie eine Aufgabe generieren.
+  </mat-error>
+</mat-form-field>

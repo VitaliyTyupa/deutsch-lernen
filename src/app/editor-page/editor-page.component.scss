@@ -17,9 +17,12 @@ mat-card-content  {
 mat-selection-list {
   width: 20%;
 }
-.input-text {
-  font-size: 1.3em;
-}
 .control-buttons {
   margin-bottom: 16px;
+}
+mat-slide-toggle {
+  margin-bottom: 8px;
+}
+.calligraphy-btn {
+  align-self: end;
 }
