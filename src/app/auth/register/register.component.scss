@@ -1,5 +1,5 @@
 .container {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -10,4 +10,11 @@
 
 h2 {
   text-align: center;
+}
+
+.roles-container {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
