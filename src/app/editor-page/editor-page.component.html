@@ -1,23 +1,34 @@
 <dl-editor-settings [settingsForm]="settingsForm"></dl-editor-settings>
-<dl-editor-guide></dl-editor-guide>
-<section>
-  <button mat-stroked-button class="generate-btn" (click)="submit()">Erzeugen</button>
+<section class="control-buttons">
+  <button mat-flat-button (click)="submit()">Erzeugen</button>
+  <button mat-button (click)="resetForm()">Zurücksetzen</button>
 </section>
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
 <section>
   <mat-card>
-    <mat-form-field>
+    <mat-form-field class="input-text">
       <mat-label>Quellwörter</mat-label>
       <textarea matInput [formControl]="getControl('sourceWords')"></textarea>
+      <mat-error *ngIf="getControl('sourceWords').invalid">
+        Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+      </mat-error>
     </mat-form-field>
-    @if (settingsForm.get('autogenerateText')?.value) {
+    <mat-slide-toggle [formControl]="getControl('autogenerateText')">Text automatisch generieren</mat-slide-toggle>
+    @if (getControl('autogenerateText').value) {
       <mat-form-field>
         <mat-label>Betreff des Textes</mat-label>
         <input matInput [formControl]="getControl('context')" placeholder="Geben Sie den Betreff des Textes ein...">
+        <mat-error *ngIf="getControl('context').invalid">
+          Bitte geben Sie den Betreff des Textes ein.
+        </mat-error>
       </mat-form-field>
     } @else {
-      <quill-editor #quillInput></quill-editor>
+      <dl-text-input [textControl]="getControl('text')" (onSelect)="addSelectedWords($event)"></dl-text-input>
+      <button class="calligraphy-btn" mat-stroked-button (click)="print()">Print Calligraphy</button>
     }
   </mat-card>
+  <mat-card>
+    <dl-editor-guide></dl-editor-guide>
+  </mat-card>
 </section>
-<dl-content-preview *ngIf="generatedContent" [content]="generatedContent"></dl-content-preview>
+<dl-content-preview [content]="generatedContent()"></dl-content-preview>

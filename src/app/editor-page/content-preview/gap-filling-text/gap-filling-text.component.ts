@@ -15,16 +15,18 @@ import {shuffleArray} from '../../../utils/functions';
   styleUrl: './gap-filling-text.component.scss'
 })
 export class GapFillingTextComponent implements OnInit{
-  @Input() content!: string [];
+  @Input() set content(data: string[]) {
+    this.rawData = data;
+    [this.processedText, this.gupWordsAnswer] = this.processText(data.join(' '));
+    this.shuffleWords = shuffleArray<string>(this.gupWordsAnswer);
+  };
+  rawData: string[] = [];
   sentencesCount: number = 0;
   processedText: string = '';
   gupWordsAnswer: string[] = [];
   shuffleWords: string[] = [];
 
   ngOnInit() {
-    this.sentencesCount = this.content.length;
-    [this.processedText, this.gupWordsAnswer] = this.processText(this.content.join(' '));
-    this.shuffleWords = shuffleArray<string>(this.gupWordsAnswer);
   }
 
   processText(text: string): [processedText: string, words: string[]] {

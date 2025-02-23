@@ -1,12 +1,13 @@
 import {ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit} from '@angular/core';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
-import {MatCheckbox} from '@angular/material/checkbox';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
-import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SettingsForm} from '../../types/editor.interface';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TaskOptionsService} from '../services/task-options.service';
+import {NgIf} from '@angular/common';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'dl-editor-settings',
@@ -17,10 +18,11 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
     MatOption,
     MatButtonToggleGroup,
     MatButtonToggle,
-    MatCheckbox,
     MatRadioGroup,
     MatRadioButton,
     ReactiveFormsModule,
+    MatError,
+    NgIf,
   ],
   templateUrl: './editor-settings.component.html',
   styleUrl: './editor-settings.component.scss',
@@ -30,7 +32,9 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 export class EditorSettingsComponent implements OnInit{
 
   @Input() settingsForm!: FormGroup<SettingsForm>;
-  destroyRef = inject(DestroyRef);
+  private destroyRef = inject(DestroyRef);
+  private taskOptionsService = inject(TaskOptionsService);
+  private toastr = inject(ToastrService);
 
   tenses = [
     'Präteritum',
@@ -102,42 +106,9 @@ export class EditorSettingsComponent implements OnInit{
 
   languageLevelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
-  taskTypesList = [
-    {
-      id: 1,
-      description: 'Generieren Sie neue Sätze mit Quellwörtern.'
-    },
-    {
-      id: 2,
-      description: 'Geben Sie Definitionen der Quellwörter an.'
-    },
-    {
-      id: 3,
-      description: 'Erstellen Sie Wahr/Falsch-Aussagen.'
-    },
-    {
-      id: 4,
-      description: 'Generieren Sie Fragen zum Text.'
-    },
-    {
-      id: 5,
-      description: 'Generieren Sie Sätze zur Übersetzung.'
-    }
-  ];
+  taskTypesList = this.taskOptionsService.getTaskTypesList();
 
   ngOnInit() {
-    this.settingsForm.get('autogenerateText')?.valueChanges.pipe(
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe((value) => {
-      if (value) {
-        this.settingsForm.get('taskType')?.disable()
-      } else {
-        this.settingsForm.get('taskType')?.enable();
-      }
-    });
   }
 
-  test() {
-    console.log(this.settingsForm.value);
-  }
 }

@@ -7,6 +7,9 @@
           <mat-option [value]="task.id">{{task.description}}</mat-option>
         }
       </mat-select>
+      <mat-error *ngIf="settingsForm.get('taskType')?.invalid">
+        Bitte wählen Sie mindestens einen Aufgabentyp aus.
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Zeitformen</mat-label>
@@ -69,8 +72,6 @@
       <mat-radio-button value="English">English</mat-radio-button>
       <mat-radio-button value="German">Deutsch</mat-radio-button>
     </mat-radio-group>
-    <mat-checkbox formControlName="autogenerateText">Text automatisch generieren</mat-checkbox>
-    <mat-checkbox formControlName="showAnswer">Antworten anzeigen</mat-checkbox>
     <mat-button-toggle-group formControlName="languageLevel">
       @for (language of languageLevelList; track $index) {
         <mat-button-toggle [value]="language">{{language}}</mat-button-toggle>

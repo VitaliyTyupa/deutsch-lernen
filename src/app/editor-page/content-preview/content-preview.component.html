@@ -1,4 +1,4 @@
-@for (task of content.outputTasks; track $index) {
+@for (task of tasks(); track $index) {
   @switch (task.id) {
     @case ('1') {
       <dl-gap-filling-text [content]="task.value"></dl-gap-filling-text>
