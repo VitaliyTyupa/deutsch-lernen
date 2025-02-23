@@ -18,7 +18,7 @@ export class PrintService {
             <title>Print</title>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS+Guides&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS+Guides&display=swap" rel="stylesheet">
             <style>
               @page {
                 size: A4;
@@ -27,6 +27,8 @@ export class PrintService {
 
               body {
                 font-family: "Playwrite DE SAS Guides", serif;
+                font-weight: 400;
+                font-style: normal;
                 font-size: 1.5em;
                 margin: 0;
                 padding: 0;

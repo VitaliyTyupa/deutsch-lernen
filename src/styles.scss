@@ -1,13 +1,23 @@
 @use '@angular/material' as mat;
 @use './styles/material-custom-theme';
 
+@font-face {
+  font-family: 'Playwrite';
+  src: url('./styles/fonts/PlaywriteDESASGuides-Regular.ttf')format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./styles/fonts/Roboto-VariableFont_wdth,wght.ttf')format('truetype');
+}
+
 html, body {
   height: 100%;
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-family: "Gill Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .ql-editor {
   font-size: 1.5em;
