@@ -1,39 +1,50 @@
-<div class="container">
-  <h2>Реєстрація</h2>
-  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Логін</mat-label>
-      <input matInput formControlName="username" type="text">
-      <mat-error *ngIf="registrationForm.get('username')?.invalid">
-        Логін має містити принаймні 3 символи
-      </mat-error>
-    </mat-form-field>
+<mat-card>
+  <mat-card-title><h3>Registrierung</h3></mat-card-title>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Пароль</mat-label>
-      <input matInput formControlName="password" type="password">
-      <mat-error *ngIf="registrationForm.get('password')?.invalid">
-        Пароль має містити принаймні 6 символів
-      </mat-error>
-    </mat-form-field>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="username" type="text">
+        <mat-error *ngIf="registrationForm.get('username')?.invalid">
+          Name muss mindestens 3 Zeichen enthalten
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Підтвердження паролю</mat-label>
-      <input matInput formControlName="confirmPassword" type="password">
-      <mat-error *ngIf="registrationForm.get('confirmPassword')?.invalid">
-        Введіть пароль ще раз
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Kennwort</mat-label>
+        <input matInput formControlName="password" type="password">
+        <mat-error *ngIf="registrationForm.get('password')?.invalid">
+          Kennwort muss mindestens 6 Zeichen enthalten
+        </mat-error>
+      </mat-form-field>
 
-    <div class="roles-container">
-      <label>Оберіть роль:</label>
-      <mat-checkbox *ngFor="let role of roles" [value]="role" (change)="onCheckboxChange($event)">
-        {{ role | titlecase }}
-      </mat-checkbox>
-    </div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Bestätigung des Passworts</mat-label>
+        <input matInput formControlName="confirmPassword" type="password">
+        <mat-error *ngIf="registrationForm.get('confirmPassword')?.invalid">
+          Geben Sie Ihr Passwort erneut ein
+        </mat-error>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">
-      Зареєструватися
-    </button>
-  </form>
-</div>
+      <div class="roles-container">
+        <div>Deine Rolle: </div>
+        <mat-button-toggle-group formControlName="roles">
+          <mat-button-toggle value="teacher">
+            Lehrerin <mat-icon>local_library</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="student">
+            Schulerin <mat-icon>school</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit" [disabled]="registrationForm.invalid">
+        Registrieren
+      </button>
+      </mat-card-actions>
+  </mat-card-content>
+    </form>
+
+
+</mat-card>

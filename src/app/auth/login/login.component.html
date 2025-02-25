@@ -1,18 +1,27 @@
-<div class="container">
-  <h2>Логін</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Логін</mat-label>
-      <input matInput formControlName="username" required type="text" />
-    </mat-form-field>
+<mat-card>
+  <mat-card-title><h3>Anmeldung</h3></mat-card-title>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Пароль</mat-label>
-      <input matInput type="password" formControlName="password" required />
-    </mat-form-field>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="username" required type="text"/>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-      Увійти
-    </button>
-  </form>
-</div>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Kennwort</mat-label>
+        <input matInput type="password" formControlName="password" required/>
+      </mat-form-field>
+        <a mat-button routerLink="/register" class="full-width">
+          Neues Konto erstellen
+          <mat-icon>person_add</mat-icon>
+        </a>
+      <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        Eintragen
+      </button>
+      </mat-card-actions>
+  </mat-card-content>
+    </form>
+
+</mat-card>

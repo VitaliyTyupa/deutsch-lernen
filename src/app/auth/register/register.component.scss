@@ -1,20 +1,20 @@
-.container {
-  width: 90%;
-  margin: 0 auto;
+mat-card {
+  min-width: 350px;
+  width: 30%;
+  margin: 25px auto;
 }
 
 .full-width {
   width: 100%;
-  margin-bottom: 16px;
 }
 
-h2 {
+mat-card-title {
   text-align: center;
 }
 
 .roles-container {
-  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
 }

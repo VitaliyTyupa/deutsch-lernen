@@ -3,10 +3,9 @@
   <button mat-button routerLink="/">Home</button>
   <button mat-button routerLink="/editor">Editor</button>
   <span class="spacer"></span>
-  <nav>
-    <a routerLink="/login">Логін</a>
-    <a routerLink="/register">Реєстрація</a>
-  </nav>
+  <button mat-icon-button routerLink="/login">
+    <mat-icon>login</mat-icon>
+  </button>
   <button mat-icon-button (click)="checkConnection()">
     <mat-icon>person</mat-icon>
   </button>

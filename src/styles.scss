@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use './styles/vars' as *;
 @use './styles/material-custom-theme';
 
 @font-face {
@@ -18,6 +19,7 @@ html, body {
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: $neutral-color;
 }
 .ql-editor {
   font-size: 1.5em;

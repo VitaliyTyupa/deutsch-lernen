@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatFormField, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {AuthService} from '../auth.service';
+import {MatCard, MatCardActions, MatCardContent, MatCardTitle} from '@angular/material/card';
+import {RouterLink} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'dl-login',
@@ -11,7 +14,13 @@ import {AuthService} from '../auth.service';
     MatFormField,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardContent,
+    MatCardTitle,
+    MatCard,
+    MatCardActions,
+    RouterLink,
+    MatIcon
   ],
   templateUrl: './login.component.html',
   standalone: true,
