@@ -15,10 +15,10 @@ export class TextGeneratorApiService {
   }
 
   checkConnection() {
-    return this.http.get(this.globalApi.url + '/api');
+    return this.http.get(this.globalApi.url);
   }
 
   generateText(body: Params) {
-    return this.http.post(this.globalApi.url + '/api/ai-factory/generate-text', body);
+    return this.http.post(this.globalApi.url + '/ai-factory/generate-text', body);
   }
 }

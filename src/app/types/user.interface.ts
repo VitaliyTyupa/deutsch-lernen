@@ -3,9 +3,14 @@ export interface User {
   email: string;
   username: string;
   role: UserRole;
-  token?: string;
+  access_token: string;
 }
 export enum UserRole {
   STUDENT = 'student',
   TEACHER = 'teacher',
+}
+
+export interface UserCredentials {
+  email: string;
+  password: string;
 }

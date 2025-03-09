@@ -5,6 +5,7 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideToastr} from 'ngx-toastr';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {apiErrorsInterceptor} from './common-services/interceptors/api-errors.interceptor';
+import {authHeaderInterceptor} from './common-services/interceptors/auth-header.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([apiErrorsInterceptor])
+      withInterceptors([apiErrorsInterceptor, authHeaderInterceptor])
     ),
     provideToastr({
       timeOut: 5000,

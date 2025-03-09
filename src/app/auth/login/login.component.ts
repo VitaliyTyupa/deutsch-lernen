@@ -4,8 +4,10 @@ import {MatFormField, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {AuthService} from '../auth.service';
 import {MatCard, MatCardActions, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
+import {NgIf} from '@angular/common';
+import {SessionService} from '../../common-services/session.service';
 
 @Component({
   selector: 'dl-login',
@@ -20,7 +22,8 @@ import {MatIcon} from '@angular/material/icon';
     MatCard,
     MatCardActions,
     RouterLink,
-    MatIcon
+    MatIcon,
+    NgIf
   ],
   templateUrl: './login.component.html',
   standalone: true,
@@ -29,22 +32,27 @@ import {MatIcon} from '@angular/material/icon';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private sessionService: SessionService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Форма відправлена:', this.loginForm.value);
       this.authService.login(this.loginForm.value).subscribe({
         next: response => {
-          console.log('Реєстрація успішна:', response);
+          this.sessionService.token = response.access_token;
+          this.router.navigate(['/']);
         },
         error: (err) => {
-          console.error('Помилка реєстрації:', err);
+          console.error(err);
         }
       })
     }

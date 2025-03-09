@@ -1,40 +1,48 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
+import {LocalService} from './local.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SessionService {
-  private _session: any = null;
+  private _token: string = '';
+  isLoggedIn$ = signal(false);
 
-  constructor() {
+
+  constructor(
+    private localService: LocalService
+  ) {
+    this.setTokenFromLocal();
   }
 
-  set session(session: any) {
-    this._session = session;
+  get token(): string {
+    return this._token;
   }
 
-  get session() {
-    return this._session;
+  set token(token: string) {
+    this._token = token;
+    this.localService.saveData('dl-user', token);
+    this.isLoggedIn$.set(this.isLoggedIn());
   }
 
-  clearSession() {
-    this._session = null;
+  unsetToken() {
+    this._token = '';
+    this.localService.removeData('dl-user');
+    this.isLoggedIn$.set(this.isLoggedIn());
   }
 
-  isAuthenticated() {
-    return this._session !== null;
+  private isLoggedIn(): boolean {
+    console.log(this._token);
+    return !!this._token;
   }
 
-  isGuest() {
-    return this._session === null;
-  }
-
-  isTeacher() {
-    return this._session?.role === 'teacher';
-  }
-
-  isStudent() {
-    return this._session?.role === 'student';
+  setTokenFromLocal() {
+    const localToken = this.localService.getData('dl-user');
+    console.log(localToken);
+    // todo: check inspired token
+    if (localToken) {
+      this.token = localToken;
+    }
   }
 }

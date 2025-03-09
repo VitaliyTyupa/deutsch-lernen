@@ -5,12 +5,18 @@
       <mat-card-content>
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="username" type="text">
-        <mat-error *ngIf="registrationForm.get('username')?.invalid">
+        <input matInput formControlName="name" type="text">
+        <mat-error *ngIf="registrationForm.get('name')?.invalid">
           Name muss mindestens 3 Zeichen enthalten
         </mat-error>
       </mat-form-field>
-
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+          <mat-error *ngIf="registrationForm.get('email')?.invalid">
+            Geben Sie eine gültige E-Mail-Adresse ein
+          </mat-error>
+        </mat-form-field>
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Kennwort</mat-label>
         <input matInput formControlName="password" type="password">
@@ -29,7 +35,7 @@
 
       <div class="roles-container">
         <div>Deine Rolle: </div>
-        <mat-button-toggle-group formControlName="roles">
+        <mat-button-toggle-group formControlName="role">
           <mat-button-toggle value="teacher">
             Lehrerin <mat-icon>local_library</mat-icon>
           </mat-button-toggle>
