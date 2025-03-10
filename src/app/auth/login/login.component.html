@@ -13,7 +13,15 @@
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Kennwort</mat-label>
-        <input matInput type="password" formControlName="password" required/>
+        <input matInput
+               [type]="!showPassword() ? 'password' : 'text'"
+               formControlName="password" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="changeStatus($event)">
+          <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
         <a mat-button routerLink="/register" class="full-width">
           Neues Konto erstellen

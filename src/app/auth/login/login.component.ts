@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormField, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -31,6 +31,7 @@ import {SessionService} from '../../common-services/session.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  showPassword = signal(false);
 
   constructor(
     private fb: FormBuilder,
@@ -56,5 +57,10 @@ export class LoginComponent {
         }
       })
     }
+  }
+
+  changeStatus(event: Event) {
+    event.preventDefault();
+    this.showPassword.set(!this.showPassword());
   }
 }

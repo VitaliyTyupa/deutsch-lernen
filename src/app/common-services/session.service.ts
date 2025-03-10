@@ -33,13 +33,11 @@ export class SessionService {
   }
 
   private isLoggedIn(): boolean {
-    console.log(this._token);
     return !!this._token;
   }
 
   setTokenFromLocal() {
     const localToken = this.localService.getData('dl-user');
-    console.log(localToken);
     // todo: check inspired token
     if (localToken) {
       this.token = localToken;
