@@ -3,7 +3,19 @@
   <button mat-button routerLink="/">Home</button>
   <button mat-button routerLink="/editor">Editor</button>
   <span class="spacer"></span>
-  <button mat-icon-button (click)="checkConnection()">
-    <mat-icon>person</mat-icon>
-  </button>
+  @if (isLoggedIn$()) {
+    <span class="user-role" *ngIf="user$()">{{user$().role | role}}</span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <span class="user-name" *ngIf="user$()">{{user$().name | titlecase}}</span>
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)=logout()> <mat-icon>logout</mat-icon> Logout</button>
+      <button mat-menu-item (click)="checkConnection()"> <mat-icon>network_ping</mat-icon> Check Connection</button>
+    </mat-menu>
+  } @else {
+    <button mat-icon-button routerLink="/login">
+      <mat-icon>login</mat-icon>
+    </button>
+  }
 </mat-toolbar>

@@ -44,7 +44,6 @@ export class TextInputComponent implements AfterViewInit {
     dblClick.pipe(
       takeUntilDestroyed(this.destroyRef)
     ).subscribe(() => {
-      console.log('Dbl click');
       // take selected word in inputText
       const start = this.textInput.nativeElement.selectionStart;
       const end = this.textInput.nativeElement.selectionEnd;

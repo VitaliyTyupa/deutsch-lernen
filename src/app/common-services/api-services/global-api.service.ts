@@ -4,9 +4,10 @@ import {environment} from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class GlobalApiService {
 
   get url() {
-    return environment.apiUrl;
+    return environment.apiUrl + '/api';
   }
 }

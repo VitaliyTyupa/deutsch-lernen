@@ -1,24 +1,23 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Params} from '@angular/router';
 import {GlobalApiService} from './global-api.service';
+import {Observable} from 'rxjs';
+import {User} from '../../types/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TextGeneratorApiService {
 
+export class UserApiService {
+  private apiUrl: string;
   constructor(
     private http: HttpClient,
     private globalApi: GlobalApiService
   ) {
+    this.apiUrl = this.globalApi.url + '/user';
   }
 
-  checkConnection() {
-    return this.http.get(this.globalApi.url);
-  }
-
-  generateText(body: Params) {
-    return this.http.post(this.globalApi.url + '/ai-factory/generate-text', body);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 }

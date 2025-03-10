@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-card-title><h3>Registrierung</h3></mat-card-title>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text">
+        <mat-error *ngIf="registrationForm.get('name')?.invalid">
+          Name muss mindestens 3 Zeichen enthalten
+        </mat-error>
+      </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+          <mat-error *ngIf="registrationForm.get('email')?.invalid">
+            Geben Sie eine gültige E-Mail-Adresse ein
+          </mat-error>
+        </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Kennwort</mat-label>
+        <input matInput
+               [type]="!showPassword() ? 'password' : 'text'"
+               formControlName="password" >
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="changeStatus($event)">
+          <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registrationForm.get('password')?.invalid">
+          Kennwort muss mindestens 6 Zeichen enthalten
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Bestätigung des Kennworts</mat-label>
+        <input matInput
+               formControlName="confirmPassword"
+               [type]="!showPassword() ? 'password' : 'text'">
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="changeStatus($event)">
+          <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('PasswordNoMatch')">
+          Wiederholen Sie das Passwort noch einmal.
+        </mat-error>
+      </mat-form-field>
+      <div class="roles-container">
+        <div>Deine Rolle: </div>
+        <mat-button-toggle-group formControlName="role">
+          <mat-button-toggle value="teacher">
+            Lehrerin <mat-icon>local_library</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="student">
+            Schulerin <mat-icon>school</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit" [disabled]="registrationForm.invalid">
+        Registrieren
+      </button>
+      </mat-card-actions>
+  </mat-card-content>
+    </form>
+
+
+</mat-card>

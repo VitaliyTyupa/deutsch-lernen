@@ -19,7 +19,7 @@ import {NgIf} from '@angular/common';
 import {ContentPreviewComponent} from './content-preview/content-preview.component';
 import {MatDialog} from '@angular/material/dialog';
 import {PreviewRequestModalComponent} from './preview-request-modal/preview-request-modal.component';
-import {firstValueFrom, fromEvent, Observable} from 'rxjs';
+import {firstValueFrom, Observable} from 'rxjs';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {GeneratedResponse, TaskOptions} from '../types/editor.interface';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
@@ -92,7 +92,6 @@ export class EditorPageComponent implements OnInit{
   }
 
   async submit() {
-    console.log(this.settingsForm);
     this.settingsForm.markAllAsTouched()
     if (this.settingsForm.invalid) return;
     const params = this.settingsForm.getRawValue();

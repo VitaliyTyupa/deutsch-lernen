@@ -15,19 +15,19 @@ export const apiErrorsInterceptor: HttpInterceptorFn = (req, next) => {
         // Server-side error
         switch (error.status) {
           case 400:
-            errorMessage = 'Bad Request';
+            errorMessage = `Bad Request. ${error.message}`;
             break;
           case 401:
-            errorMessage = 'Unauthorized';
+            errorMessage = `Unauthorized. ${error.message}`;
             break;
           case 403:
-            errorMessage = 'Forbidden';
+            errorMessage = `Forbidden. ${error.message}`;
             break;
           case 404:
-            errorMessage = 'Not Found';
+            errorMessage = `Not Found. ${error.message}`;
             break;
           case 500:
-            errorMessage = 'Internal Server Error';
+            errorMessage = `Internal Server Error. ${error.message}`;
             break;
           default:
             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
