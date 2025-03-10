@@ -3,7 +3,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {
-  AbstractControl,
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
@@ -17,14 +16,6 @@ import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-to
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-
-const confirmPasswordValidator: ValidatorFn = (
-  control: AbstractControl
-): ValidationErrors | null => {
-  return control.value.password === control.value.confirmPassword
-    ? null
-    : { PasswordNoMatch: true };
-};
 
 @Component({
   selector: 'dl-register',
@@ -51,6 +42,13 @@ export class RegisterComponent {
   private router = inject(Router);
   registrationForm: FormGroup;
   showPassword = signal(false);
+  confirmPasswordValidator: ValidatorFn = (): ValidationErrors | null => {
+    if (!this.registrationForm) return null;
+    const formValue = this.registrationForm.getRawValue();
+    return formValue.password === formValue.confirmPassword
+      ? null
+      : { PasswordNoMatch: true };
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -61,26 +59,16 @@ export class RegisterComponent {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]],
+      confirmPassword: ['', [this.confirmPasswordValidator]],
       role: ['student', Validators.required]
-    }, {validators: confirmPasswordValidator});
+    });
   }
-
-  // confirmPasswordValidator<ValidatorFn>(
-  //   control: AbstractControl
-  // ): ValidationErrors | null {
-  //   return control.value.password === control.value.confirmPassword
-  //     ? null
-  //     : { PasswordNoMatch: true };
-  // }
 
   onSubmit() {
     console.log(this.registrationForm);
     if (this.registrationForm.invalid) return;
     const userData = this.registrationForm.getRawValue();
-    if (userData.password !== userData.confirmPassword) {
-
-    }
+    delete userData.confirmPassword;
     this.authService.register(userData).subscribe({
       next: (response) => {
         this.toastr.success('Benutzer erfolgreich registriert!');

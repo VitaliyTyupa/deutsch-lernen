@@ -32,7 +32,6 @@
           Kennwort muss mindestens 6 Zeichen enthalten
         </mat-error>
       </mat-form-field>
-
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Bestätigung des Kennworts</mat-label>
         <input matInput
@@ -44,11 +43,8 @@
           (click)="changeStatus($event)">
           <mat-icon>{{showPassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('required')">
-          Geben Sie Ihr Passwort erneut ein
-        </mat-error>
-        <mat-error *ngIf="registrationForm.hasError('PasswordNoMatch')">
-          Kennwort wird nicht bestetigt
+        <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('PasswordNoMatch')">
+          Wiederholen Sie das Passwort noch einmal.
         </mat-error>
       </mat-form-field>
       <div class="roles-container">

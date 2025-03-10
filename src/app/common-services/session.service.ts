@@ -1,5 +1,6 @@
 import {Injectable, signal} from '@angular/core';
 import {LocalService} from './local.service';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SessionService {
 
 
   constructor(
-    private localService: LocalService
+    private localService: LocalService,
   ) {
     this.setTokenFromLocal();
   }
@@ -36,11 +37,20 @@ export class SessionService {
     return !!this._token;
   }
 
+  getUserIdFromToken(): string | undefined {
+    if (this.isLoggedIn()) {
+      const decodedToken = jwtDecode(this._token);
+      return decodedToken.sub;
+    } else {
+      return undefined;
+    }
+  }
+
   setTokenFromLocal() {
     const localToken = this.localService.getData('dl-user');
-    // todo: check inspired token
-    if (localToken) {
-      this.token = localToken;
-    }
+    if (!localToken) return;
+    const decodedToken = jwtDecode(localToken);
+    const isValidTime = decodedToken.exp && Date.now() < decodedToken.exp * 1000;
+    if (localToken && isValidTime) this.token = localToken;
   }
 }

@@ -4,7 +4,9 @@
   <button mat-button routerLink="/editor">Editor</button>
   <span class="spacer"></span>
   @if (isLoggedIn$()) {
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <span class="user-role" *ngIf="user$()">{{user$().role | role}}</span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <span class="user-name" *ngIf="user$()">{{user$().name | titlecase}}</span>
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
