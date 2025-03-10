@@ -1,6 +1,7 @@
 {
   "name": "deutsch-lernen",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "author": "vit.tyupa@gmail.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
