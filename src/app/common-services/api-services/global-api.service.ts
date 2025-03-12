@@ -8,6 +8,6 @@ import {environment} from '../../../environments/environment';
 export class GlobalApiService {
 
   get url() {
-    return environment.apiUrl + '/api';
+    return '/api';
   }
 }
