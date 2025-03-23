@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://13.61.72.75:3000",
+    "target": "https://tekamolo.info",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
