@@ -1,0 +1,27 @@
+@use 'vars' as *;
+:host{
+  display: flex;
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 20%;
+  height: $main-height;
+  border-right: 1px solid #ccc;
+}
+button {
+  width: 100%;
+  text-align: start;
+}
+mat-list-item {
+  cursor: pointer;
+  vertical-align: center;
+
+}
+main {
+  width: 100%;
+}
+.active-link {
+  background: $primary-color;
+}

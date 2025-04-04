@@ -6,7 +6,7 @@ import {QuestionAnswerComponent} from './question-answer/question-answer.compone
 import {TranslationComponent} from './translation/translation.component';
 import {ToastrService} from 'ngx-toastr';
 import {TaskOptionsService} from '../services/task-options.service';
-import {GeneratedResponse} from '../../types/editor.interface';
+import {GeneratedResponse} from '@app/types/editor.interface';
 
 @Component({
   selector: 'dl-content-preview',

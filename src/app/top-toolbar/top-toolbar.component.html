@@ -1,6 +1,7 @@
 <mat-toolbar>
-  <img src="/assets/logo_ld-final.png" class="logo-img">
-  <button mat-button routerLink="/">Home</button>
+  <img src="/assets/logo_ld-final.png" class="logo-img" routerLink="/">
+  <button mat-button routerLink="/task-assistant">Aufgaben Assistent</button>
+  <button mat-button routerLink="/">Arbeitsblatt Assistent</button>
   <button mat-button routerLink="/editor">Editor</button>
   <span class="spacer"></span>
   @if (isLoggedIn$()) {
