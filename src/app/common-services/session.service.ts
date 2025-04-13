@@ -1,6 +1,11 @@
 import {Injectable, signal} from '@angular/core';
 import {LocalService} from './local.service';
 import { jwtDecode } from "jwt-decode";
+import {tap} from 'rxjs';
+import {UserService} from './user.service';
+import {ToastrService} from 'ngx-toastr';
+import {Router} from '@angular/router';
+import {UserApiService} from './api-services/user-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +18,10 @@ export class SessionService {
 
   constructor(
     private localService: LocalService,
+    private userService: UserService,
+    private toastr: ToastrService,
+    private router: Router,
+    private userApi: UserApiService,
   ) {
     this.setTokenFromLocal();
   }
@@ -50,7 +59,29 @@ export class SessionService {
     const localToken = this.localService.getData('dl-user');
     if (!localToken) return;
     const decodedToken = jwtDecode(localToken);
-    const isValidTime = decodedToken.exp && Date.now() < decodedToken.exp * 1000;
-    if (localToken && isValidTime) this.token = localToken;
+    if (decodedToken.exp) {
+      const isValidTime = decodedToken.exp && Date.now() < decodedToken.exp * 1000;
+      const date = Date.now();
+      const exp = decodedToken.exp * 1000;
+      console.log(exp, date, date < exp, date - exp);
+      if (localToken && isValidTime) {
+        this.token = localToken;
+        if(decodedToken.sub) this.updateCurrentUser(decodedToken.sub);
+      }
+    }
+
+
+  }
+
+  updateCurrentUser(userId: string) {
+    this.userService.getUserById(userId).pipe(
+      // tap(user => this.user = user)
+    ).subscribe({
+      next: user => {this.toastr.success('Nutzerdaten aktualisiert')},
+      error: () => {
+        this.toastr.error('Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.');
+        this.router.navigate(['/login']);
+      }
+    })
   }
 }

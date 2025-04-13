@@ -21,4 +21,8 @@ export class TextGeneratorApiService {
   generateText(body: Params) {
     return this.http.post(this.globalApi.url + '/ai-factory/generate-text', body);
   }
+
+  generateText_V2(body: Params) {
+    return this.http.post(this.globalApi.url + '/ai-factory/generate-text-v2', body);
+  }
 }

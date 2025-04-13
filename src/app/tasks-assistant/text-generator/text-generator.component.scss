@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  padding-left: 15px;
+}
+.form-options {
+  display: flex;
+  gap: 15px;
+  &.wide {
+    width: 100%;
+    mat-form-field {
+      width: 45%;
+    }
+  }
+}

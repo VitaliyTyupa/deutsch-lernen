@@ -1,1 +1,40 @@
-<p>text-editor works!</p>
+<h3>Text bearbeiten</h3>
+<form [formGroup]="textEditorForm">
+  <mat-form-field>
+    <mat-label>Sprache</mat-label>
+    <mat-select formControlName="language">
+      <mat-option value="English">English</mat-option>
+      <mat-option value="German">Deutsch</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Anzahl der Sätze</mat-label>
+    <mat-select formControlName="count">
+      @for (item of [5, 10, 15, 20]; track $index) {
+        <mat-option [value]="item">{{item}} Sätze</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sprachniveau</mat-label>
+    <mat-select formControlName="languageLevel">
+      @for (level of languageLevelList; track $index) {
+        <mat-option [value]="level">{{level}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="input-text">
+    <mat-label>Quellwörter</mat-label>
+    <textarea matInput formControlName="sourceWords"></textarea>
+    <mat-error *ngIf="textEditorForm.get('sourceWords')?.invalid">
+      Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Betreff des Textes</mat-label>
+    <input matInput formControlName="context" placeholder="Geben Sie den Betreff des Textes ein...">
+    <mat-error *ngIf="textEditorForm.get('context')?.invalid">
+      Bitte geben Sie den Betreff des Textes ein.
+    </mat-error>
+  </mat-form-field>
+</form>
