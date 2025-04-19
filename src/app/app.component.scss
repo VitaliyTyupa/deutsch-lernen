@@ -1,0 +1,7 @@
+@use 'vars' as *;
+
+.dl-progress-bar {
+  position: absolute;
+  top: $toolbar-height;
+  left: 0;
+}

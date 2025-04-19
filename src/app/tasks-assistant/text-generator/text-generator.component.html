@@ -291,9 +291,9 @@
     </mat-expansion-panel>
   </mat-accordion>
 </form>
-<button mat-flat-button (click)="submit()">Text generieren</button>
+<button mat-stroked-button (click)="submit()">Text generieren<mat-icon>smart_toy</mat-icon></button>
 
-<mat-card appearance="outlined" class="preview-card" >
+<mat-card appearance="outlined" class="preview-card" *ngIf="generatedResult()">
   <mat-card-header>
     <mat-card-title>Text</mat-card-title>
   </mat-card-header>
@@ -301,6 +301,7 @@
     <quill-editor #quillInput></quill-editor>
   </mat-card-content>
   <mat-card-footer class="preview-footer">
-    <button mat-button (click)="passTextToEditor()">Text zur Bearbeitung übertragen</button>
+    <button mat-stroked-button (click)="saveText()">Text speichern <mat-icon>save</mat-icon></button>
+    <button mat-stroked-button (click)="passTextToEditor()">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
   </mat-card-footer>
 </mat-card>

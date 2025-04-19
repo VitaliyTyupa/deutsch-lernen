@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, OnInit, Signal, signal, ViewChild, viewChild} from '@angular/core';
+import {Component, DestroyRef, inject, OnInit, Signal, signal, viewChild} from '@angular/core';
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/core";
@@ -15,9 +15,10 @@ import {
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tap} from 'rxjs';
+import {delay, tap} from 'rxjs';
 import {MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {QuillEditorComponent} from 'ngx-quill';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'dl-text-generator',
@@ -42,6 +43,7 @@ import {QuillEditorComponent} from 'ngx-quill';
     MatCardHeader,
     MatCard,
     QuillEditorComponent,
+    MatIcon,
   ],
   templateUrl: './text-generator.component.html',
   styleUrl: './text-generator.component.scss'
@@ -141,7 +143,7 @@ export class TextGeneratorComponent implements OnInit {
   readonly panelOpenState = signal(false);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
-  @ViewChild('quillInput') quillInput!: QuillEditorComponent;
+  quillInput: Signal<QuillEditorComponent> = viewChild.required(QuillEditorComponent);
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
@@ -162,14 +164,25 @@ export class TextGeneratorComponent implements OnInit {
   submit() {
     this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
-    this.textGeneratorApi.generateText_V2(formData).subscribe((res: any) => {
-      this.generatedResult.set(res.text);
-      this.quillInput.quillEditor.setText(res.text);
-    });
+    this.textGeneratorApi.generateText_V2(formData).pipe(
+      tap((res: any) => {
+        this.generatedResult.set(res.text);
+      }),
+      // wait for quill-editor
+      delay(100),
+      tap(() => {
+        this.quillInput().quillEditor.setText(this.generatedResult());
+      })
+    ).subscribe();
   }
 
   passTextToEditor() {
     const text = this.generatedResult();
+    console.log(text);
   }
 
+  saveText() {
+    console.log(this.quillInput().quillEditor.getText());
+
+  }
 }

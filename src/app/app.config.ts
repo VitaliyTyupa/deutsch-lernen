@@ -9,6 +9,7 @@ import {provideAnimations} from '@angular/platform-browser/animations';
 import {apiErrorsInterceptor} from './common-services/interceptors/api-errors.interceptor';
 import {authHeaderInterceptor} from './common-services/interceptors/auth-header.interceptor';
 import {provideQuillConfig} from 'ngx-quill';
+import {loadingInterceptor} from './common-services/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([apiErrorsInterceptor, authHeaderInterceptor])
+      withInterceptors([
+        apiErrorsInterceptor,
+        authHeaderInterceptor,
+        loadingInterceptor
+      ])
     ),
     provideToastr({
       timeOut: 5000,

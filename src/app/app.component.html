@@ -1,4 +1,5 @@
 <dl-top-toolbar></dl-top-toolbar>
+<mat-progress-bar class="dl-progress-bar" mode="indeterminate" *ngIf="isLoading$()"></mat-progress-bar>
 <main>
   <router-outlet></router-outlet>
 </main>
