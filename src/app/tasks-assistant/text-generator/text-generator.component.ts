@@ -165,13 +165,11 @@ export class TextGeneratorComponent implements OnInit {
     this.textGeneratorApi.generateText_V2(formData).subscribe((res: any) => {
       this.generatedResult.set(res.text);
       this.quillInput.quillEditor.setText(res.text);
-      console.log('Response from API:', res);
     });
   }
 
   passTextToEditor() {
     const text = this.generatedResult();
-    console.log(text);
   }
 
 }

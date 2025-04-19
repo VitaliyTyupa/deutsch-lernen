@@ -39,7 +39,6 @@ export class SessionService {
   isValidToken(token: string): boolean {
     if (!token) return false;
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
     if (decodedToken.exp && decodedToken.sub) {
       return (decodedToken.exp && Date.now()) < decodedToken.exp * 1000;
     } else {

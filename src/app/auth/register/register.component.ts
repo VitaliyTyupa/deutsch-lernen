@@ -65,12 +65,11 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    console.log(this.registrationForm);
     if (this.registrationForm.invalid) return;
     const userData = this.registrationForm.getRawValue();
     delete userData.confirmPassword;
     this.authService.register(userData).subscribe({
-      next: (response) => {
+      next: () => {
         this.toastr.success('Benutzer erfolgreich registriert!');
         this.router.navigate(['/login']);
       },

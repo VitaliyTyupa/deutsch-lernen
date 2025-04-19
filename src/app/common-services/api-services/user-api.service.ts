@@ -18,9 +18,6 @@ export class UserApiService {
   }
 
   getUserById(id: string): Observable<User> {
-    console.log(id);
-    console.log(`${this.apiUrl}/${id}`);
-    console.log(this.http.get);
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
 }
