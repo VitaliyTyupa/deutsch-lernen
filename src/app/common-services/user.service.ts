@@ -4,8 +4,6 @@ import {UserApiService} from './api-services/user-api.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {Observable, tap} from 'rxjs';
-import {SessionService} from './session.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +14,9 @@ export class UserService {
 
   constructor(
     private userApi: UserApiService,
-    // private sessionService: SessionService,
     private toastr: ToastrService,
     private router: Router
   ) {
-    // this.checkSessionAndUpdateCurrentUser();
   }
 
   set user(user: User) {
@@ -32,19 +28,17 @@ export class UserService {
     return this._user;
   }
 
-  // checkSessionAndUpdateCurrentUser() {
-  //   const userId = this.sessionService.getUserIdFromToken();
-  //   if (!userId) return;
-  //   this.getUserById(userId).pipe(
-  //     tap(user => this.user = user)
-  //   ).subscribe({
-  //     next: user => {this.toastr.success('Nutzerdaten aktualisiert')},
-  //     error: () => {
-  //       this.toastr.error('Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.');
-  //       this.router.navigate(['/login']);
-  //     }
-  //   })
-  // }
+  updateCurrentUser(userId: string) {
+    this.getUserById(userId).pipe(
+      tap(user => this.user = user)
+    ).subscribe({
+      next: () => {this.toastr.success('Nutzerdaten aktualisiert')},
+      error: () => {
+        this.toastr.error('Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.');
+        this.router.navigate(['/login']);
+      }
+    })
+  }
 
   getUserById(id: string): Observable<User> {
     return this.userApi.getUserById(id);

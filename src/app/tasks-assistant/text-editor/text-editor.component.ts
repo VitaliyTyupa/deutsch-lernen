@@ -3,7 +3,6 @@ import {FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators} from '@a
 import {MatError, MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
-import {MatButtonToggle} from '@angular/material/button-toggle';
 import {MatInput} from '@angular/material/input';
 import {NgIf} from '@angular/common';
 
@@ -15,7 +14,6 @@ import {NgIf} from '@angular/common';
     MatOption,
     MatSelect,
     ReactiveFormsModule,
-    MatButtonToggle,
     MatError,
     MatInput,
     NgIf
