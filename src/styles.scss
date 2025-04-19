@@ -1,6 +1,7 @@
 @use '@angular/material' as mat;
 @use './styles/vars' as *;
 @use './styles/material-custom-theme';
+@use 'quill/dist/quill.snow.css';
 
 @font-face {
   font-family: 'Playwrite';

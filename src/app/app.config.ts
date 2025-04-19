@@ -8,6 +8,7 @@ import {provideToastr} from 'ngx-toastr';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {apiErrorsInterceptor} from './common-services/interceptors/api-errors.interceptor';
 import {authHeaderInterceptor} from './common-services/interceptors/auth-header.interceptor';
+import {provideQuillConfig} from 'ngx-quill';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +23,20 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       closeButton: true
-    })
+    }),
+    provideQuillConfig({
+      modules: {
+        toolbar: [
+          ['bold', 'underline'],
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          [{ 'background': [
+              '#ffdf80'
+            ] }],
+          ['image']
+        ]
+      },
+      formats: ['font', 'bold', 'underline', 'size', 'background', 'image'],
+      placeholder: 'Beginnen Sie hier mit der Eingabe ...'
+    }),
   ]
 };

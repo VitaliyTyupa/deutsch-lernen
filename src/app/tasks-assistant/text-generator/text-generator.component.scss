@@ -1,10 +1,13 @@
 :host {
   display: block;
-  padding-left: 15px;
+  padding: 5px;
+}
+form {
+  margin-bottom: 16px;
 }
 .form-options {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   &.wide {
     width: 100%;
     mat-form-field {
@@ -12,3 +15,22 @@
     }
   }
 }
+.total-value {
+  display: inline-block;
+  margin-left: 5px;
+  font-style: italic;
+  font-weight: normal;
+}
+.preview-card {
+  margin-top: 16px;
+}
+.preview-footer {
+  padding: 16px;
+}
+mat-card-title {
+  padding-bottom: 8px;
+}
+quill-editor  {
+  width: 100%;
+}
+
