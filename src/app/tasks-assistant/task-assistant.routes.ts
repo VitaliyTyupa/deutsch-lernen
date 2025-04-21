@@ -10,6 +10,11 @@ export const taskAssistantRoutes: Routes = [
     component: TasksAssistantComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'text-generator',
+        pathMatch: 'full',
+      },
+      {
         path: 'text-generator',
         component: TextGeneratorComponent,
       },

@@ -15,8 +15,7 @@ import {
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {delay, tap} from 'rxjs';
-import {MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {tap} from 'rxjs';
 import {QuillEditorComponent} from 'ngx-quill';
 import {MatIcon} from '@angular/material/icon';
 
@@ -37,11 +36,6 @@ import {MatIcon} from '@angular/material/icon';
     MatExpansionPanelHeader,
     MatExpansionPanel,
     MatAccordion,
-    MatCardContent,
-    MatCardFooter,
-    MatCardTitle,
-    MatCardHeader,
-    MatCard,
     QuillEditorComponent,
     MatIcon,
   ],
@@ -140,7 +134,6 @@ export class TextGeneratorComponent implements OnInit {
     tens: 'Präsens',
   };
   accordion: Signal<MatAccordion> = viewChild.required(MatAccordion);
-  readonly panelOpenState = signal(false);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
   quillInput: Signal<QuillEditorComponent> = viewChild.required(QuillEditorComponent);

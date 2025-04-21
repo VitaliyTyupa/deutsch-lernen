@@ -1,7 +1,49 @@
 <h2>Text generieren</h2>
 <form [formGroup]="textGeneratorForm">
   <mat-accordion multi>
-    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <h3>Anweisungen</h3> </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h2>Kurzanleitung zur Nutzung der Textgenerierungsseite</h2>
+      <ol>
+        <li>
+          <strong>Grundlegende Optionen festlegen:</strong>
+          <ul>
+            <li>Öffnen Sie das Panel <strong>"Grundlegende Optionen"</strong>.</li>
+            <li>Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</li>
+            <li>Füllen Sie die Felder <strong>"Quellwörter"</strong> und <strong>"Betreff des Textes"</strong> aus (Pflichtfelder).</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Zusätzliche Optionen konfigurieren (optional):</strong>
+          <ul>
+            <li>Erweitern Sie die Panels <strong>"Adjektive"</strong>, <strong>"Nomen"</strong>, <strong>"Präpositionen"</strong>, <strong>"Verben"</strong> oder <strong>"Sätze"</strong>, um spezifische grammatikalische Präferenzen festzulegen.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Text generieren:</strong>
+          <ul>
+            <li>Klicken Sie auf die Schaltfläche <strong>"Text generieren"</strong>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Generierten Text anzeigen und bearbeiten:</strong>
+          <ul>
+            <li>Der generierte Text wird im Abschnitt <strong>"Generiert Text"</strong> angezeigt.</li>
+            <li>Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Text speichern oder übertragen:</strong>
+          <ul>
+            <li>Klicken Sie auf <strong>"Text speichern"</strong>, um den Text zu speichern.</li>
+            <li>Klicken Sie auf <strong>"Text zur Bearbeitung übertragen"</strong>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</li>
+          </ul>
+        </li>
+      </ol>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true" >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Grundlegende Optionen</h3> </mat-panel-title>
         <mat-panel-description>
@@ -72,7 +114,7 @@
         </mat-form-field>
       </div>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Adjektive</h3> </mat-panel-title>
         <mat-panel-description>
@@ -117,7 +159,7 @@
         </div>
       </form>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Nomen</h3> </mat-panel-title>
         <mat-panel-description>
@@ -149,7 +191,7 @@
         </div>
       </form>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Präpositionen</h3> </mat-panel-title>
         <mat-panel-description>
@@ -181,7 +223,7 @@
         </div>
       </form>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Verben</h3> </mat-panel-title>
         <mat-panel-description>
@@ -246,7 +288,7 @@
         </div>
       </form>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Sätze</h3> </mat-panel-title>
         <mat-panel-description>
