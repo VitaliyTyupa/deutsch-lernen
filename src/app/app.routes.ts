@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import {HomePageComponent} from './home-page/home-page.component';
 import {authGuard} from './utils/auth.guard';
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
 
 export const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -15,6 +17,6 @@ export const routes: Routes = [
     loadComponent: () => import('./editor-page/editor-page.component').then(m => m.EditorPageComponent),
     canActivate: [authGuard]
   },
-  {path: 'login', loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent)},
-  {path: 'register', loadComponent: () => import('./auth/register/register.component').then(m => m.RegisterComponent)},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 ];
