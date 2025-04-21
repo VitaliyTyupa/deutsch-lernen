@@ -158,7 +158,7 @@ export class TextGeneratorComponent implements OnInit {
     this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
     this.textGeneratorApi.generateText_V2(formData).pipe(
-      tap((res: any) => {
+      tap((res: {text: string}) => {
         this.generatedResult.set(res.text);
         this.quillInput().quillEditor.setText(this.generatedResult());
       }),
