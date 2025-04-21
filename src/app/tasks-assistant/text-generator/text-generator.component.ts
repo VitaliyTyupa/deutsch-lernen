@@ -4,7 +4,7 @@ import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {NgIf} from "@angular/common";
-import {FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup, Validators} from "@angular/forms";
 import {MatButton} from '@angular/material/button';
 import {TextGeneratorApiService} from '../../common-services/api-services/text-generator-api.service';
 import {
@@ -18,6 +18,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tap} from 'rxjs';
 import {QuillEditorComponent} from 'ngx-quill';
 import {MatIcon} from '@angular/material/icon';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dl-text-generator',
@@ -79,6 +80,8 @@ export class TextGeneratorComponent implements OnInit {
       doppelKonnektor: [],
     })
   });
+  textName: FormControl<string> = new FormControl('', { nonNullable: true, validators: [Validators.required] });
+
   languageLevelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   textTypes = [
     {type: 'sentences', title: 'Einfache Sätze'},
@@ -140,6 +143,7 @@ export class TextGeneratorComponent implements OnInit {
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
+    private router: Router,
   ) {
   }
 
@@ -166,12 +170,27 @@ export class TextGeneratorComponent implements OnInit {
   }
 
   passTextToEditor() {
-    const text = this.generatedResult();
-    console.log(text);
+    this.saveText().subscribe(() => {
+      this.router.navigate(['/task-assistant/task-editor'])
+    });
+  }
+
+  saveTextAction() {
+    this.saveText().subscribe();
   }
 
   saveText() {
-    console.log(this.quillInput().quillEditor.getText());
-
+    const formData = this.textGeneratorForm.getRawValue();
+    const params = {
+      name: this.textName.value,
+      text: this.quillInput().quillEditor.getText(),
+      language: formData.language,
+      languageLevel: formData.languageLevel,
+      count: formData.count,
+      sourceWords: formData.sourceWords,
+      textType:  formData.textType,
+      tens: formData.tens,
+    };
+    return this.textGeneratorApi.saveText(params);
   }
 }

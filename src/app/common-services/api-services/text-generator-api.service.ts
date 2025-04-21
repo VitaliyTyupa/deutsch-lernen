@@ -26,4 +26,8 @@ export class TextGeneratorApiService {
   generateText_V2(body: Params): Observable<{text: string}> {
     return this.http.post<{text: string}>(this.globalApi.url + '/ai-factory/generate-text-v2', body);
   }
+
+  saveText(body: Params) {
+    return this.http.post(this.globalApi.url + '/text', body);
+  }
 }

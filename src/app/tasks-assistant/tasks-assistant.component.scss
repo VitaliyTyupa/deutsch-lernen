@@ -6,7 +6,7 @@
 aside {
   width: 200px;
   flex-shrink: 0;
-  height: $main-height;
+  min-height: $main-height;
   border-right: 1px solid #ccc;
   padding-top: 16px;
   display: flex;

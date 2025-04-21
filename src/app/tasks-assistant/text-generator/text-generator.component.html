@@ -344,10 +344,17 @@
           {{generatedResult() ? 'Erledigt' : 'Stellen Sie zuerst die Optionen ein'}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <mat-form-field class="wide">
+        <mat-label>Name des Textes</mat-label>
+        <input matInput [formControl]="textName" placeholder="Geben Sie den Name des Textes ein...">
+        <mat-error *ngIf="textName.invalid">
+          Bitte geben Sie den Name des Textes ein.
+        </mat-error>
+      </mat-form-field>
       <quill-editor #quillInput></quill-editor>
       <footer class="preview-footer">
-        <button mat-stroked-button (click)="saveText()">Text speichern <mat-icon>save</mat-icon></button>
-        <button mat-stroked-button (click)="passTextToEditor()">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
+        <button mat-stroked-button (click)="saveTextAction()" [disabled]="textName.invalid">Text speichern <mat-icon>save</mat-icon></button>
+        <button mat-stroked-button (click)="passTextToEditor()" [disabled]="textName.invalid">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
       </footer>
     </mat-expansion-panel>
   </mat-accordion>

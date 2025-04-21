@@ -8,11 +8,11 @@ form {
 .form-options {
   display: flex;
   gap: 16px;
-  &.wide {
-    width: 100%;
-    mat-form-field {
-      width: 45%;
-    }
+}
+.wide {
+  width: 100%;
+  mat-form-field {
+    width: 45%;
   }
 }
 .total-value {
