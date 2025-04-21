@@ -167,12 +167,8 @@ export class TextGeneratorComponent implements OnInit {
     this.textGeneratorApi.generateText_V2(formData).pipe(
       tap((res: any) => {
         this.generatedResult.set(res.text);
-      }),
-      // wait for quill-editor
-      delay(100),
-      tap(() => {
         this.quillInput().quillEditor.setText(this.generatedResult());
-      })
+      }),
     ).subscribe();
   }
 

@@ -293,15 +293,20 @@
 </form>
 <button mat-stroked-button (click)="submit()">Text generieren<mat-icon>smart_toy</mat-icon></button>
 
-<mat-card appearance="outlined" class="preview-card" *ngIf="generatedResult()">
-  <mat-card-header>
-    <mat-card-title>Text</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <quill-editor #quillInput></quill-editor>
-  </mat-card-content>
-  <mat-card-footer class="preview-footer">
-    <button mat-stroked-button (click)="saveText()">Text speichern <mat-icon>save</mat-icon></button>
-    <button mat-stroked-button (click)="passTextToEditor()">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
-  </mat-card-footer>
-</mat-card>
+<div class="preview-card">
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="!!generatedResult()">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Generiert Text </mat-panel-title>
+        <mat-panel-description>
+          {{generatedResult() ? 'Erledigt' : 'Stellen Sie zuerst die Optionen ein'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <quill-editor #quillInput></quill-editor>
+      <footer class="preview-footer">
+        <button mat-stroked-button (click)="saveText()">Text speichern <mat-icon>save</mat-icon></button>
+        <button mat-stroked-button (click)="passTextToEditor()">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
+      </footer>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
