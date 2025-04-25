@@ -128,6 +128,10 @@ export class TextGeneratorComponent implements OnInit {
   }
 
   submit() {
+    if (this.textGeneratorForm.invalid) {
+      this.textGeneratorForm.markAllAsTouched();
+      return;
+    }
     this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
     this.textGeneratorApi.generateText_V2(formData).pipe(
