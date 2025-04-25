@@ -1,48 +1,6 @@
 <h2>Text generieren</h2>
 <form [formGroup]="textGeneratorForm">
   <mat-accordion multi>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Anweisungen</h3> </mat-panel-title>
-      </mat-expansion-panel-header>
-      <h2>Kurzanleitung zur Nutzung der Textgenerierungsseite</h2>
-      <ol>
-        <li>
-          <strong>Grundlegende Optionen festlegen:</strong>
-          <ul>
-            <li>Öffnen Sie das Panel <strong>"Grundlegende Optionen"</strong>.</li>
-            <li>Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</li>
-            <li>Füllen Sie die Felder <strong>"Quellwörter"</strong> und <strong>"Betreff des Textes"</strong> aus (Pflichtfelder).</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Zusätzliche Optionen konfigurieren (optional):</strong>
-          <ul>
-            <li>Erweitern Sie die Panels <strong>"Adjektive"</strong>, <strong>"Nomen"</strong>, <strong>"Präpositionen"</strong>, <strong>"Verben"</strong> oder <strong>"Sätze"</strong>, um spezifische grammatikalische Präferenzen festzulegen.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Text generieren:</strong>
-          <ul>
-            <li>Klicken Sie auf die Schaltfläche <strong>"Text generieren"</strong>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Generierten Text anzeigen und bearbeiten:</strong>
-          <ul>
-            <li>Der generierte Text wird im Abschnitt <strong>"Generiert Text"</strong> angezeigt.</li>
-            <li>Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Text speichern oder übertragen:</strong>
-          <ul>
-            <li>Klicken Sie auf <strong>"Text speichern"</strong>, um den Text zu speichern.</li>
-            <li>Klicken Sie auf <strong>"Text zur Bearbeitung übertragen"</strong>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</li>
-          </ul>
-        </li>
-      </ol>
-    </mat-expansion-panel>
     <mat-expansion-panel [expanded]="true" >
       <mat-expansion-panel-header>
         <mat-panel-title> <h3>Grundlegende Optionen</h3> </mat-panel-title>
@@ -114,228 +72,279 @@
         </mat-form-field>
       </div>
     </mat-expansion-panel>
-    <mat-expansion-panel >
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Adjektive</h3> </mat-panel-title>
+        <mat-panel-title> <h3>Zusätzliche Optionen und Anweisungen</h3> </mat-panel-title>
         <mat-panel-description>
-          <div class="total-value">{{formValue().adjective?.article ? 'nach ' + formValue().adjective?.article + ';' : ''}}</div>
-          <div class="total-value">{{formValue().adjective?.kasus ? 'mit ' + formValue().adjective?.kasus + ';' : ''}}</div>
-          <div class="total-value">{{formValue().adjective?.comparison ? formValue().adjective?.comparison + ';' : ''}}</div>
+         Ein kurz Beschreibung der Optionen, die Sie auswählen können, um den generierten Text anzupassen.
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <form formGroupName="adjective">
-        <div class="form-options">
-          <h4>Deklination nach</h4>
-          <mat-form-field>
-            <mat-label>Artikel</mat-label>
-            <mat-select formControlName="article">
-              @for (item of article; track $index) {
-                <mat-option [value]="item.article">{{item.title}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Kasus</mat-label>
-            <mat-select formControlName="kasus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of kasus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="form-options">
-          <h4>Steigerungsform</h4>
-          <mat-form-field>
-            <mat-label>Steigerungsform</mat-label>
-            <mat-select formControlName="comparison">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of comparisons; track $index) {
-                <mat-option [value]="item.comparison">{{item.title}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Anweisungen</h3> </mat-panel-title>
+        </mat-expansion-panel-header>
+        <h2>Kurzanleitung zur Nutzung der Textgenerierungsseite</h2>
+        <ol>
+          <li>
+            <strong>Grundlegende Optionen festlegen:</strong>
+            <ul>
+              <li>Öffnen Sie das Panel <strong>"Grundlegende Optionen"</strong>.</li>
+              <li>Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</li>
+              <li>Füllen Sie die Felder <strong>"Quellwörter"</strong> und <strong>"Betreff des Textes"</strong> aus (Pflichtfelder).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Zusätzliche Optionen konfigurieren (optional):</strong>
+            <ul>
+              <li>Erweitern Sie die Panels <strong>"Adjektive"</strong>, <strong>"Nomen"</strong>, <strong>"Präpositionen"</strong>, <strong>"Verben"</strong> oder <strong>"Sätze"</strong>, um spezifische grammatikalische Präferenzen festzulegen.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Text generieren:</strong>
+            <ul>
+              <li>Klicken Sie auf die Schaltfläche <strong>"Text generieren"</strong>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Generierten Text anzeigen und bearbeiten:</strong>
+            <ul>
+              <li>Der generierte Text wird im Abschnitt <strong>"Generiert Text"</strong> angezeigt.</li>
+              <li>Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Text speichern oder übertragen:</strong>
+            <ul>
+              <li>Klicken Sie auf <strong>"Text speichern"</strong>, um den Text zu speichern.</li>
+              <li>Klicken Sie auf <strong>"Text zur Bearbeitung übertragen"</strong>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</li>
+            </ul>
+          </li>
+        </ol>
+      </mat-expansion-panel>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Adjektive</h3> </mat-panel-title>
+          <mat-panel-description>
+            <div class="total-value">{{formValue().adjective?.article ? 'nach ' + formValue().adjective?.article + ';' : ''}}</div>
+            <div class="total-value">{{formValue().adjective?.kasus ? 'mit ' + formValue().adjective?.kasus + ';' : ''}}</div>
+            <div class="total-value">{{formValue().adjective?.comparison ? formValue().adjective?.comparison + ';' : ''}}</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form formGroupName="adjective">
+          <div class="form-options">
+            <h4>Deklination nach</h4>
+            <mat-form-field>
+              <mat-label>Artikel</mat-label>
+              <mat-select formControlName="article">
+                @for (item of article; track $index) {
+                  <mat-option [value]="item.article">{{item.title}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Kasus</mat-label>
+              <mat-select formControlName="kasus">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of kasus; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-options">
+            <h4>Steigerungsform</h4>
+            <mat-form-field>
+              <mat-label>Steigerungsform</mat-label>
+              <mat-select formControlName="comparison">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of comparisons; track $index) {
+                  <mat-option [value]="item.comparison">{{item.title}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Nomen</h3> </mat-panel-title>
+          <mat-panel-description>
+            <div class="total-value">{{formValue().noun?.article ? 'mit ' + formValue().noun?.article + ';' : ''}}</div>
+            <div class="total-value">{{formValue().noun?.kasus ? 'in ' + formValue().noun?.kasus + ';' : ''}}</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form formGroupName="noun">
+          <div class="form-options">
+            <h4>Deklination mit</h4>
+            <mat-form-field>
+              <mat-label>Artikel</mat-label>
+              <mat-select formControlName="article">
+                @for (item of article; track $index) {
+                  <mat-option [value]="item.article">{{item.title}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>in</h4>
+            <mat-form-field>
+              <mat-label>Kasus</mat-label>
+              <mat-select formControlName="kasus">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of kasus; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Präpositionen</h3> </mat-panel-title>
+          <mat-panel-description>
+            <div class="total-value">{{formValue().preposition?.type ? formValue().preposition?.type + ';' : ''}}</div>
+            <div class="total-value">{{formValue().preposition?.kasus ? 'mit ' + formValue().preposition?.kasus + ';' : ''}}</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form formGroupName="preposition">
+          <div class="form-options">
+            <mat-form-field>
+              <mat-label>Arten von Präpositionen</mat-label>
+              <mat-select formControlName="type">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of prepositionsType; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Kasus</mat-label>
+              <mat-select formControlName="kasus">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of kasus; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Verben</h3> </mat-panel-title>
+          <mat-panel-description>
+            <div class="total-value">{{formValue().verb?.verbForm ? formValue().verb?.verbForm + ';' : ''}}</div>
+            <div class="total-value">{{formValue().verb?.modalVerb ? 'mit ' + formValue().verb?.modalVerb + ';' : ''}}</div>
+            <div class="total-value">{{formValue().verb?.modus ? 'mit ' + formValue().verb?.modus + ';' : ''}}</div>
+            <div class="total-value">{{formValue().verb?.kasus ? 'mit ' + formValue().verb?.kasus + ';' : ''}}</div>
+            <div class="total-value">{{formValue().verb?.activeForm ? 'in ' + formValue().verb?.activeForm + ';' : ''}}</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form formGroupName="verb">
+          <div class="form-options">
+            <mat-form-field>
+              <mat-label>Vollverb</mat-label>
+              <mat-select formControlName="verbForm">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of verbForm; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Modalverb</mat-label>
+              <mat-select formControlName="modalVerb">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of modalsVerbs; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Modus</mat-label>
+              <mat-select formControlName="modus">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of modus; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Kasus</mat-label>
+              <mat-select formControlName="kasus">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of kasus; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>in</h4>
+            <mat-form-field>
+              <mat-label>Form</mat-label>
+              <mat-select formControlName="activeForm">
+                <mat-option [value]="null">None</mat-option>
+                @for (type of formTypes; track $index) {
+                  <mat-option [value]="type">{{ type }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel >
+        <mat-expansion-panel-header>
+          <mat-panel-title> <h3>Sätze</h3> </mat-panel-title>
+          <mat-panel-description>
+            <div class="total-value">{{formValue().sentences?.type ? formValue().sentences?.type + ';' : ''}}</div>
+            <div class="total-value">{{formValue().sentences?.konnektor ? 'mit ' + formValue().sentences?.konnektor + ';' : ''}}</div>
+            <div class="total-value">{{formValue().sentences?.doppelKonnektor ? 'mit ' + formValue().sentences?.doppelKonnektor + ';' : ''}}</div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form formGroupName="sentences">
+          <div class="form-options">
+            <mat-form-field>
+              <mat-label>Arten von Sätzen</mat-label>
+              <mat-select formControlName="type">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of typeOfSentences; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Konnektoren</mat-label>
+              <mat-select formControlName="konnektor">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of konnektoren; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <h4>mit</h4>
+            <mat-form-field>
+              <mat-label>Doppelkonnektor</mat-label>
+              <mat-select formControlName="doppelKonnektor">
+                <mat-option [value]="null">None</mat-option>
+                @for (item of doppelKonnektoren; track $index) {
+                  <mat-option [value]="item">{{item}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-expansion-panel>
     </mat-expansion-panel>
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Nomen</h3> </mat-panel-title>
-        <mat-panel-description>
-          <div class="total-value">{{formValue().noun?.article ? 'mit ' + formValue().noun?.article + ';' : ''}}</div>
-          <div class="total-value">{{formValue().noun?.kasus ? 'in ' + formValue().noun?.kasus + ';' : ''}}</div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <form formGroupName="noun">
-        <div class="form-options">
-          <h4>Deklination mit</h4>
-          <mat-form-field>
-            <mat-label>Artikel</mat-label>
-            <mat-select formControlName="article">
-              @for (item of article; track $index) {
-                <mat-option [value]="item.article">{{item.title}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>in</h4>
-          <mat-form-field>
-            <mat-label>Kasus</mat-label>
-            <mat-select formControlName="kasus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of kasus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-expansion-panel>
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Präpositionen</h3> </mat-panel-title>
-        <mat-panel-description>
-          <div class="total-value">{{formValue().preposition?.type ? formValue().preposition?.type + ';' : ''}}</div>
-          <div class="total-value">{{formValue().preposition?.kasus ? 'mit ' + formValue().preposition?.kasus + ';' : ''}}</div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <form formGroupName="preposition">
-        <div class="form-options">
-          <mat-form-field>
-            <mat-label>Arten von Präpositionen</mat-label>
-            <mat-select formControlName="type">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of prepositionsType; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Kasus</mat-label>
-            <mat-select formControlName="kasus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of kasus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-expansion-panel>
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Verben</h3> </mat-panel-title>
-        <mat-panel-description>
-          <div class="total-value">{{formValue().verb?.verbForm ? formValue().verb?.verbForm + ';' : ''}}</div>
-          <div class="total-value">{{formValue().verb?.modalVerb ? 'mit ' + formValue().verb?.modalVerb + ';' : ''}}</div>
-          <div class="total-value">{{formValue().verb?.modus ? 'mit ' + formValue().verb?.modus + ';' : ''}}</div>
-          <div class="total-value">{{formValue().verb?.kasus ? 'mit ' + formValue().verb?.kasus + ';' : ''}}</div>
-          <div class="total-value">{{formValue().verb?.activeForm ? 'in ' + formValue().verb?.activeForm + ';' : ''}}</div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <form formGroupName="verb">
-        <div class="form-options">
-          <mat-form-field>
-            <mat-label>Vollverb</mat-label>
-            <mat-select formControlName="verbForm">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of verbForm; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Modalverb</mat-label>
-            <mat-select formControlName="modalVerb">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of modalsVerbs; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Modus</mat-label>
-            <mat-select formControlName="modus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of modus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Kasus</mat-label>
-            <mat-select formControlName="kasus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of kasus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>in</h4>
-          <mat-form-field>
-            <mat-label>Form</mat-label>
-            <mat-select formControlName="activeForm">
-              <mat-option [value]="null">None</mat-option>
-              @for (type of formTypes; track $index) {
-                <mat-option [value]="type">{{ type }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-expansion-panel>
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Sätze</h3> </mat-panel-title>
-        <mat-panel-description>
-          <div class="total-value">{{formValue().sentences?.type ? formValue().sentences?.type + ';' : ''}}</div>
-          <div class="total-value">{{formValue().sentences?.konnektor ? 'mit ' + formValue().sentences?.konnektor + ';' : ''}}</div>
-          <div class="total-value">{{formValue().sentences?.doppelKonnektor ? 'mit ' + formValue().sentences?.doppelKonnektor + ';' : ''}}</div>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <form formGroupName="sentences">
-        <div class="form-options">
-          <mat-form-field>
-            <mat-label>Arten von Sätzen</mat-label>
-            <mat-select formControlName="type">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of typeOfSentences; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Konnektoren</mat-label>
-            <mat-select formControlName="konnektor">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of konnektoren; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Doppelkonnektor</mat-label>
-            <mat-select formControlName="doppelKonnektor">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of doppelKonnektoren; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-    </mat-expansion-panel>
+
   </mat-accordion>
 </form>
 <button mat-stroked-button (click)="submit()">Text generieren<mat-icon>smart_toy</mat-icon></button>
 
-<div class="preview-card">
+<form [formGroup]="resultForm" class="preview-card" *ngIf="generatedResult()">
   <mat-accordion>
     <mat-expansion-panel [expanded]="!!generatedResult()">
       <mat-expansion-panel-header>
@@ -346,16 +355,22 @@
       </mat-expansion-panel-header>
       <mat-form-field class="wide">
         <mat-label>Name des Textes</mat-label>
-        <input matInput [formControl]="textName" placeholder="Geben Sie den Name des Textes ein...">
-        <mat-error *ngIf="textName.invalid">
+        <input matInput formControlName="textName" placeholder="Geben Sie den Name des Textes ein...">
+        <mat-error *ngIf="resultForm.get('textName')?.invalid">
           Bitte geben Sie den Name des Textes ein.
         </mat-error>
       </mat-form-field>
-      <quill-editor #quillInput></quill-editor>
+      <mat-form-field class="width-100">
+        <mat-label>Generiert Text</mat-label>
+        <textarea matInput formControlName="textResult" rows="10"></textarea>
+        <mat-error *ngIf="resultForm.get('textResult')?.invalid">
+          Die Feld ist erforderlich.
+        </mat-error>
+      </mat-form-field>
       <footer class="preview-footer">
-        <button mat-stroked-button (click)="saveTextAction()" [disabled]="textName.invalid">Text speichern <mat-icon>save</mat-icon></button>
-        <button mat-stroked-button (click)="passTextToEditor()" [disabled]="textName.invalid">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
+        <button mat-stroked-button (click)="saveTextAction()" [disabled]="resultForm.invalid">Text speichern <mat-icon>save</mat-icon></button>
+        <button mat-stroked-button (click)="passTextToEditor()" [disabled]="resultForm.invalid">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
       </footer>
     </mat-expansion-panel>
   </mat-accordion>
-</div>
+</form>

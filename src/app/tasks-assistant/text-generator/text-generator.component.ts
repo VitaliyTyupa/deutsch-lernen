@@ -16,7 +16,6 @@ import {
 } from '@angular/material/expansion';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tap} from 'rxjs';
-import {QuillEditorComponent} from 'ngx-quill';
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {GrammarOptionsService} from '../services/grammar-options.service';
@@ -38,7 +37,6 @@ import {GrammarOptionsService} from '../services/grammar-options.service';
     MatExpansionPanelHeader,
     MatExpansionPanel,
     MatAccordion,
-    QuillEditorComponent,
     MatIcon,
   ],
   templateUrl: './text-generator.component.html',
@@ -82,8 +80,10 @@ export class TextGeneratorComponent implements OnInit {
       doppelKonnektor: [],
     })
   });
-  textName: FormControl<string> = new FormControl('', { nonNullable: true, validators: [Validators.required] });
-
+  resultForm = this.fb.group({
+    textName: ['', Validators.required],
+    textResult: ['', Validators.required],
+  });
   languageLevelList = this.grammarOptions.languageLevelList;
   textTypes = this.grammarOptions.textTypes;
   tenses = this.grammarOptions.tenses;
@@ -109,7 +109,6 @@ export class TextGeneratorComponent implements OnInit {
   accordion: Signal<MatAccordion> = viewChild.required(MatAccordion);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
-  quillInput: Signal<QuillEditorComponent> = viewChild.required(QuillEditorComponent);
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
@@ -134,7 +133,7 @@ export class TextGeneratorComponent implements OnInit {
     this.textGeneratorApi.generateText_V2(formData).pipe(
       tap((res: {text: string}) => {
         this.generatedResult.set(res.text);
-        this.quillInput().quillEditor.setText(this.generatedResult());
+        this.resultForm.get('textResult')?.setValue(res.text);
       }),
     ).subscribe();
   }
@@ -151,9 +150,10 @@ export class TextGeneratorComponent implements OnInit {
 
   saveText() {
     const formData = this.textGeneratorForm.getRawValue();
+    const text = this.resultForm.getRawValue();
     const params = {
-      name: this.textName.value,
-      text: this.quillInput().quillEditor.getText(),
+      name: text.textName,
+      text: text.textResult,
       language: formData.language,
       languageLevel: formData.languageLevel,
       count: formData.count,
