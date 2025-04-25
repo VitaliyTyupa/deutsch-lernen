@@ -31,3 +31,18 @@ body {
   line-height: 1.5;
   font-family: Georgia, 'Times New Roman', serif;
 }
+
+mat-form-field {
+  &.width-25 {
+    width: 25%;
+  }
+  &.width-50 {
+    width: 50%;
+  }
+  &.width-75 {
+    width: 75%;
+  }
+  &.width-100 {
+    width: 100%;
+  }
+}

@@ -19,6 +19,7 @@ import {tap} from 'rxjs';
 import {QuillEditorComponent} from 'ngx-quill';
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
+import {GrammarOptionsService} from '../services/grammar-options.service';
 
 @Component({
   selector: 'dl-text-generator',
@@ -45,7 +46,8 @@ import {Router} from '@angular/router';
 })
 export class TextGeneratorComponent implements OnInit {
   private fb = inject(FormBuilder);
-  destroyRef = inject(DestroyRef);
+  private destroyRef = inject(DestroyRef);
+  private grammarOptions = inject(GrammarOptionsService);
   textGeneratorForm: UntypedFormGroup = this.fb.group({
     language: [],
     languageLevel: [],
@@ -82,53 +84,21 @@ export class TextGeneratorComponent implements OnInit {
   });
   textName: FormControl<string> = new FormControl('', { nonNullable: true, validators: [Validators.required] });
 
-  languageLevelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  textTypes = [
-    {type: 'sentences', title: 'Einfache Sätze'},
-    {type: 'text', title: 'Kohärenter Text'},
-    {type: 'dialog', title: 'Dialog'},
-  ];
-  tenses = [
-    'Präteritum',
-    'Perfekt',
-    'Plusquamperfekt',
-    'Präsens',
-    'Futur 1',
-    'Futur 2'
-  ];
-  konjunktiv = [
-    'Konjunktiv I',
-    'Konjunktiv II'
-  ];
-  formTypes = [
-    'Aktiv',
-    'Passiv'
-  ];
+  languageLevelList = this.grammarOptions.languageLevelList;
+  textTypes = this.grammarOptions.textTypes;
+  tenses = this.grammarOptions.tenses;
+  formTypes = this.grammarOptions.formTypes;
+  kasus = this.grammarOptions.kasus;
+  article = this.grammarOptions.article;
+  comparisons = this.grammarOptions.comparisons;
+  verbForm = this.grammarOptions.verbForm;
+  modalsVerbs = this.grammarOptions.modalsVerbs;
+  modus = this.grammarOptions.modus;
+  prepositionsType = this.grammarOptions.prepositionsType;
+  typeOfSentences = this.grammarOptions.typeOfSentences;
+  konnektoren = this.grammarOptions.konnektoren;
+  doppelKonnektoren = this.grammarOptions.doppelKonnektoren;
 
-  kasus = [
-    'Nominativ',
-    'Genitiv',
-    'Dativ',
-    'Akkusativ',
-    'Plural',
-  ];
-  article = [
-    {article: 'bestimte Artikle', title: 'bestimte Artikle'},
-    {article: 'unbestimte Artikle', title: 'unbestimte Artikle'},
-    {article: 'ohne Artikele', title: 'ohne Artikele'},
-  ];
-  comparisons = [
-    {comparison: 'Positiv', title: 'Positiv'},
-    {comparison: 'Komparativ', title: 'Komparativ'},
-    {comparison: 'Superlativ', title: 'Superlativ'},
-  ];
-  verbForm = ['regelmäßig', 'unregelmäßig', 'trennbaren', 'transitive', 'intransitive', 'reflexive'];
-  modalsVerbs = ['dürfen', 'können', 'mögen', 'müssen', 'sollen', 'wollen'];
-  modus = ['Indikativ', 'Konjunktiv I', 'Konjunktiv II', 'Imperativ'];
-  prepositionsType = ['kausale', 'lokale', 'temporale', 'modale', 'wechselpräpositionen'];
-  typeOfSentences = ['Einfache Sätze', 'Komplexe Sätze', 'W-Fragen Sätze', 'Ja/Nein Fragen Sätze', 'Imperative Sätze'];
-  konnektoren = ['und', 'oder', 'aber', 'denn', 'weil', 'obwohl', 'wenn', 'damit', 'trotzdem', 'deshalb'];
-  doppelKonnektoren = ['sowohl ... als auch', 'entweder ... oder', 'nicht nur ... sondern auch', 'weder ... noch', 'je ... desto', 'einerseits ... andererseits'];
   sourceFormValue = {
     language: 'German',
     languageLevel: 'B2',

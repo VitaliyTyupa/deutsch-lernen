@@ -24,7 +24,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {GeneratedResponse, TaskOptions} from '../types/editor.interface';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {PrintService} from './services/print.service';
-import {TextInputComponent} from './text-input/text-input.component';
+import {TextInputComponent} from '../tasks-assistant/text-input/text-input.component';
 
 @Component({
   selector: 'dl-editor-page',
