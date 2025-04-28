@@ -15,7 +15,7 @@ import {
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tap} from 'rxjs';
+import {catchError, tap} from 'rxjs';
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {GrammarOptionsService} from '../services/grammar-options.service';
@@ -109,6 +109,7 @@ export class TextGeneratorComponent implements OnInit {
   accordion: Signal<MatAccordion> = viewChild.required(MatAccordion);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
+  isLoading = signal(false);
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
@@ -134,11 +135,17 @@ export class TextGeneratorComponent implements OnInit {
     }
     this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
+    this.isLoading.set(true);
     this.textGeneratorApi.generateText_V2(formData).pipe(
       tap((res: {text: string}) => {
+        this.isLoading.set(false);
         this.generatedResult.set(res.text);
         this.resultForm.get('textResult')?.setValue(res.text);
       }),
+      catchError((error) => {
+        this.isLoading.set(false);
+        return error;
+      })
     ).subscribe();
   }
 
