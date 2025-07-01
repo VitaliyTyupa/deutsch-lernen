@@ -34,3 +34,12 @@ h2 {
   line-height: 28px;
   margin: 15px 0 25px;
 }
+.description {
+  display: flex;
+  padding: 16px;
+  justify-content: space-between;
+  gap: 16px;
+  mat-card {
+    max-width: 33%;
+  }
+}

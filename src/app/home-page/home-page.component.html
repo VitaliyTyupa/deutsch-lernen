@@ -1,5 +1,55 @@
 <header>
   <h1 class="header-name">Deutsch Lernen</h1>
-  <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-  <button mat-raised-button routerLink="/editor">Los geht</button>
+  <h2>Lassen Sie in Sekunden Übungen und Texte erstellen – auf deinem Niveau, für deinen Wortschatz.</h2>
+  <button *ngIf="!isLoggedIn$()" mat-raised-button routerLink="/login">
+    Anmelden<mat-icon>login</mat-icon>
+  </button>
 </header>
+<main>
+
+  <section class="description">
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Unsere Funktionen</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>Automatische Generierung von Übungen</li>
+          <li>Individuelle Anpassung an dein Lernniveau</li>
+          <li>Interaktive Texte und Aufgaben</li>
+          <li>Fortschrittsverfolgung und Korrekturen</li>
+        </ul>
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Wie funktioniert das?</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>Registriere dich oder melde dich an</li>
+          <li>Wähle ein Thema oder gib einen Text ein</li>
+          <li>Generiere passende Übungen automatisch</li>
+          <li>Lass deine Aufgaben korrigieren und verfolge deinen Fortschritt</li>
+        </ul>
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>Für wen ist Tekamolo gedacht?</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li>Für Deutschlehrer*innen – spare Zeit bei der Unterrichtsvorbereitung</li>
+          <li>Für Lernende – lerne gezielt, flexibel und effektiv</li>
+          <li>Für alle, die sich auf Prüfungen wie Goethe-Zertifikat oder TELC vorbereiten</li>
+        </ul>
+      </mat-card-content>
+
+    </mat-card>
+  </section>
+</main>
