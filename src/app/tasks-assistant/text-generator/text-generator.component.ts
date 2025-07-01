@@ -15,8 +15,7 @@ import {
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tap} from 'rxjs';
-import {QuillEditorComponent} from 'ngx-quill';
+import {catchError, tap} from 'rxjs';
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {GrammarOptionsService} from '../services/grammar-options.service';
@@ -38,7 +37,6 @@ import {GrammarOptionsService} from '../services/grammar-options.service';
     MatExpansionPanelHeader,
     MatExpansionPanel,
     MatAccordion,
-    QuillEditorComponent,
     MatIcon,
   ],
   templateUrl: './text-generator.component.html',
@@ -82,8 +80,10 @@ export class TextGeneratorComponent implements OnInit {
       doppelKonnektor: [],
     })
   });
-  textName: FormControl<string> = new FormControl('', { nonNullable: true, validators: [Validators.required] });
-
+  resultForm = this.fb.group({
+    textName: ['', Validators.required],
+    textResult: ['', Validators.required],
+  });
   languageLevelList = this.grammarOptions.languageLevelList;
   textTypes = this.grammarOptions.textTypes;
   tenses = this.grammarOptions.tenses;
@@ -109,7 +109,7 @@ export class TextGeneratorComponent implements OnInit {
   accordion: Signal<MatAccordion> = viewChild.required(MatAccordion);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
-  quillInput: Signal<QuillEditorComponent> = viewChild.required(QuillEditorComponent);
+  isLoading = signal(false);
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
@@ -129,13 +129,23 @@ export class TextGeneratorComponent implements OnInit {
   }
 
   submit() {
+    if (this.textGeneratorForm.invalid) {
+      this.textGeneratorForm.markAllAsTouched();
+      return;
+    }
     this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
+    this.isLoading.set(true);
     this.textGeneratorApi.generateText_V2(formData).pipe(
       tap((res: {text: string}) => {
+        this.isLoading.set(false);
         this.generatedResult.set(res.text);
-        this.quillInput().quillEditor.setText(this.generatedResult());
+        this.resultForm.get('textResult')?.setValue(res.text);
       }),
+      catchError((error) => {
+        this.isLoading.set(false);
+        return error;
+      })
     ).subscribe();
   }
 
@@ -151,9 +161,10 @@ export class TextGeneratorComponent implements OnInit {
 
   saveText() {
     const formData = this.textGeneratorForm.getRawValue();
+    const text = this.resultForm.getRawValue();
     const params = {
-      name: this.textName.value,
-      text: this.quillInput().quillEditor.getText(),
+      name: text.textName,
+      text: text.textResult,
       language: formData.language,
       languageLevel: formData.languageLevel,
       count: formData.count,
