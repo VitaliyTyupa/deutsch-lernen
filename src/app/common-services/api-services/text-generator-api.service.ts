@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Params} from '@angular/router';
 import {GlobalApiService} from './global-api.service';
 import {Observable} from 'rxjs';
+import {BaseText} from '../../types/editor.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class TextGeneratorApiService {
 
   saveText(body: Params) {
     return this.http.post(this.globalApi.url + '/text', body);
+  }
+
+  getTexts(): Observable<BaseText[]> {
+    return this.http.get<BaseText[]>(this.globalApi.url + '/text/all');
   }
 }

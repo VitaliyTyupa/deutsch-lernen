@@ -1,65 +1,253 @@
 <h2>Text bearbeiten</h2>
-<form [formGroup]="gapTextForm">
+<form [formGroup]="taskListForm">
   <mat-accordion multi>
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Basistext</h3> </mat-panel-title>
+        <mat-panel-title><h3>Basistext</h3></mat-panel-title>
       </mat-expansion-panel-header>
+      <h4><i>Wählen Sie einen Text aus der Liste aus oder fügen Sie Ihren eigenen Text ein, um mit der Erstellung von
+        Aufgaben zu beginnen.</i></h4>
+      <mat-form-field>
+        <mat-label>Basistextname</mat-label>
+        <mat-select (valueChange)="setText(baseText.value)" #baseText>
+          @for (text of textlist$ | async; track text.id) {
+            <mat-option [value]="text">{{ text.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
       <dl-text-input [textControl]="rawText" (onSelect)="addSelectedWords($event)"></dl-text-input>
     </mat-expansion-panel>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Lückentext</h3> </mat-panel-title>
+        <mat-panel-title>
+          <h3>Aufgabentyp</h3>
+        </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-checkbox>Erstellen Sie einen Lückentext mit ausgewählten Wörtern aus dem Text. Doppelklicken Sie auf ein gewünschtes Textwort, um es in die Liste aufzunehmen.</mat-checkbox>
-      <mat-form-field class="width-100">
-        <mat-label>Ausgewählte Wörter</mat-label>
-        <textarea matInput formControlName="wordList"></textarea>
-        <mat-error *ngIf="gapTextForm.get('wordList')?.invalid">
-          Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
-        </mat-error>
-      </mat-form-field>
-      <mat-divider></mat-divider>
-      <mat-checkbox>Erstellen Sie Text mit Lücken anstelle aller Verben, die den ausgewählten Parametern entsprechen.</mat-checkbox>
-      <form formGroupName="adjective">
-        <div class="form-options">
-          <h4>Deklination nach</h4>
-          <mat-form-field>
-            <mat-label>Artikel</mat-label>
-            <mat-select formControlName="article">
-              @for (item of article; track $index) {
-                <mat-option [value]="item.article">{{item.title}}</mat-option>
-              }
-            </mat-select>
+      <mat-tab-group>
+        <mat-tab label="Lückentext">
+          <mat-checkbox formControlName="gap_text">
+            <h4>
+              <i>Hier können Sie aus einem ausgewählten Text einen Lückentext erstellen. Wählen Sie einen der
+                Aufgabentypen und passen Sie ihn an Ihr Ziel an.</i>
+            </h4>
+          </mat-checkbox>
+
+          <form [formGroup]="gapTextForm">
+            <mat-accordion>
+              <mat-radio-group formControlName="selectedType">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-radio-button value="wordList">Erstellen Sie einen Lückentext mit ausgewählten Wörtern aus dem
+                      Text. Doppelklicken Sie auf ein gewünschtes Textwort, um es in die Liste aufzunehmen.
+                    </mat-radio-button>
+                  </mat-expansion-panel-header>
+                  <mat-form-field class="width-100">
+                    <mat-label>Ausgewählte Wörter</mat-label>
+                    <textarea matInput [formControl]="wordList"></textarea>
+                    <mat-error *ngIf="wordList.invalid">
+                      Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+                    </mat-error>
+                  </mat-form-field>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-radio-button value="verb">Erstellen Sie Text mit Lücken anstelle aller Verben.
+                    </mat-radio-button>
+                  </mat-expansion-panel-header>
+                  <form formGroupName="verb">
+                    <div class="form-options">
+                      <mat-form-field>
+                        <mat-label>Vollverb</mat-label>
+                        <mat-select formControlName="verbForm">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of verbForm; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>mit</h4>
+                      <mat-form-field>
+                        <mat-label>Modalverb</mat-label>
+                        <mat-select formControlName="modalVerb">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of modalsVerbs; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>mit</h4>
+                      <mat-form-field>
+                        <mat-label>Modus</mat-label>
+                        <mat-select formControlName="modus">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of modus; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>mit</h4>
+                      <mat-form-field>
+                        <mat-label>Kasus</mat-label>
+                        <mat-select formControlName="kasus">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of kasus; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>in</h4>
+                      <mat-form-field>
+                        <mat-label>Form</mat-label>
+                        <mat-select formControlName="activeForm">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (type of formTypes; track $index) {
+                            <mat-option [value]="type">{{ type }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </form>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-radio-button value="adjective">Erstellen Sie Text mit Lücken anstelle aller Adjektive, die den
+                      ausgewählten Parametern entsprechen.
+                    </mat-radio-button>
+                  </mat-expansion-panel-header>
+                  <form formGroupName="adjective">
+                    <div class="form-options">
+                      <h4>Deklination nach</h4>
+                      <mat-form-field>
+                        <mat-label>Artikel</mat-label>
+                        <mat-select formControlName="article">
+                          @for (item of article; track $index) {
+                            <mat-option [value]="item.article">{{ item.title }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>mit</h4>
+                      <mat-form-field>
+                        <mat-label>Kasus</mat-label>
+                        <mat-select formControlName="kasus">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of kasus; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-options">
+                      <h4>Steigerungsform</h4>
+                      <mat-form-field>
+                        <mat-label>Steigerungsform</mat-label>
+                        <mat-select formControlName="comparison">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of comparisons; track $index) {
+                            <mat-option [value]="item.comparison">{{ item.title }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </form>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-radio-button value="noun">Erstellen Sie Text mit Lücken anstelle aller Nomen, die den
+                      ausgewählten Parametern entsprechen.
+                    </mat-radio-button>
+                  </mat-expansion-panel-header>
+                  <form formGroupName="noun">
+                    <div class="form-options">
+                      <h4>Deklination mit</h4>
+                      <mat-form-field>
+                        <mat-label>Artikel</mat-label>
+                        <mat-select formControlName="article">
+                          @for (item of article; track $index) {
+                            <mat-option [value]="item.article">{{ item.title }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                      <h4>in</h4>
+                      <mat-form-field>
+                        <mat-label>Kasus</mat-label>
+                        <mat-select formControlName="kasus">
+                          <mat-option [value]="null">None</mat-option>
+                          @for (item of kasus; track $index) {
+                            <mat-option [value]="item">{{ item }}</mat-option>
+                          }
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </form>
+                </mat-expansion-panel>
+              </mat-radio-group>
+            </mat-accordion>
+          </form>
+        </mat-tab>
+        <mat-tab label="Wortdefinition">
+          <mat-checkbox formControlName="word_definition">
+          <h4><i>Wählen Sie die gewünschten Wörter aus dem ausgewählten Text aus und generieren Sie kontextbezogene
+            Definitionen für diese Wörter.</i></h4>
+          </mat-checkbox>
+          <mat-form-field class="width-100">
+            <mat-label>Ausgewählte Wörter</mat-label>
+            <textarea matInput [formControl]="wordList"></textarea>
+            <mat-error *ngIf="wordList.invalid">
+              Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+            </mat-error>
           </mat-form-field>
-          <h4>mit</h4>
-          <mat-form-field>
-            <mat-label>Kasus</mat-label>
-            <mat-select formControlName="kasus">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of kasus; track $index) {
-                <mat-option [value]="item">{{item}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="form-options">
-          <h4>Steigerungsform</h4>
-          <mat-form-field>
-            <mat-label>Steigerungsform</mat-label>
-            <mat-select formControlName="comparison">
-              <mat-option [value]="null">None</mat-option>
-              @for (item of comparisons; track $index) {
-                <mat-option [value]="item.comparison">{{item.title}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </form>
-      <mat-divider></mat-divider>
+        </mat-tab>
+        <mat-tab label="Richtig/Falsch-Aussage">
+          <mat-checkbox formControlName="true_false">
+            <h4><i>Wählen Sie die Anzahl der Aussagen „Richtig-Falsch“ zum ausgewählten Text.</i></h4>
+          </mat-checkbox>
+          <form [formGroup]="truFalForm">
+            <mat-form-field>
+              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-select formControlName="count">
+                @for (item of [5, 10, 15, 20]; track $index) {
+                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+        <mat-tab label="Frage Antwort">
+          <mat-checkbox formControlName="question_answer">
+            <h4><i>Wählen Sie aus, wie viele Fragen zum ausgewählten Text erstellt werden sollen.</i></h4>
+          </mat-checkbox>
+          <form [formGroup]="quAnForm">
+            <mat-form-field>
+              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-select formControlName="count">
+                @for (item of [5, 10, 15, 20]; track $index) {
+                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+        <mat-tab label="Übersetzung">
+          <mat-checkbox formControlName="translate">
+            <h4><i>Wählen Sie aus, wie viele Sätze für die Übersetzungsübung erstellt werden sollen.</i></h4>
+          </mat-checkbox>
+          <form [formGroup]="translateForm">
+            <mat-form-field>
+              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-select formControlName="count">
+                @for (item of [5, 10, 15, 20]; track $index) {
+                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
     </mat-expansion-panel>
 
   </mat-accordion>
 </form>
-<button mat-stroked-button (click)="submit()">Aufgaben generieren<mat-icon>smart_toy</mat-icon></button>
-
+<button mat-stroked-button (click)="submit()">Aufgaben generieren
+  <mat-icon>smart_toy</mat-icon>
+</button>
+<!--<dl-content-preview [content]="generatedTasks()"></dl-content-preview>-->

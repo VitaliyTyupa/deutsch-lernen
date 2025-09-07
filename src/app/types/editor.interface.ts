@@ -1,4 +1,4 @@
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 export interface SettingsForm {
   language: FormControl<string | null>;
@@ -12,6 +12,31 @@ export interface SettingsForm {
   deklination: FormControl<string[] | null>;
   kasus: FormControl<string[] | null>;
   taskType: FormControl<string[] | null>;
+}
+
+export interface GapTextForm {
+  selectedType: FormControl<string | null>;
+  wordList: FormControl<string>;
+  adjective: FormGroup<{
+    article: FormControl<string | null>;
+    kasus: FormControl<string | null>;
+    comparison: FormControl<string | null>;
+  }>;
+  noun: FormGroup<{
+    article: FormControl<string | null>;
+    kasus: FormControl<string | null>;
+  }>;
+  verb: FormGroup<{
+    verbForm: FormControl<string | null>;
+    modalVerb: FormControl<string | null>;
+    kasus: FormControl<string | null>;
+    modus: FormControl<string | null>;
+    activeForm: FormControl<string | null>;
+  }>;
+  preposition: FormGroup<{
+    type: FormControl<string | null>;
+    kasus: FormControl<string | null>;
+  }>;
 }
 
 export interface TaskTypeForm {
@@ -48,4 +73,10 @@ export interface TaskOptions {
 export interface GeneratedResponse {
   sourceWords: string[];
   outputTasks: { id: string, value: any }[];
+}
+
+export interface BaseText {
+  id: string;
+  name: string;
+  text: string;
 }
