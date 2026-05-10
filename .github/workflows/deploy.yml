@@ -17,7 +17,11 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Login to GHCR
-        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u vitaliytyupa --password-stdin
+        env:
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+        run: |
+          test -n "$GHCR_TOKEN"
+          echo "$GHCR_TOKEN" | docker login ghcr.io -u vitaliytyupa --password-stdin
 
       - name: Set lowercase owner
         run: echo "OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
