@@ -1,0 +1,69 @@
+<section class="calligraphy-page">
+  <div class="controls">
+    <mat-form-field appearance="outline" class="font-select">
+      <mat-label i18n="@@calligraphyFontLabel">Schrift</mat-label>
+      <mat-select [formControl]="fontControl">
+        @for (font of fonts; track font.value) {
+          <mat-option [value]="font.value">{{ font.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="text-input">
+      <mat-label i18n="@@calligraphyInputLabel">Text für die Kalligrafieübung</mat-label>
+      <textarea
+        matInput
+        rows="5"
+        [formControl]="textControl"
+        i18n-placeholder="@@calligraphyInputPlaceholder"
+        placeholder="Geben Sie den Text ein, der nachgeschrieben werden soll."></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="preview-shell">
+    <div
+      class="calligraphy-sheet"
+      aria-label="Calligraphy preview"
+      i18n-aria-label="@@calligraphyPreviewAriaLabel">
+      @for (line of renderedLines; track $index) {
+        <svg
+          class="calligraphy-line"
+          width="100%"
+          [attr.height]="lineHeightMm + 'mm'"
+          xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern [attr.id]="'dots-' + $index" width="0.9mm" height="0.9mm" patternUnits="userSpaceOnUse">
+              <circle cx="0.3mm" cy="0.3mm" r="0.19mm" fill="#777" />
+            </pattern>
+          </defs>
+          <line
+            x1="0"
+            [attr.y1]="topGuideLine + 'mm'"
+            x2="100%"
+            [attr.y2]="topGuideLine + 'mm'"
+            stroke="#c7c7c7"
+            stroke-width="0.09mm" />
+          <line
+            x1="0"
+            [attr.y1]="bottomGuideLine + 'mm'"
+            x2="100%"
+            [attr.y2]="bottomGuideLine + 'mm'"
+            stroke="#b7b7b7"
+            stroke-width="0.09mm" />
+          <text
+            [attr.x]="textXPositionMm + 'mm'"
+            [attr.y]="textBaseline + 'mm'"
+            [attr.font-family]="selectedFont + ', cursive'"
+            [attr.font-size]="fontSizeMm + 'mm'"
+            [attr.fill]="'url(#dots-' + $index + ')'">
+            {{ line }}
+          </text>
+        </svg>
+      }
+    </div>
+  </div>
+
+  <button mat-stroked-button type="button" (click)="print()" [disabled]="!textControl.value.trim()">
+    <span i18n="@@calligraphyPrintButton">Drucken</span>
+    <mat-icon>print</mat-icon>
+  </button>
+</section>

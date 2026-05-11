@@ -1356,13 +1356,6 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></source>
           <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="navEditor" datatype="html">
-        <source>Editor</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
-          <context context-type="linenumber">6,9</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="navLanguageSwitcherLabel" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
@@ -1403,6 +1396,48 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/utils/pipes/role.pipe.ts</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tasksNavCalligraphy" datatype="html">
+        <source>Kalligrafie</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/tasks-assistant.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyInputLabel" datatype="html">
+        <source>Text für die Kalligrafieübung</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyInputPlaceholder" datatype="html">
+        <source>Geben Sie den Text ein, der nachgeschrieben werden soll.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyFontLabel" datatype="html">
+        <source>Schrift</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyPreviewAriaLabel" datatype="html">
+        <source>Calligraphy preview</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyPrintButton" datatype="html">
+        <source>Drucken</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>

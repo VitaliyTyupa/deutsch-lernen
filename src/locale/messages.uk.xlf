@@ -1528,14 +1528,6 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
           <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="navEditor" datatype="html">
-        <source>Editor</source>
-        <target>Редактор</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
-          <context context-type="linenumber">6,9</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="navLanguageSwitcherLabel" datatype="html">
         <source>Language</source>
         <target>Мова</target>
@@ -1582,6 +1574,54 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/utils/pipes/role.pipe.ts</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tasksNavCalligraphy" datatype="html">
+        <source>Kalligrafie</source>
+        <target>Каліграфія</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/tasks-assistant.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyInputLabel" datatype="html">
+        <source>Text für die Kalligrafieübung</source>
+        <target>Текст для вправи на каліграфію</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyInputPlaceholder" datatype="html">
+        <source>Geben Sie den Text ein, der nachgeschrieben werden soll.</source>
+        <target>Введіть текст, який потрібно обвести.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyFontLabel" datatype="html">
+        <source>Schrift</source>
+        <target>Шрифт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyPreviewAriaLabel" datatype="html">
+        <source>Calligraphy preview</source>
+        <target>Попередній перегляд каліграфії</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calligraphyPrintButton" datatype="html">
+        <source>Drucken</source>
+        <target>Надрукувати</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>

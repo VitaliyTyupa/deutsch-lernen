@@ -7,7 +7,6 @@ import {TextGeneratorApiService} from '../common-services/api-services/text-gene
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {SessionService} from '../common-services/session.service';
 import {UserService} from '../common-services/user.service';
-import {RolePipe} from '../utils/pipes/role.pipe';
 import {NgIf, TitleCasePipe} from '@angular/common';
 
 @Component({
@@ -21,7 +20,6 @@ import {NgIf, TitleCasePipe} from '@angular/common';
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,
-    RolePipe,
     NgIf,
     TitleCasePipe
   ],
@@ -50,6 +48,10 @@ export class TopToolbarComponent {
   }
 
   switchLanguage(lang: 'de' | 'uk' | 'en'): void {
+    if (lang === this.activeLanguage) {
+      return;
+    }
+
     const path = window.location.pathname.replace(/^\/(de|uk|en)(?=\/|$)/, '') || '/';
     window.location.href = `/${lang}${path}${window.location.search}${window.location.hash}`;
   }

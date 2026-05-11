@@ -12,11 +12,6 @@ export const routes: Routes = [
       .then(route => route.taskAssistantRoutes),
     canActivate: [authGuard],
   },
-  {
-    path: 'editor',
-    loadComponent: () => import('./editor-page/editor-page.component').then(m => m.EditorPageComponent),
-    canActivate: [authGuard]
-  },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
 ];

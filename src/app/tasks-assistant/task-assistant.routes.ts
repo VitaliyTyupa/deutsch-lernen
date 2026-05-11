@@ -3,6 +3,7 @@ import {TextGeneratorComponent} from './text-generator/text-generator.component'
 import {TextEditorComponent} from './text-editor/text-editor.component';
 import {VocabularyEditComponent} from './vocabulary-edit/vocabulary-edit.component';
 import {TasksAssistantComponent} from './tasks-assistant.component';
+import {CalligraphyComponent} from './calligraphy/calligraphy.component';
 
 export const taskAssistantRoutes: Routes = [
   {
@@ -25,6 +26,10 @@ export const taskAssistantRoutes: Routes = [
       {
         path: 'vocabulary-editor',
         component: VocabularyEditComponent,
+      },
+      {
+        path: 'calligraphy',
+        component: CalligraphyComponent,
       }
     ]
   }
