@@ -1112,7 +1112,7 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></source>
         </context-group>
       </trans-unit>
       <trans-unit id="textGeneratorAdditionalOptionsTitle" datatype="html">
-        <source>Zusätzliche Optionen und Anweisungen</source>
+        <source>Zusätzliche Bedingungen für die Textgenerierung</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
           <context context-type="linenumber">77,78</context>
@@ -1438,6 +1438,20 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
           <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGrammarTilesDescription" datatype="html">
+        <source>Wählen Sie die grammatischen Merkmale aus, die bei der Textgenerierung hervorgehoben werden sollen. Um die Anforderungen anzupassen, klicken Sie auf die Kachel mit dem Namen der entsprechenden Wortart.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonDoneButton" datatype="html">
+        <source>Fertig</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">318</context>
         </context-group>
       </trans-unit>
     </body>

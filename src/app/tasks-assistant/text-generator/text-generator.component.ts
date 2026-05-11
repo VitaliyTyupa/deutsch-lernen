@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, OnInit, Signal, signal, viewChild} from '@angular/core';
+import {Component, DestroyRef, inject, OnInit, Signal, signal, TemplateRef, viewChild} from '@angular/core';
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/core";
@@ -19,6 +19,20 @@ import {catchError, tap} from 'rxjs';
 import {MatIcon} from '@angular/material/icon';
 import {Router} from '@angular/router';
 import {GrammarOptionsService} from '../services/grammar-options.service';
+import {MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
+import {MatChip, MatChipRemove, MatChipSet} from '@angular/material/chips';
+
+type GrammarSectionId = 'adjective' | 'noun' | 'preposition' | 'verb' | 'sentences';
+
+interface GrammarSection {
+  id: GrammarSectionId;
+  title: string;
+}
+
+interface GrammarSummaryItem {
+  controlName: string;
+  label: string;
+}
 
 @Component({
   selector: 'dl-text-generator',
@@ -38,6 +52,13 @@ import {GrammarOptionsService} from '../services/grammar-options.service';
     MatExpansionPanel,
     MatAccordion,
     MatIcon,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogTitle,
+    MatChip,
+    MatChipRemove,
+    MatChipSet,
   ],
   templateUrl: './text-generator.component.html',
   styleUrl: './text-generator.component.scss'
@@ -46,6 +67,7 @@ export class TextGeneratorComponent implements OnInit {
   private fb = inject(FormBuilder);
   private destroyRef = inject(DestroyRef);
   private grammarOptions = inject(GrammarOptionsService);
+  private dialog = inject(MatDialog);
   textGeneratorForm: UntypedFormGroup = this.fb.group({
     language: [],
     languageLevel: [],
@@ -98,6 +120,14 @@ export class TextGeneratorComponent implements OnInit {
   typeOfSentences = this.grammarOptions.typeOfSentences;
   konnektoren = this.grammarOptions.konnektoren;
   doppelKonnektoren = this.grammarOptions.doppelKonnektoren;
+  readonly grammarSections: GrammarSection[] = [
+    {id: 'adjective', title: 'Adjektive'},
+    {id: 'noun', title: 'Nomen'},
+    {id: 'preposition', title: 'Präpositionen'},
+    {id: 'verb', title: 'Verben'},
+    {id: 'sentences', title: 'Sätze'},
+  ];
+  activeGrammarSection = signal<GrammarSection | null>(null);
 
   sourceFormValue = {
     language: 'German',
@@ -179,5 +209,63 @@ export class TextGeneratorComponent implements OnInit {
       tens: formData.tens,
     };
     return this.textGeneratorApi.saveText(params);
+  }
+
+  openGrammarSection(section: GrammarSection, template: TemplateRef<unknown>): void {
+    this.activeGrammarSection.set(section);
+    this.dialog.open(template, {
+      width: '520px',
+      maxWidth: 'calc(100vw - 32px)',
+      autoFocus: false,
+    }).afterClosed().pipe(
+      takeUntilDestroyed(this.destroyRef),
+      tap(() => this.activeGrammarSection.set(null))
+    ).subscribe();
+  }
+
+  getGrammarGroup(sectionId: GrammarSectionId): UntypedFormGroup {
+    return this.textGeneratorForm.get(sectionId) as UntypedFormGroup;
+  }
+
+  getSectionSummary(sectionId: GrammarSectionId): GrammarSummaryItem[] {
+    const value = this.formValue()?.[sectionId] || {};
+
+    switch (sectionId) {
+      case 'adjective':
+        return [
+          value.article ? {controlName: 'article', label: `nach ${value.article}`} : null,
+          value.kasus ? {controlName: 'kasus', label: `mit ${value.kasus}`} : null,
+          value.comparison ? {controlName: 'comparison', label: value.comparison} : null,
+        ].filter((item): item is GrammarSummaryItem => !!item);
+      case 'noun':
+        return [
+          value.article ? {controlName: 'article', label: `mit ${value.article}`} : null,
+          value.kasus ? {controlName: 'kasus', label: `in ${value.kasus}`} : null,
+        ].filter((item): item is GrammarSummaryItem => !!item);
+      case 'preposition':
+        return [
+          value.type ? {controlName: 'type', label: value.type} : null,
+          value.kasus ? {controlName: 'kasus', label: `mit ${value.kasus}`} : null,
+        ].filter((item): item is GrammarSummaryItem => !!item);
+      case 'verb':
+        return [
+          value.verbForm ? {controlName: 'verbForm', label: value.verbForm} : null,
+          value.modalVerb ? {controlName: 'modalVerb', label: `mit ${value.modalVerb}`} : null,
+          value.modus ? {controlName: 'modus', label: `mit ${value.modus}`} : null,
+          value.kasus ? {controlName: 'kasus', label: `mit ${value.kasus}`} : null,
+          value.activeForm ? {controlName: 'activeForm', label: `in ${value.activeForm}`} : null,
+        ].filter((item): item is GrammarSummaryItem => !!item);
+      case 'sentences':
+        return [
+          value.type ? {controlName: 'type', label: value.type} : null,
+          value.konnektor ? {controlName: 'konnektor', label: `mit ${value.konnektor}`} : null,
+          value.doppelKonnektor ? {controlName: 'doppelKonnektor', label: `mit ${value.doppelKonnektor}`} : null,
+        ].filter((item): item is GrammarSummaryItem => !!item);
+    }
+  }
+
+  removeGrammarOption(event: MouseEvent, sectionId: GrammarSectionId, controlName: string): void {
+    event.stopPropagation();
+    this.getGrammarGroup(sectionId).get(controlName)?.setValue(null);
   }
 }

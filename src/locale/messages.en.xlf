@@ -1249,8 +1249,8 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
         </context-group>
       </trans-unit>
       <trans-unit id="textGeneratorAdditionalOptionsTitle" datatype="html">
-        <source>Zusätzliche Optionen und Anweisungen</source>
-        <target>Additional options and instructions</target>
+        <source>Zusätzliche Bedingungen für die Textgenerierung</source>
+        <target>Additional conditions for text generation</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
           <context context-type="linenumber">77,78</context>
@@ -1622,6 +1622,22 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/tasks-assistant/calligraphy/calligraphy.component.html</context>
           <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGrammarTilesDescription" datatype="html">
+        <source>Wählen Sie die grammatischen Merkmale aus, die bei der Textgenerierung hervorgehoben werden sollen. Um die Anforderungen anzupassen, klicken Sie auf die Kachel mit dem Namen der entsprechenden Wortart.</source>
+        <target>Choose the grammatical features that should be emphasized when generating the text. To adjust the requirements, click the tile with the name of the corresponding part of speech.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonDoneButton" datatype="html">
+        <source>Fertig</source>
+        <target>Done</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">318</context>
         </context-group>
       </trans-unit>
     </body>

@@ -24,6 +24,91 @@ form {
 .preview-card {
   margin-top: 16px;
 }
+.grammar-options-overview {
+  padding: 8px 0 16px;
+}
+.grammar-options-overview p {
+  margin: 0 0 16px;
+}
+.grammar-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.grammar-tile {
+  display: flex;
+  flex-direction: column;
+  min-height: 132px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-primary) 35%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--mat-sys-primary) 12%, white);
+  color: var(--mat-sys-on-surface);
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+.grammar-tile:hover {
+  border-color: var(--mat-sys-primary);
+  background: color-mix(in srgb, var(--mat-sys-primary) 18%, white);
+  transform: translateY(-1px);
+}
+.grammar-tile:active {
+  transform: translateY(0);
+}
+.grammar-tile:focus-visible {
+  outline: 2px solid var(--mat-sys-primary);
+  outline-offset: 2px;
+}
+.grammar-tile-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 24px;
+  width: 100%;
+}
+.grammar-tile-title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+.grammar-tile-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 72px;
+}
+.grammar-tile-plus {
+  display: block;
+  color: var(--mat-sys-primary);
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 300;
+}
+.grammar-tile-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.grammar-tile-summary mat-chip {
+  max-width: 100%;
+}
+.dialog-form .form-options {
+  flex-direction: column;
+  gap: 8px;
+}
+.dialog-form mat-form-field {
+  width: 100%;
+}
+.dialog-form h4 {
+  margin: 0;
+}
 .preview-footer {
   padding: 16px;
   button {
@@ -36,4 +121,3 @@ mat-card-title {
 quill-editor  {
   width: 100%;
 }
-
