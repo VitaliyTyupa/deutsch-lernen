@@ -1,8 +1,0 @@
-{
-  "/api": {
-    "target": "https://tekamolo.info",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
-}

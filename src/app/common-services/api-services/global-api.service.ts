@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,6 @@ import { Injectable } from '@angular/core';
 export class GlobalApiService {
 
   get url() {
-    return '/api';
+    return environment.apiUrl;
   }
 }
