@@ -1,18 +1,18 @@
 <mat-card>
-  <mat-card-title><h3>Anmeldung</h3></mat-card-title>
+  <mat-card-title><h3 i18n="@@authLoginTitle">Anmeldung</h3></mat-card-title>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-card-content>
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Email</mat-label>
+        <mat-label i18n="@@authEmailLabel">Email</mat-label>
         <input matInput formControlName="email" required type="text"/>
         <mat-error *ngIf="loginForm.get('email')?.invalid">
-          Bitte geben Sie eine gültige E-Mail-Adresse ein
+          <span i18n="@@authEmailInvalid">Bitte geben Sie eine gültige E-Mail-Adresse ein</span>
         </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Kennwort</mat-label>
+        <mat-label i18n="@@authPasswordLabel">Kennwort</mat-label>
         <input matInput
                [type]="!showPassword() ? 'password' : 'text'"
                formControlName="password" />
@@ -24,12 +24,12 @@
         </button>
       </mat-form-field>
         <a mat-button routerLink="/register" class="full-width">
-          Neues Konto erstellen
+          <span i18n="@@authCreateAccount">Neues Konto erstellen</span>
           <mat-icon>person_add</mat-icon>
         </a>
       <mat-card-actions>
       <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid">
-        Einloggen
+        <span i18n="@@authLoginSubmit">Einloggen</span>
       </button>
       </mat-card-actions>
   </mat-card-content>

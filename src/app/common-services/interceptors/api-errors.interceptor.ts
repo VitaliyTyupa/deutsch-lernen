@@ -7,30 +7,30 @@ export const apiErrorsInterceptor: HttpInterceptorFn = (req, next) => {
   const toastr = inject(ToastrService);
   return next(req).pipe(
     catchError((error) => {
-      let errorMessage = 'An unknown error occurred!';
+      let errorMessage = $localize`:@@apiUnknownError:An unknown error occurred!`;
       if (error.error instanceof ErrorEvent) {
         // Client-side error
-        errorMessage = `Error: ${error.error.message}`;
+        errorMessage = $localize`:@@apiClientError:Error: ${error.error.message}`;
       } else {
         // Server-side error
         switch (error.status) {
           case 400:
-            errorMessage = `Bad Request. ${error.message}`;
+            errorMessage = $localize`:@@apiBadRequestError:Bad Request. ${error.message}`;
             break;
           case 401:
-            errorMessage = `Unauthorized. ${error.message}`;
+            errorMessage = $localize`:@@apiUnauthorizedError:Unauthorized. ${error.message}`;
             break;
           case 403:
-            errorMessage = `Forbidden. ${error.message}`;
+            errorMessage = $localize`:@@apiForbiddenError:Forbidden. ${error.message}`;
             break;
           case 404:
-            errorMessage = `Not Found. ${error.message}`;
+            errorMessage = $localize`:@@apiNotFoundError:Not Found. ${error.message}`;
             break;
           case 500:
-            errorMessage = `Internal Server Error. ${error.message}`;
+            errorMessage = $localize`:@@apiInternalServerError:Internal Server Error. ${error.message}`;
             break;
           default:
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+            errorMessage = $localize`:@@apiGenericError:Error Code: ${error.status}:INTERPOLATION:\nMessage: ${error.message}:INTERPOLATION_1:`;
         }
       }
       toastr.error(errorMessage);

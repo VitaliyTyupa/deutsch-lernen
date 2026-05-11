@@ -7,9 +7,9 @@ export class GrammarOptionsService {
 
   languageLevelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   textTypes = [
-    {type: 'sentences', title: 'Einfache Sätze'},
-    {type: 'text', title: 'Kohärenter Text'},
-    {type: 'dialog', title: 'Dialog'},
+    {type: 'sentences', title: $localize`:@@textTypeSimpleSentences:Einfache Sätze`},
+    {type: 'text', title: $localize`:@@textTypeCoherentText:Kohärenter Text`},
+    {type: 'dialog', title: $localize`:@@textTypeDialog:Dialog`},
   ];
   tenses = [
     'Präteritum',

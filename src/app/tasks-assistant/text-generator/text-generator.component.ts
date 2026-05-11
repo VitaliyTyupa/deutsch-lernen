@@ -155,6 +155,12 @@ export class TextGeneratorComponent implements OnInit {
     });
   }
 
+  getGeneratedTextStatus(): string {
+    return this.generatedResult()
+      ? $localize`:@@textGeneratorDoneStatus:Erledigt`
+      : $localize`:@@textGeneratorSetOptionsFirst:Stellen Sie zuerst die Optionen ein`;
+  }
+
   saveTextAction() {
     this.saveText().subscribe();
   }

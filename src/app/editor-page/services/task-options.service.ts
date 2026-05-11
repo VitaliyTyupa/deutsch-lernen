@@ -7,11 +7,11 @@ import {TaskType} from '../../types/editor.interface';
 export class TaskOptionsService {
 
   taskTypesList: {[key: string]: TaskType} = {
-    1: { "id": '1', name: 'Lückentext', "description": "Generieren Sie neue Sätze mit Quellwörtern." },
-    2: { "id": '2', name: 'Wortdefinition', "description": "Geben Sie Definitionen der Quellwörter an." },
-    3: { "id": '3', name: 'Richtig/Falsch-Aussage', "description": "Erstellen Sie Wahr/Falsch-Aussagen." },
-    4: { "id": '4', name: 'Frage Antwort', "description": "Generieren Sie Fragen zum Text." },
-    5: { "id": '5', name: 'Übersetzung', "description": "Generieren Sie Sätze zur Übersetzung." }
+    1: { "id": '1', name: $localize`:@@taskTypeGapTextName:Lückentext`, "description": $localize`:@@taskTypeGapTextDescription:Generieren Sie neue Sätze mit Quellwörtern.` },
+    2: { "id": '2', name: $localize`:@@taskTypeWordDefinitionName:Wortdefinition`, "description": $localize`:@@taskTypeWordDefinitionDescription:Geben Sie Definitionen der Quellwörter an.` },
+    3: { "id": '3', name: $localize`:@@taskTypeTrueFalseName:Richtig/Falsch-Aussage`, "description": $localize`:@@taskTypeTrueFalseDescription:Erstellen Sie Wahr/Falsch-Aussagen.` },
+    4: { "id": '4', name: $localize`:@@taskTypeQuestionAnswerName:Frage Antwort`, "description": $localize`:@@taskTypeQuestionAnswerDescription:Generieren Sie Fragen zum Text.` },
+    5: { "id": '5', name: $localize`:@@taskTypeTranslationName:Übersetzung`, "description": $localize`:@@taskTypeTranslationDescription:Generieren Sie Sätze zur Übersetzung.` }
   };
 
   constructor() { }

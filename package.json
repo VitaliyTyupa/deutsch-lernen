@@ -6,8 +6,13 @@
     "ng": "ng",
     "start": "ng serve",
     "start:dev": "ng serve --configuration=development",
+    "start:de": "ng serve --configuration=de",
+    "start:uk": "ng serve --configuration=uk",
+    "start:en": "ng serve --configuration=en",
     "start:prod": "ng serve --configuration=production",
     "build": "ng build",
+    "build:localize": "ng build --localize",
+    "extract-i18n": "ng extract-i18n --format=xlf --output-path src/locale",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

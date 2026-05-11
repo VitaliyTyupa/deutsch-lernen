@@ -1,10 +1,10 @@
 <mat-card class="card-text">
   <mat-card-header>
-    <h3>Richtig/Falsch-Aussage</h3>
+    <h3 i18n="@@previewTrueFalseTitle">Richtig/Falsch-Aussage</h3>
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
-    <h4>Aussage</h4>
+    <h4 i18n="@@previewStatementHeading">Aussage</h4>
     @for (word of content; track $index) {
       <p>{{$index + 1}}. {{word.statement}}</p>
     }

@@ -5,6 +5,22 @@
   "projects": {
     "deutsch-lernen": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": {
+          "code": "de",
+          "baseHref": "/de/"
+        },
+        "locales": {
+          "uk": {
+            "translation": "src/locale/messages.uk.xlf",
+            "baseHref": "/uk/"
+          },
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/en/"
+          }
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
@@ -18,7 +34,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/deutsch-lernen",
+            "outputPath": {
+              "base": "dist/deutsch-lernen",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -60,7 +79,7 @@
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
-              ],
+              ]
             },
             "development": {
               "optimization": false,
@@ -71,6 +90,21 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
                 }
+              ]
+            },
+            "de": {
+              "localize": [
+                "de"
+              ]
+            },
+            "uk": {
+              "localize": [
+                "uk"
+              ]
+            },
+            "en": {
+              "localize": [
+                "en"
               ]
             }
           },
@@ -84,6 +118,15 @@
             },
             "development": {
               "buildTarget": "deutsch-lernen:build:development"
+            },
+            "de": {
+              "buildTarget": "deutsch-lernen:build:development,de"
+            },
+            "uk": {
+              "buildTarget": "deutsch-lernen:build:development,uk"
+            },
+            "en": {
+              "buildTarget": "deutsch-lernen:build:development,en"
             }
           },
           "defaultConfiguration": "development"

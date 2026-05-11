@@ -32,9 +32,9 @@ export class UserService {
     this.getUserById(userId).pipe(
       tap(user => this.user = user)
     ).subscribe({
-      next: () => {this.toastr.success('Nutzerdaten aktualisiert')},
+      next: () => {this.toastr.success($localize`:@@userUpdateSuccessToast:Nutzerdaten aktualisiert`)},
       error: () => {
-        this.toastr.error('Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.');
+        this.toastr.error($localize`:@@userUpdateErrorToast:Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.`);
         this.router.navigate(['/login']);
       }
     })

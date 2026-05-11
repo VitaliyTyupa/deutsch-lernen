@@ -1,22 +1,22 @@
 <mat-card class="card-text">
   <mat-card-header>
-    <h3>Wortdefinition</h3>
+    <h3 i18n="@@previewWordDefinitionTitle">Wortdefinition</h3>
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
-    <h4>Karten</h4>
+    <h4 i18n="@@previewCardsHeading">Karten</h4>
     @for (word of content; track $index) {
       <div class="word-definition">
         <p><b>{{word.targetWord}}</b> - {{word.definition}}</p>
       </div>
     }
 
-    <h4>Aufgabe</h4>
+    <h4 i18n="@@previewTaskHeading">Aufgabe</h4>
     @for (definition of definitions; track $index) {
       <p>{{$index + 1}}. {{definition}}</p>
     }
     <mat-divider></mat-divider>
-    <h5>Worte</h5>
+    <h5 i18n="@@previewWordsHeading">Worte</h5>
     {{words.join(', ')}}
 
   </mat-card-content>

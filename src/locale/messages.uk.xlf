@@ -1,0 +1,1589 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="de" target-language="uk" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="textInputPlaceholder" datatype="html">
+        <source>Beginnen Sie hier mit der Eingabe ...</source>
+        <target>Почніть вводити тут ...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.config.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-input/text-input.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authLoginTitle" datatype="html">
+        <source>Anmeldung</source>
+        <target>Вхід</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authEmailLabel" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authEmailInvalid" datatype="html">
+        <source>Bitte geben Sie eine gültige E-Mail-Adresse ein</source>
+        <target>Будь ласка, введіть коректну email-адресу</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authPasswordLabel" datatype="html">
+        <source>Kennwort</source>
+        <target>Пароль</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authCreateAccount" datatype="html">
+        <source>Neues Konto erstellen</source>
+        <target>Створити новий акаунт</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authLoginSubmit" datatype="html">
+        <source>Einloggen</source>
+        <target>Увійти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authRegisterTitle" datatype="html">
+        <source>Registrierung</source>
+        <target>Реєстрація</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authNameLabel" datatype="html">
+        <source>Name</source>
+        <target>Ім’я</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authNameMinLength" datatype="html">
+        <source>Name muss mindestens 3 Zeichen enthalten</source>
+        <target>Ім’я має містити щонайменше 3 символи</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authEmailInvalidShort" datatype="html">
+        <source>Geben Sie eine gültige E-Mail-Adresse ein</source>
+        <target>Введіть коректну email-адресу</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">17,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authPasswordMinLength" datatype="html">
+        <source>Kennwort muss mindestens 6 Zeichen enthalten</source>
+        <target>Пароль має містити щонайменше 6 символів</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authConfirmPasswordLabel" datatype="html">
+        <source>Bestätigung des Kennworts</source>
+        <target>Підтвердження пароля</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authPasswordNoMatch" datatype="html">
+        <source>Wiederholen Sie das Passwort noch einmal.</source>
+        <target>Повторіть пароль ще раз.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authRoleLabel" datatype="html">
+        <source>Deine Rolle: </source>
+        <target>Ваша роль: </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authTeacherRole" datatype="html">
+        <source>Lehrerin</source>
+        <target>Вчителька</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authStudentRole" datatype="html">
+        <source>Schulerin</source>
+        <target>Учениця</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authRegisterSubmit" datatype="html">
+        <source>Registrieren</source>
+        <target>Зареєструватися</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">63,65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authRegisterSuccessToast" datatype="html">
+        <source>Benutzer erfolgreich registriert!</source>
+        <target>Користувача успішно зареєстровано!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiUnknownError" datatype="html">
+        <source>An unknown error occurred!</source>
+        <target>Сталася невідома помилка!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiClientError" datatype="html">
+        <source>Error: <x id="PH" equiv-text="error.error.message"/></source>
+        <target>Помилка: <x id="PH" equiv-text="error.error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiBadRequestError" datatype="html">
+        <source>Bad Request. <x id="PH" equiv-text="error.message"/></source>
+        <target>Невірний запит. <x id="PH" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiUnauthorizedError" datatype="html">
+        <source>Unauthorized. <x id="PH" equiv-text="error.message"/></source>
+        <target>Не авторизовано. <x id="PH" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiForbiddenError" datatype="html">
+        <source>Forbidden. <x id="PH" equiv-text="error.message"/></source>
+        <target>Доступ заборонено. <x id="PH" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiNotFoundError" datatype="html">
+        <source>Not Found. <x id="PH" equiv-text="error.message"/></source>
+        <target>Не знайдено. <x id="PH" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiInternalServerError" datatype="html">
+        <source>Internal Server Error. <x id="PH" equiv-text="error.message"/></source>
+        <target>Внутрішня помилка сервера. <x id="PH" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="apiGenericError" datatype="html">
+        <source>Error Code: <x id="INTERPOLATION" equiv-text="error.status"/>
+Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></source>
+        <target>Error Code: <x id="INTERPOLATION" equiv-text="error.status"/>
+Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/interceptors/api-errors.interceptor.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userUpdateSuccessToast" datatype="html">
+        <source>Nutzerdaten aktualisiert</source>
+        <target>Дані користувача оновлено</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/user.service.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userUpdateErrorToast" datatype="html">
+        <source>Nutzerdaten konnten nicht aktualisiert werden. Bitte melden Sie sich erneut an.</source>
+        <target>Не вдалося оновити дані користувача. Будь ласка, увійдіть знову.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/common-services/user.service.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewInvalidTaskFormat" datatype="html">
+        <source>Die Aufgabe <x id="TASK_NAME" equiv-text="this.taskOptionsService.getTaskName(item.id)"/> hat falsche format!</source>
+        <target>Завдання <x id="TASK_NAME" equiv-text="this.taskOptionsService.getTaskName(item.id)"/> має неправильний формат!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/content-preview.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewGapTextTitle" datatype="html">
+        <source>Lückentext</source>
+        <target>Текст із пропусками</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/gap-filling-text/gap-filling-text.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewHelpfulWordsHeading" datatype="html">
+        <source>Hilfreiche Worte</source>
+        <target>Допоміжні слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/gap-filling-text/gap-filling-text.component.html</context>
+          <context context-type="linenumber">9,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewQuestionAnswerTitle" datatype="html">
+        <source>Frage Antwort</source>
+        <target>Питання-відповідь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/question-answer/question-answer.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewQuestionHeading" datatype="html">
+        <source>Frage</source>
+        <target>Питання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/question-answer/question-answer.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewAnswerHeading" datatype="html">
+        <source>Antwort</source>
+        <target>Відповідь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/question-answer/question-answer.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewTrueFalseTitle" datatype="html">
+        <source>Richtig/Falsch-Aussage</source>
+        <target>Твердження правда/неправда</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/statements/statements.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewStatementHeading" datatype="html">
+        <source>Aussage</source>
+        <target>Твердження</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/statements/statements.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewTranslationTitle" datatype="html">
+        <source>Übersetzung</source>
+        <target>Переклад</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/translation/translation.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewUkrainianHeading" datatype="html">
+        <source>Ukrainische</source>
+        <target>Українська</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/translation/translation.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewGermanHeading" datatype="html">
+        <source>Deutsch</source>
+        <target>Німецька</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/translation/translation.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewWordDefinitionTitle" datatype="html">
+        <source>Wortdefinition</source>
+        <target>Визначення слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/word-definition/word-definition.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewCardsHeading" datatype="html">
+        <source>Karten</source>
+        <target>Картки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/word-definition/word-definition.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewTaskHeading" datatype="html">
+        <source>Aufgabe</source>
+        <target>Завдання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/word-definition/word-definition.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewWordsHeading" datatype="html">
+        <source>Worte</source>
+        <target>Слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/content-preview/word-definition/word-definition.component.html</context>
+          <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideLanguage" datatype="html">
+        <source>Wählen Sie zunächst die Sprache aus, in der die Aufgaben angeboten werden sollen.</source>
+        <target>Спочатку виберіть мову, якою мають бути запропоновані завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideTextInput" datatype="html">
+        <source>Geben Sie den Text ein, wenn Sie vorhaben, den Text zu bearbeiten, oder aktivieren Sie das Kontrollkästchen „Text automatisch generiert“ und geben Sie den Kontext im Feld „Betreff des Textes“ an, wenn Sie Ihren eigenen Text generieren möchten.</source>
+        <target>Введіть текст, якщо плануєте його редагувати, або увімкніть “Автоматично генерувати текст” і введіть контекст у полі “Тема тексту”, якщо хочете створити власний текст.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideSourceWords" datatype="html">
+        <source>Geben Sie eine Liste von kommagetrennten Wörtern ein, die Sie zuordnen möchten.</source>
+        <target>Введіть список слів через кому, які потрібно використати.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideTaskType" datatype="html">
+        <source>Wählen Sie die spezifischen Aufgaben im Feld „Aufgabentyp auswählen“.</source>
+        <target>Виберіть конкретні завдання в полі “Виберіть тип завдання”.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideSentenceCount" datatype="html">
+        <source>Geben Sie die gewünschte Anzahl von Sätzen des Textes ein.</source>
+        <target>Введіть бажану кількість речень тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideDifficulty" datatype="html">
+        <source>Wählen Sie den Schwierigkeitsgrad der Aufgaben aus.</source>
+        <target>Виберіть рівень складності завдань.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGuideGenerate" datatype="html">
+        <source>Klicken Sie auf die Schaltfläche &quot;Erzeugen&quot; und warten Sie das Ergebnis der Anfrage ab.</source>
+        <target>Натисніть кнопку “Згенерувати” і дочекайтеся результату запиту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-guide/editor-guide.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorGenerateButton" datatype="html">
+        <source>Erzeugen</source>
+        <target>Згенерувати</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorResetButton" datatype="html">
+        <source>Zurücksetzen</source>
+        <target>Скинути</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSourceWordsLabel" datatype="html">
+        <source>Quellwörter</source>
+        <target>Вихідні слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSourceWordsRequired" datatype="html">
+        <source>Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.</source>
+        <target>Будь ласка, введіть слово перед генерацією завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">48,49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">196,198</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">63,65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorAutogenerateText" datatype="html">
+        <source>Text automatisch generieren</source>
+        <target>Автоматично генерувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonTextSubjectLabel" datatype="html">
+        <source>Betreff des Textes</source>
+        <target>Тема тексту</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonTextSubjectPlaceholder" datatype="html">
+        <source>Geben Sie den Betreff des Textes ein...</source>
+        <target>Введіть тему тексту...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonTextSubjectRequired" datatype="html">
+        <source>Bitte geben Sie den Betreff des Textes ein.</source>
+        <target>Будь ласка, введіть тему тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">70,72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorPrintCalligraphy" datatype="html">
+        <source>Print Calligraphy</source>
+        <target>Друк каліграфії</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.html</context>
+          <context context-type="linenumber">27,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorSettingsChangedToast" datatype="html">
+        <source>Bitte beachten Sie, dass die Einstellungen für die Aufgabengenerierung geändert wurden. Bitte wählen Sie mindestens einen Aufgabentyp aus.</source>
+        <target>Зверніть увагу: налаштування генерації завдань змінено. Будь ласка, виберіть щонайменше один тип завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorTaskGeneratedToast" datatype="html">
+        <source>Aufgabe erfolgreich generiert.</source>
+        <target>Завдання успішно згенеровано.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorTaskGenerationErrorToast" datatype="html">
+        <source>Beim Generieren der Aufgabe ist ein Fehler aufgetreten.</source>
+        <target>Під час генерації завдання сталася помилка.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorPrintTextRequiredToast" datatype="html">
+        <source>Bitte geben Sie den Text ein, um ihn zu drucken.</source>
+        <target>Будь ласка, введіть текст, щоб надрукувати його.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-page.component.ts</context>
+          <context context-type="linenumber">164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorSettingsTaskTypeLabel" datatype="html">
+        <source>Aufgabentyp auswählen</source>
+        <target>Виберіть тип завдання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-settings/editor-settings.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editorSettingsTaskTypeRequired" datatype="html">
+        <source>Bitte wählen Sie mindestens einen Aufgabentyp aus.</source>
+        <target>Будь ласка, виберіть щонайменше один тип завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-settings/editor-settings.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="grammarTensesLabel" datatype="html">
+        <source>Zeitformen</source>
+        <target>Часові форми</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-settings/editor-settings.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="grammarFormLabel" datatype="html">
+        <source>Form</source>
+        <target>Форма</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-settings/editor-settings.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSentencesUnit" datatype="html">
+        <source>Sätze</source>
+        <target>речень</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/editor-settings/editor-settings.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">209,210</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">224,225</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">239,240</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewRequestTitle" datatype="html">
+        <source>Antrag auf Aufgabenerstellung.</source>
+        <target>Запит на створення завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/preview-request-modal/preview-request-modal.component.html</context>
+          <context context-type="linenumber">1,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewRequestDescription" datatype="html">
+        <source>Bitte vergewissern Sie sich, dass Ihr Antrag alle erforderlichen Bedingungen enthält und Ihren Wünschen entspricht.</source>
+        <target>Будь ласка, переконайтеся, що ваш запит містить усі необхідні умови та відповідає вашим побажанням.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/preview-request-modal/preview-request-modal.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewRequestBackButton" datatype="html">
+        <source>Zurück zur Auswahl der Optionen</source>
+        <target>Назад до вибору опцій</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/preview-request-modal/preview-request-modal.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="previewRequestConfirmButton" datatype="html">
+        <source>Bestätige</source>
+        <target>Підтвердити</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/preview-request-modal/preview-request-modal.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeGapTextName" datatype="html">
+        <source>Lückentext</source>
+        <target>Текст із пропусками</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeGapTextDescription" datatype="html">
+        <source>Generieren Sie neue Sätze mit Quellwörtern.</source>
+        <target>Згенерувати нові речення з вихідними словами.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeWordDefinitionName" datatype="html">
+        <source>Wortdefinition</source>
+        <target>Визначення слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeWordDefinitionDescription" datatype="html">
+        <source>Geben Sie Definitionen der Quellwörter an.</source>
+        <target>Надати визначення вихідних слів.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeTrueFalseName" datatype="html">
+        <source>Richtig/Falsch-Aussage</source>
+        <target>Правда/неправда</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeTrueFalseDescription" datatype="html">
+        <source>Erstellen Sie Wahr/Falsch-Aussagen.</source>
+        <target>Створити твердження правда/неправда.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeQuestionAnswerName" datatype="html">
+        <source>Frage Antwort</source>
+        <target>Питання-відповідь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeQuestionAnswerDescription" datatype="html">
+        <source>Generieren Sie Fragen zum Text.</source>
+        <target>Згенерувати питання до тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeTranslationName" datatype="html">
+        <source>Übersetzung</source>
+        <target>Переклад</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="taskTypeTranslationDescription" datatype="html">
+        <source>Generieren Sie Sätze zur Übersetzung.</source>
+        <target>Згенерувати речення для перекладу.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/editor-page/services/task-options.service.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeTitle" datatype="html">
+        <source>Deutsch Lernen</source>
+        <target>Deutsch Lernen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeDescription" datatype="html">
+        <source>Lassen Sie in Sekunden Übungen und Texte erstellen – auf deinem Niveau, für deinen Wortschatz.</source>
+        <target>Створюйте вправи й тексти за секунди: для вашого рівня та вашого словника.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeLoginButton" datatype="html">
+        <source>Anmelden</source>
+        <target>Увійти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeaturesTitle" datatype="html">
+        <source>Unsere Funktionen</source>
+        <target>Наші функції</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeatureAutomaticGeneration" datatype="html">
+        <source> - Automatische Generierung von Übungen</source>
+        <target> - Автоматична генерація вправ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeatureLevelAdaptation" datatype="html">
+        <source> - Individuelle Anpassung an dein Lernniveau</source>
+        <target> - Індивідуальна адаптація до вашого рівня</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeatureInteractiveTasks" datatype="html">
+        <source> - Interaktive Texte und Aufgaben</source>
+        <target> - Інтерактивні тексти й завдання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeFeatureProgress" datatype="html">
+        <source> - Fortschrittsverfolgung und Korrekturen</source>
+        <target> - Відстеження прогресу та виправлення</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeHowItWorksTitle" datatype="html">
+        <source>Wie funktioniert das?</source>
+        <target>Як це працює?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeHowRegister" datatype="html">
+        <source> - Registriere dich oder melde dich an</source>
+        <target> - Зареєструйтеся або увійдіть</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeHowChooseTopic" datatype="html">
+        <source> - Wähle ein Thema oder gib einen Text ein</source>
+        <target> - Виберіть тему або введіть текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeHowGenerate" datatype="html">
+        <source> - Generiere passende Übungen automatisch</source>
+        <target> - Автоматично згенеруйте відповідні вправи</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeHowTrackProgress" datatype="html">
+        <source> - Lass deine Aufgaben korrigieren und verfolge deinen Fortschritt</source>
+        <target> - Перевіряйте завдання та відстежуйте прогрес</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeAudienceTitle" datatype="html">
+        <source>Für wen ist Tekamolo gedacht?</source>
+        <target>Для кого Tekamolo?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeAudienceTeachers" datatype="html">
+        <source> - Für Deutschlehrer*innen – spare Zeit bei der Unterrichtsvorbereitung</source>
+        <target> - Для вчителів німецької: заощаджуйте час на підготовці уроків</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeAudienceLearners" datatype="html">
+        <source> - Für Lernende – lerne gezielt, flexibel und effektiv</source>
+        <target> - Для учнів: навчайтеся цілеспрямовано, гнучко й ефективно</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="homeAudienceExams" datatype="html">
+        <source> - Für alle, die sich auf Prüfungen wie Goethe-Zertifikat oder TELC vorbereiten</source>
+        <target> - Для всіх, хто готується до іспитів Goethe-Zertifikat або TELC</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home-page/home-page.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textTypeSimpleSentences" datatype="html">
+        <source>Einfache Sätze</source>
+        <target>Прості речення</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/services/grammar-options.service.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textTypeCoherentText" datatype="html">
+        <source>Kohärenter Text</source>
+        <target>Зв’язний текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/services/grammar-options.service.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textTypeDialog" datatype="html">
+        <source>Dialog</source>
+        <target>Діалог</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/services/grammar-options.service.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tasksNavGenerateText" datatype="html">
+        <source>Text generieren</source>
+        <target>Згенерувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/tasks-assistant.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tasksNavEditText" datatype="html">
+        <source>Text bearbeiten</source>
+        <target>Редагувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/tasks-assistant.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tasksNavVocabulary" datatype="html">
+        <source>Wortschatz</source>
+        <target>Словник</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/tasks-assistant.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTitle" datatype="html">
+        <source>Text bearbeiten</source>
+        <target>Редагувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorBaseTextTitle" datatype="html">
+        <source>Basistext</source>
+        <target>Базовий текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorBaseTextDescription" datatype="html">
+        <source>Wählen Sie einen Text aus der Liste aus oder fügen Sie Ihren eigenen Text ein, um mit der Erstellung von Aufgaben zu beginnen.</source>
+        <target>Виберіть текст зі списку або вставте власний текст, щоб почати створювати завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorBaseTextNameLabel" datatype="html">
+        <source>Basistextname</source>
+        <target>Назва базового тексту</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTaskTypeTitle" datatype="html">
+        <source>Aufgabentyp</source>
+        <target>Тип завдання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">23,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorGapTextTab" datatype="html">
+        <source>Lückentext</source>
+        <target>Текст із пропусками</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gapTextDescription" datatype="html">
+        <source>Hier können Sie aus einem ausgewählten Text einen Lückentext erstellen. Wählen Sie einen der Aufgabentypen und passen Sie ihn an Ihr Ziel an.</source>
+        <target>Тут можна створити текст із пропусками з вибраного тексту. Виберіть один із типів завдання та адаптуйте його до своєї мети.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gapTextWordListOption" datatype="html">
+        <source>Erstellen Sie einen Lückentext mit ausgewählten Wörtern aus dem Text. Doppelklicken Sie auf ein gewünschtes Textwort, um es in die Liste aufzunehmen. </source>
+        <target>Створити текст із пропусками з вибраними словами з тексту. Двічі клацніть потрібне слово, щоб додати його до списку. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSelectedWordsLabel" datatype="html">
+        <source>Ausgewählte Wörter</source>
+        <target>Вибрані слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">193,194</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gapTextVerbOption" datatype="html">
+        <source>Erstellen Sie Text mit Lücken anstelle aller Verben. </source>
+        <target>Створити текст із пропусками замість усіх дієслів. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonNoneOption" datatype="html">
+        <source>None</source>
+        <target>Немає</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">62,63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">72,73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">82,83</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">92,93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">132,133</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">144,145</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">174,175</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">148,149</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">160,161</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">192,193</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">214,215</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">224,225</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">249,250</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">259,260</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">269,270</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">279,280</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">289,290</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">312,313</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">322,323</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">332,333</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gapTextAdjectiveOption" datatype="html">
+        <source>Erstellen Sie Text mit Lücken anstelle aller Adjektive, die den ausgewählten Parametern entsprechen. </source>
+        <target>Створити текст із пропусками замість усіх прикметників, що відповідають вибраним параметрам. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">113,115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gapTextNounOption" datatype="html">
+        <source>Erstellen Sie Text mit Lücken anstelle aller Nomen, die den ausgewählten Parametern entsprechen. </source>
+        <target>Створити текст із пропусками замість усіх іменників, що відповідають вибраним параметрам. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">155,157</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorWordDefinitionTab" datatype="html">
+        <source>Wortdefinition</source>
+        <target>Визначення слова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">187</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorWordDefinitionDescription" datatype="html">
+        <source>Wählen Sie die gewünschten Wörter aus dem ausgewählten Text aus und generieren Sie kontextbezogene Definitionen für diese Wörter.</source>
+        <target>Виберіть потрібні слова з вибраного тексту та згенеруйте для них контекстні визначення.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">189,192</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTrueFalseTab" datatype="html">
+        <source>Richtig/Falsch-Aussage</source>
+        <target>Правда/неправда</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">200</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTrueFalseDescription" datatype="html">
+        <source>Wählen Sie die Anzahl der Aussagen „Richtig-Falsch“ zum ausgewählten Text.</source>
+        <target>Виберіть кількість тверджень правда/неправда для вибраного тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">202,204</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSentenceCountLabel" datatype="html">
+        <source>Anzahl der Sätze</source>
+        <target>Кількість речень</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">206,207</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">221,222</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">236,237</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorQuestionAnswerTab" datatype="html">
+        <source>Frage Antwort</source>
+        <target>Питання-відповідь</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">215</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorQuestionAnswerDescription" datatype="html">
+        <source>Wählen Sie aus, wie viele Fragen zum ausgewählten Text erstellt werden sollen.</source>
+        <target>Виберіть, скільки питань потрібно створити для вибраного тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">217,219</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTranslationTab" datatype="html">
+        <source>Übersetzung</source>
+        <target>Переклад</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">230</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorTranslationDescription" datatype="html">
+        <source>Wählen Sie aus, wie viele Sätze für die Übersetzungsübung erstellt werden sollen.</source>
+        <target>Виберіть, скільки речень потрібно створити для вправи на переклад.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">232,234</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textEditorGenerateTasksButton" datatype="html">
+        <source>Aufgaben generieren</source>
+        <target>Згенерувати завдання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-editor/text-editor.component.html</context>
+          <context context-type="linenumber">250,252</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorTitle" datatype="html">
+        <source>Text generieren</source>
+        <target>Згенерувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorBasicOptionsTitle" datatype="html">
+        <source>Grundlegende Optionen</source>
+        <target>Основні опції</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonTextSubjectSummary" datatype="html">
+        <source>Betreff des Textes;</source>
+        <target>Тема тексту;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonSourceWordsSummary" datatype="html">
+        <source>Quellwörter;</source>
+        <target>Вихідні слова;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonLanguageLabel" datatype="html">
+        <source>Sprache</source>
+        <target>Мова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonLanguageLevelLabel" datatype="html">
+        <source>Sprachniveau</source>
+        <target>Рівень мови</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonTextTypeLabel" datatype="html">
+        <source>Textyp</source>
+        <target>Тип тексту</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorAdditionalOptionsTitle" datatype="html">
+        <source>Zusätzliche Optionen und Anweisungen</source>
+        <target>Додаткові опції та інструкції</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">77,78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorAdditionalOptionsDescription" datatype="html">
+        <source>Ein kurz Beschreibung der Optionen, die Sie auswählen können, um den generierten Text anzupassen.</source>
+        <target>Короткий опис опцій, які можна вибрати, щоб налаштувати згенерований текст.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">79,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonInstructionsTitle" datatype="html">
+        <source>Anweisungen</source>
+        <target>Інструкції</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">84,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorQuickGuideTitle" datatype="html">
+        <source>Kurzanleitung zur Nutzung der Textgenerierungsseite</source>
+        <target>Коротка інструкція з використання сторінки генерації тексту</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">86,89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideBasicOptions" datatype="html">
+        <source>Grundlegende Optionen festlegen:</source>
+        <target>Налаштуйте основні опції:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">89,91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideOpenBasic" datatype="html">
+        <source>Öffnen Sie das Panel <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Grundlegende Optionen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.</source>
+        <target>Відкрийте панель <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Основні опції”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">91,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideChooseOptions" datatype="html">
+        <source>Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</source>
+        <target>Виберіть мову, кількість речень, рівень мови, тип тексту та час.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">92,93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideFillFields" datatype="html">
+        <source>Füllen Sie die Felder <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Quellwörter&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> und <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Betreff des Textes&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> aus (Pflichtfelder).</source>
+        <target>Заповніть поля <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Вихідні слова”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> і <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Тема тексту”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> (обов’язкові поля).</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideAdditionalOptions" datatype="html">
+        <source>Zusätzliche Optionen konfigurieren (optional):</source>
+        <target>Налаштуйте додаткові опції (необов’язково):</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">97,99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideConfigureGrammar" datatype="html">
+        <source>Erweitern Sie die Panels <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Adjektive&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Nomen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Präpositionen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Verben&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> oder <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Sätze&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, um spezifische grammatikalische Präferenzen festzulegen.</source>
+        <target>Розгорніть панелі <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Adjektive”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Nomen”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Präpositionen”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Verben”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> або <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Sätze”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, щоб задати граматичні налаштування.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideGenerateText" datatype="html">
+        <source>Text generieren:</source>
+        <target>Згенерувати текст:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">103,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideClickGenerate" datatype="html">
+        <source>Klicken Sie auf die Schaltfläche <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Text generieren&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</source>
+        <target>Натисніть кнопку <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Згенерувати текст”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, щоб створити текст на основі вибраних опцій.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">105,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideViewEdit" datatype="html">
+        <source>Generierten Text anzeigen und bearbeiten:</source>
+        <target>Переглянути та редагувати згенерований текст:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">109,111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideGeneratedShown" datatype="html">
+        <source>Der generierte Text wird im Abschnitt <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Generiert Text&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> angezeigt.</source>
+        <target>Згенерований текст буде показано в розділі <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Згенерований текст”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">111,112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideUseEditor" datatype="html">
+        <source>Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</source>
+        <target>Використовуйте вбудований редактор, щоб змінити текст.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">112,115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideSaveOrPass" datatype="html">
+        <source>Text speichern oder übertragen:</source>
+        <target>Зберегти або передати текст:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">116,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuideSaveText" datatype="html">
+        <source>Klicken Sie auf <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Text speichern&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, um den Text zu speichern.</source>
+        <target>Натисніть <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Зберегти текст”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, щоб зберегти текст.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">118,119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGuidePassText" datatype="html">
+        <source>Klicken Sie auf <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Text zur Bearbeitung übertragen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</source>
+        <target>Натисніть <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>“Передати текст для редагування”<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/>, щоб передати текст до іншого редактора для подальшої роботи.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">119,120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGenerateButton" datatype="html">
+        <source>Text generieren</source>
+        <target>Згенерувати текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">344</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGeneratedTextTitle" datatype="html">
+        <source> Generiert Text </source>
+        <target> Згенерований текст </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">350,351</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorTextNameLabel" datatype="html">
+        <source>Name des Textes</source>
+        <target>Назва тексту</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">356,357</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorTextNamePlaceholder" datatype="html">
+        <source>Geben Sie den Name des Textes ein...</source>
+        <target>Введіть назву тексту...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">357</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorTextNameRequired" datatype="html">
+        <source>Bitte geben Sie den Name des Textes ein.</source>
+        <target>Будь ласка, введіть назву тексту.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">359,361</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorGeneratedTextLabel" datatype="html">
+        <source>Generiert Text</source>
+        <target>Згенерований текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">363,364</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="commonFieldRequired" datatype="html">
+        <source>Die Feld ist erforderlich.</source>
+        <target>Це поле обов’язкове.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">366,368</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorSaveTextButton" datatype="html">
+        <source>Text speichern</source>
+        <target>Зберегти текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">370</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorPassTextButton" datatype="html">
+        <source>Text zur Bearbeitung übertragen</source>
+        <target>Передати текст для редагування</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.html</context>
+          <context context-type="linenumber">371</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorDoneStatus" datatype="html">
+        <source>Erledigt</source>
+        <target>Готово</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textGeneratorSetOptionsFirst" datatype="html">
+        <source>Stellen Sie zuerst die Optionen ein</source>
+        <target>Спочатку налаштуйте опції</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-generator/text-generator.component.ts</context>
+          <context context-type="linenumber">161</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textInputTextLabel" datatype="html">
+        <source>Text</source>
+        <target>Текст</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-input/text-input.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="textInputRequired" datatype="html">
+        <source>Bitte geben Sie einen Text ein, bevor Sie eine Aufgabe generieren.</source>
+        <target>Будь ласка, введіть текст перед генерацією завдання.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/text-input/text-input.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vocabularyEditPlaceholder" datatype="html">
+        <source>Wortschatz</source>
+        <target>Словник</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/tasks-assistant/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navLogoAlt" datatype="html">
+        <source>Deutsch Lernen</source>
+        <target>Deutsch Lernen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navTasksAssistant" datatype="html">
+        <source>Aufgaben Assistent</source>
+        <target>Асистент завдань</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navWorksheetAssistant" datatype="html">
+        <source>Arbeitsblatt Assistent</source>
+        <target>Асистент робочих аркушів</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navEditor" datatype="html">
+        <source>Editor</source>
+        <target>Редактор</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">6,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navLanguageSwitcherLabel" datatype="html">
+        <source>Language</source>
+        <target>Мова</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navLogout" datatype="html">
+        <source>Logout</source>
+        <target>Вийти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navCheckConnection" datatype="html">
+        <source>Check Connection</source>
+        <target>Перевірити з’єднання</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="navLoginAriaLabel" datatype="html">
+        <source>Anmelden</source>
+        <target>Увійти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/top-toolbar/top-toolbar.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="roleStudent" datatype="html">
+        <source>Student</source>
+        <target>Учень</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/utils/pipes/role.pipe.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="roleTeacher" datatype="html">
+        <source>Lehrer</source>
+        <target>Вчитель</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/utils/pipes/role.pipe.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,14 +1,14 @@
-<h2>Text bearbeiten</h2>
+<h2 i18n="@@textEditorTitle">Text bearbeiten</h2>
 <form [formGroup]="taskListForm">
   <mat-accordion multi>
     <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
-        <mat-panel-title><h3>Basistext</h3></mat-panel-title>
+        <mat-panel-title><h3 i18n="@@textEditorBaseTextTitle">Basistext</h3></mat-panel-title>
       </mat-expansion-panel-header>
-      <h4><i>Wählen Sie einen Text aus der Liste aus oder fügen Sie Ihren eigenen Text ein, um mit der Erstellung von
+      <h4><i i18n="@@textEditorBaseTextDescription">Wählen Sie einen Text aus der Liste aus oder fügen Sie Ihren eigenen Text ein, um mit der Erstellung von
         Aufgaben zu beginnen.</i></h4>
       <mat-form-field>
-        <mat-label>Basistextname</mat-label>
+        <mat-label i18n="@@textEditorBaseTextNameLabel">Basistextname</mat-label>
         <mat-select (valueChange)="setText(baseText.value)" #baseText>
           @for (text of textlist$ | async; track text.id) {
             <mat-option [value]="text">{{ text.name }}</mat-option>
@@ -20,14 +20,14 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h3>Aufgabentyp</h3>
+          <h3 i18n="@@textEditorTaskTypeTitle">Aufgabentyp</h3>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-tab-group>
-        <mat-tab label="Lückentext">
+        <mat-tab label="Lückentext" i18n-label="@@textEditorGapTextTab">
           <mat-checkbox formControlName="gap_text">
             <h4>
-              <i>Hier können Sie aus einem ausgewählten Text einen Lückentext erstellen. Wählen Sie einen der
+              <i i18n="@@gapTextDescription">Hier können Sie aus einem ausgewählten Text einen Lückentext erstellen. Wählen Sie einen der
                 Aufgabentypen und passen Sie ihn an Ihr Ziel an.</i>
             </h4>
           </mat-checkbox>
@@ -37,21 +37,21 @@
               <mat-radio-group formControlName="selectedType">
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-radio-button value="wordList">Erstellen Sie einen Lückentext mit ausgewählten Wörtern aus dem
+                    <mat-radio-button value="wordList" i18n="@@gapTextWordListOption">Erstellen Sie einen Lückentext mit ausgewählten Wörtern aus dem
                       Text. Doppelklicken Sie auf ein gewünschtes Textwort, um es in die Liste aufzunehmen.
                     </mat-radio-button>
                   </mat-expansion-panel-header>
                   <mat-form-field class="width-100">
-                    <mat-label>Ausgewählte Wörter</mat-label>
+                    <mat-label i18n="@@commonSelectedWordsLabel">Ausgewählte Wörter</mat-label>
                     <textarea matInput [formControl]="wordList"></textarea>
                     <mat-error *ngIf="wordList.invalid">
-                      Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+                      <span i18n="@@commonSourceWordsRequired">Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.</span>
                     </mat-error>
                   </mat-form-field>
                 </mat-expansion-panel>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-radio-button value="verb">Erstellen Sie Text mit Lücken anstelle aller Verben.
+                    <mat-radio-button value="verb" i18n="@@gapTextVerbOption">Erstellen Sie Text mit Lücken anstelle aller Verben.
                     </mat-radio-button>
                   </mat-expansion-panel-header>
                   <form formGroupName="verb">
@@ -59,7 +59,7 @@
                       <mat-form-field>
                         <mat-label>Vollverb</mat-label>
                         <mat-select formControlName="verbForm">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of verbForm; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -69,7 +69,7 @@
                       <mat-form-field>
                         <mat-label>Modalverb</mat-label>
                         <mat-select formControlName="modalVerb">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of modalsVerbs; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -79,7 +79,7 @@
                       <mat-form-field>
                         <mat-label>Modus</mat-label>
                         <mat-select formControlName="modus">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of modus; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -89,7 +89,7 @@
                       <mat-form-field>
                         <mat-label>Kasus</mat-label>
                         <mat-select formControlName="kasus">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of kasus; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -99,7 +99,7 @@
                       <mat-form-field>
                         <mat-label>Form</mat-label>
                         <mat-select formControlName="activeForm">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (type of formTypes; track $index) {
                             <mat-option [value]="type">{{ type }}</mat-option>
                           }
@@ -110,7 +110,7 @@
                 </mat-expansion-panel>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-radio-button value="adjective">Erstellen Sie Text mit Lücken anstelle aller Adjektive, die den
+                    <mat-radio-button value="adjective" i18n="@@gapTextAdjectiveOption">Erstellen Sie Text mit Lücken anstelle aller Adjektive, die den
                       ausgewählten Parametern entsprechen.
                     </mat-radio-button>
                   </mat-expansion-panel-header>
@@ -129,7 +129,7 @@
                       <mat-form-field>
                         <mat-label>Kasus</mat-label>
                         <mat-select formControlName="kasus">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of kasus; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -141,7 +141,7 @@
                       <mat-form-field>
                         <mat-label>Steigerungsform</mat-label>
                         <mat-select formControlName="comparison">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of comparisons; track $index) {
                             <mat-option [value]="item.comparison">{{ item.title }}</mat-option>
                           }
@@ -152,7 +152,7 @@
                 </mat-expansion-panel>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-radio-button value="noun">Erstellen Sie Text mit Lücken anstelle aller Nomen, die den
+                    <mat-radio-button value="noun" i18n="@@gapTextNounOption">Erstellen Sie Text mit Lücken anstelle aller Nomen, die den
                       ausgewählten Parametern entsprechen.
                     </mat-radio-button>
                   </mat-expansion-panel-header>
@@ -171,7 +171,7 @@
                       <mat-form-field>
                         <mat-label>Kasus</mat-label>
                         <mat-select formControlName="kasus">
-                          <mat-option [value]="null">None</mat-option>
+                          <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                           @for (item of kasus; track $index) {
                             <mat-option [value]="item">{{ item }}</mat-option>
                           }
@@ -184,59 +184,59 @@
             </mat-accordion>
           </form>
         </mat-tab>
-        <mat-tab label="Wortdefinition">
+        <mat-tab label="Wortdefinition" i18n-label="@@textEditorWordDefinitionTab">
           <mat-checkbox formControlName="word_definition">
-          <h4><i>Wählen Sie die gewünschten Wörter aus dem ausgewählten Text aus und generieren Sie kontextbezogene
+          <h4><i i18n="@@textEditorWordDefinitionDescription">Wählen Sie die gewünschten Wörter aus dem ausgewählten Text aus und generieren Sie kontextbezogene
             Definitionen für diese Wörter.</i></h4>
           </mat-checkbox>
           <mat-form-field class="width-100">
-            <mat-label>Ausgewählte Wörter</mat-label>
+            <mat-label i18n="@@commonSelectedWordsLabel">Ausgewählte Wörter</mat-label>
             <textarea matInput [formControl]="wordList"></textarea>
             <mat-error *ngIf="wordList.invalid">
-              Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+              <span i18n="@@commonSourceWordsRequired">Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.</span>
             </mat-error>
           </mat-form-field>
         </mat-tab>
-        <mat-tab label="Richtig/Falsch-Aussage">
+        <mat-tab label="Richtig/Falsch-Aussage" i18n-label="@@textEditorTrueFalseTab">
           <mat-checkbox formControlName="true_false">
-            <h4><i>Wählen Sie die Anzahl der Aussagen „Richtig-Falsch“ zum ausgewählten Text.</i></h4>
+            <h4><i i18n="@@textEditorTrueFalseDescription">Wählen Sie die Anzahl der Aussagen „Richtig-Falsch“ zum ausgewählten Text.</i></h4>
           </mat-checkbox>
           <form [formGroup]="truFalForm">
             <mat-form-field>
-              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-label i18n="@@commonSentenceCountLabel">Anzahl der Sätze</mat-label>
               <mat-select formControlName="count">
                 @for (item of [5, 10, 15, 20]; track $index) {
-                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                  <mat-option [value]="item">{{item}} <ng-container i18n="@@commonSentencesUnit">Sätze</ng-container></mat-option>
                 }
               </mat-select>
             </mat-form-field>
           </form>
         </mat-tab>
-        <mat-tab label="Frage Antwort">
+        <mat-tab label="Frage Antwort" i18n-label="@@textEditorQuestionAnswerTab">
           <mat-checkbox formControlName="question_answer">
-            <h4><i>Wählen Sie aus, wie viele Fragen zum ausgewählten Text erstellt werden sollen.</i></h4>
+            <h4><i i18n="@@textEditorQuestionAnswerDescription">Wählen Sie aus, wie viele Fragen zum ausgewählten Text erstellt werden sollen.</i></h4>
           </mat-checkbox>
           <form [formGroup]="quAnForm">
             <mat-form-field>
-              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-label i18n="@@commonSentenceCountLabel">Anzahl der Sätze</mat-label>
               <mat-select formControlName="count">
                 @for (item of [5, 10, 15, 20]; track $index) {
-                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                  <mat-option [value]="item">{{item}} <ng-container i18n="@@commonSentencesUnit">Sätze</ng-container></mat-option>
                 }
               </mat-select>
             </mat-form-field>
           </form>
         </mat-tab>
-        <mat-tab label="Übersetzung">
+        <mat-tab label="Übersetzung" i18n-label="@@textEditorTranslationTab">
           <mat-checkbox formControlName="translate">
-            <h4><i>Wählen Sie aus, wie viele Sätze für die Übersetzungsübung erstellt werden sollen.</i></h4>
+            <h4><i i18n="@@textEditorTranslationDescription">Wählen Sie aus, wie viele Sätze für die Übersetzungsübung erstellt werden sollen.</i></h4>
           </mat-checkbox>
           <form [formGroup]="translateForm">
             <mat-form-field>
-              <mat-label>Anzahl der Sätze</mat-label>
+              <mat-label i18n="@@commonSentenceCountLabel">Anzahl der Sätze</mat-label>
               <mat-select formControlName="count">
                 @for (item of [5, 10, 15, 20]; track $index) {
-                  <mat-option [value]="item">{{item}} Sätze</mat-option>
+                  <mat-option [value]="item">{{item}} <ng-container i18n="@@commonSentencesUnit">Sätze</ng-container></mat-option>
                 }
               </mat-select>
             </mat-form-field>
@@ -247,7 +247,7 @@
 
   </mat-accordion>
 </form>
-<button mat-stroked-button (click)="submit()">Aufgaben generieren
+<button mat-stroked-button (click)="submit()"><span i18n="@@textEditorGenerateTasksButton">Aufgaben generieren</span>
   <mat-icon>smart_toy</mat-icon>
 </button>
 <!--<dl-content-preview [content]="generatedTasks()"></dl-content-preview>-->

@@ -1,8 +1,8 @@
 <header>
-  <div class="header-name">Deutsch Lernen</div>
-  <div class="description">Lassen Sie in Sekunden Übungen und Texte erstellen – auf deinem Niveau, für deinen Wortschatz.</div>
+  <div class="header-name" i18n="@@homeTitle">Deutsch Lernen</div>
+  <div class="description" i18n="@@homeDescription">Lassen Sie in Sekunden Übungen und Texte erstellen – auf deinem Niveau, für deinen Wortschatz.</div>
   <button *ngIf="!isLoggedIn$()" mat-raised-button routerLink="/login">
-    Anmelden<mat-icon>login</mat-icon>
+    <span i18n="@@homeLoginButton">Anmelden</span><mat-icon>login</mat-icon>
   </button>
 </header>
 <main>
@@ -10,27 +10,27 @@
   <section class="description">
     <mat-card appearance="outlined">
       <mat-card-header>
-        <mat-card-title>Unsere Funktionen</mat-card-title>
+        <mat-card-title i18n="@@homeFeaturesTitle">Unsere Funktionen</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div> - Automatische Generierung von Übungen</div>
-        <div> - Individuelle Anpassung an dein Lernniveau</div>
-        <div> - Interaktive Texte und Aufgaben</div>
-        <div> - Fortschrittsverfolgung und Korrekturen</div>
+        <div i18n="@@homeFeatureAutomaticGeneration"> - Automatische Generierung von Übungen</div>
+        <div i18n="@@homeFeatureLevelAdaptation"> - Individuelle Anpassung an dein Lernniveau</div>
+        <div i18n="@@homeFeatureInteractiveTasks"> - Interaktive Texte und Aufgaben</div>
+        <div i18n="@@homeFeatureProgress"> - Fortschrittsverfolgung und Korrekturen</div>
       </mat-card-content>
 
     </mat-card>
 
     <mat-card appearance="outlined">
       <mat-card-header>
-        <mat-card-title>Wie funktioniert das?</mat-card-title>
+        <mat-card-title i18n="@@homeHowItWorksTitle">Wie funktioniert das?</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div>
-          <div> - Registriere dich oder melde dich an</div>
-          <div> - Wähle ein Thema oder gib einen Text ein</div>
-          <div> - Generiere passende Übungen automatisch</div>
-          <div> - Lass deine Aufgaben korrigieren und verfolge deinen Fortschritt</div>
+          <div i18n="@@homeHowRegister"> - Registriere dich oder melde dich an</div>
+          <div i18n="@@homeHowChooseTopic"> - Wähle ein Thema oder gib einen Text ein</div>
+          <div i18n="@@homeHowGenerate"> - Generiere passende Übungen automatisch</div>
+          <div i18n="@@homeHowTrackProgress"> - Lass deine Aufgaben korrigieren und verfolge deinen Fortschritt</div>
         </div>
       </mat-card-content>
 
@@ -38,13 +38,13 @@
 
     <mat-card appearance="outlined">
       <mat-card-header>
-        <mat-card-title>Für wen ist Tekamolo gedacht?</mat-card-title>
+        <mat-card-title i18n="@@homeAudienceTitle">Für wen ist Tekamolo gedacht?</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div>
-          <div> - Für Deutschlehrer*innen – spare Zeit bei der Unterrichtsvorbereitung</div>
-          <div> - Für Lernende – lerne gezielt, flexibel und effektiv</div>
-          <div> - Für alle, die sich auf Prüfungen wie Goethe-Zertifikat oder TELC vorbereiten</div>
+          <div i18n="@@homeAudienceTeachers"> - Für Deutschlehrer*innen – spare Zeit bei der Unterrichtsvorbereitung</div>
+          <div i18n="@@homeAudienceLearners"> - Für Lernende – lerne gezielt, flexibel und effektiv</div>
+          <div i18n="@@homeAudienceExams"> - Für alle, die sich auf Prüfungen wie Goethe-Zertifikat oder TELC vorbereiten</div>
         </div>
       </mat-card-content>
 

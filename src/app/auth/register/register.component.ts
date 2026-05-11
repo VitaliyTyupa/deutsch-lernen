@@ -70,7 +70,7 @@ export class RegisterComponent {
     delete userData.confirmPassword;
     this.authService.register(userData).subscribe({
       next: () => {
-        this.toastr.success('Benutzer erfolgreich registriert!');
+        this.toastr.success($localize`:@@authRegisterSuccessToast:Benutzer erfolgreich registriert!`);
         this.router.navigate(['/login']);
       },
       error: (err) => {

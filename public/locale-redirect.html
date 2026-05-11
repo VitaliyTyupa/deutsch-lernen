@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Deutsch Lernen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var supportedLocales = ['de', 'uk', 'en'];
+      var fallbackLocale = 'de';
+      var browserLanguages = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || fallbackLocale];
+      var locale = browserLanguages
+        .map(function (language) { return String(language).toLowerCase().split('-')[0]; })
+        .find(function (language) { return supportedLocales.indexOf(language) !== -1; }) || fallbackLocale;
+
+      window.location.replace('/' + locale + '/' + window.location.search + window.location.hash);
+    }());
+  </script>
+</head>
+<body>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/de/">
+    <a href="/de/">Deutsch Lernen</a>
+  </noscript>
+</body>
+</html>

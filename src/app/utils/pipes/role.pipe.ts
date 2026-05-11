@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RolePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    return value === 'student' ? 'Student' : 'Lehrer';
+    return value === 'student' ? $localize`:@@roleStudent:Student` : $localize`:@@roleTeacher:Lehrer`;
   }
 
 }

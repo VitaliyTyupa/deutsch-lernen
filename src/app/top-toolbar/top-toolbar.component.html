@@ -1,25 +1,38 @@
 <mat-toolbar>
-  <img src="/assets/logo_ld-final.png" class="logo-img" routerLink="/">
+  <img src="assets/logo_ld-final.png" class="logo-img" routerLink="/" alt="Deutsch Lernen" i18n-alt="@@navLogoAlt">
   @if (isLoggedIn$()) {
-    <button mat-button routerLink="/task-assistant">Aufgaben Assistent</button>
-    <button mat-button routerLink="/">Arbeitsblatt Assistent</button>
-    <button mat-button routerLink="/editor">Editor</button>
+    <button mat-button routerLink="/task-assistant" i18n="@@navTasksAssistant">Aufgaben Assistent</button>
+    <button mat-button routerLink="/" i18n="@@navWorksheetAssistant">Arbeitsblatt Assistent</button>
+    <button mat-button routerLink="/editor" i18n="@@navEditor">Editor</button>
   }
 
   <span class="spacer"></span>
 
   @if (isLoggedIn$()) {
+    <div class="language-switcher" aria-label="Language" i18n-aria-label="@@navLanguageSwitcherLabel">
+      @for (lang of supportedLanguages; track lang) {
+        <button
+          mat-button
+          type="button"
+          class="language-button"
+          [class.active]="activeLanguage === lang"
+          [disabled]="activeLanguage === lang"
+          (click)="switchLanguage(lang)">
+          {{ lang.toUpperCase() }}
+        </button>
+      }
+    </div>
     <span class="user-role" *ngIf="user$()">{{user$().role | role}}</span>
     <button mat-button [matMenuTriggerFor]="menu">
       <span class="user-name" *ngIf="user$()">{{user$().name | titlecase}}</span>
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)=logout()> <mat-icon>logout</mat-icon> Logout</button>
-      <button mat-menu-item (click)="checkConnection()"> <mat-icon>network_ping</mat-icon> Check Connection</button>
+      <button mat-menu-item (click)=logout()> <mat-icon>logout</mat-icon> <span i18n="@@navLogout">Logout</span></button>
+      <button mat-menu-item (click)="checkConnection()"> <mat-icon>network_ping</mat-icon> <span i18n="@@navCheckConnection">Check Connection</span></button>
     </mat-menu>
   } @else {
-    <button mat-icon-button routerLink="/login">
+    <button mat-icon-button routerLink="/login" aria-label="Anmelden" i18n-aria-label="@@navLoginAriaLabel">
       <mat-icon>login</mat-icon>
     </button>
   }

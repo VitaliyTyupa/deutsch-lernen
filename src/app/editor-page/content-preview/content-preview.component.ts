@@ -25,7 +25,7 @@ export class ContentPreviewComponent implements OnInit {
     if (!data) return;
     let filteredTasks = data.outputTasks.filter((item: {id: string, value: any}) => {
       if (!Array.isArray(item.value)) {
-        this.toastr.warning(`Die Aufgabe ${this.taskOptionsService.getTaskName(item.id)} hat falsche format!`);
+        this.toastr.warning($localize`:@@previewInvalidTaskFormat:Die Aufgabe ${this.taskOptionsService.getTaskName(item.id)}:TASK_NAME: hat falsche format!`);
         return false;
       } else {
         return true;

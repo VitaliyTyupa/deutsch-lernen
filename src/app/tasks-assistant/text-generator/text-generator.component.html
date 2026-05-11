@@ -1,37 +1,37 @@
-<h2>Text generieren</h2>
+<h2 i18n="@@textGeneratorTitle">Text generieren</h2>
 <form [formGroup]="textGeneratorForm">
   <mat-accordion multi>
     <mat-expansion-panel [expanded]="true" >
       <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Grundlegende Optionen</h3> </mat-panel-title>
+        <mat-panel-title> <h3 i18n="@@textGeneratorBasicOptionsTitle">Grundlegende Optionen</h3> </mat-panel-title>
         <mat-panel-description>
           <div class="total-value">{{formValue().language}};</div>
           <div class="total-value">{{formValue().count}} Sätze;</div>
           <div class="total-value">{{formValue().languageLevel}};</div>
           <div class="total-value">{{formValue().textType}};</div>
           <div class="total-value">{{formValue().tens}};</div>
-          <div class="total-value">Betreff des Textes;</div>
-          <div class="total-value">Quellwörter;</div>
+          <div class="total-value" i18n="@@commonTextSubjectSummary">Betreff des Textes;</div>
+          <div class="total-value" i18n="@@commonSourceWordsSummary">Quellwörter;</div>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <div class="form-options">
         <mat-form-field>
-          <mat-label>Sprache</mat-label>
+          <mat-label i18n="@@commonLanguageLabel">Sprache</mat-label>
           <mat-select formControlName="language">
             <mat-option value="English">English</mat-option>
             <mat-option value="German">Deutsch</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Anzahl der Sätze</mat-label>
+          <mat-label i18n="@@commonSentenceCountLabel">Anzahl der Sätze</mat-label>
           <mat-select formControlName="count">
             @for (item of [5, 10, 15, 20]; track $index) {
-              <mat-option [value]="item">{{item}} Sätze</mat-option>
+              <mat-option [value]="item">{{item}} <ng-container i18n="@@commonSentencesUnit">Sätze</ng-container></mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Sprachniveau</mat-label>
+          <mat-label i18n="@@commonLanguageLevelLabel">Sprachniveau</mat-label>
           <mat-select formControlName="languageLevel">
             @for (level of languageLevelList; track $index) {
               <mat-option [value]="level">{{level}}</mat-option>
@@ -39,7 +39,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Textyp</mat-label>
+          <mat-label i18n="@@commonTextTypeLabel">Textyp</mat-label>
           <mat-select formControlName="textType">
             @for (item of textTypes; track $index) {
               <mat-option [value]="item.type">{{item.title}}</mat-option>
@@ -47,7 +47,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Zeitformen</mat-label>
+          <mat-label i18n="@@grammarTensesLabel">Zeitformen</mat-label>
           <mat-select formControlName="tens">
             @for (tens of tenses; track $index) {
               <mat-option [value]="tens">{{tens}}</mat-option>
@@ -57,66 +57,66 @@
       </div>
       <div class="form-options wide">
         <mat-form-field>
-          <mat-label>Quellwörter</mat-label>
+          <mat-label i18n="@@commonSourceWordsLabel">Quellwörter</mat-label>
           <textarea matInput formControlName="sourceWords"></textarea>
           <mat-error *ngIf="textGeneratorForm.get('sourceWords')?.invalid">
-            Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+            <span i18n="@@commonSourceWordsRequired">Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.</span>
           </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Betreff des Textes</mat-label>
-          <input matInput formControlName="context" placeholder="Geben Sie den Betreff des Textes ein...">
+          <mat-label i18n="@@commonTextSubjectLabel">Betreff des Textes</mat-label>
+          <input matInput formControlName="context" placeholder="Geben Sie den Betreff des Textes ein..." i18n-placeholder="@@commonTextSubjectPlaceholder">
           <mat-error *ngIf="textGeneratorForm.get('context')?.invalid">
-            Bitte geben Sie den Betreff des Textes ein.
+            <span i18n="@@commonTextSubjectRequired">Bitte geben Sie den Betreff des Textes ein.</span>
           </mat-error>
         </mat-form-field>
       </div>
     </mat-expansion-panel>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> <h3>Zusätzliche Optionen und Anweisungen</h3> </mat-panel-title>
+        <mat-panel-title> <h3 i18n="@@textGeneratorAdditionalOptionsTitle">Zusätzliche Optionen und Anweisungen</h3> </mat-panel-title>
         <mat-panel-description>
-         Ein kurz Beschreibung der Optionen, die Sie auswählen können, um den generierten Text anzupassen.
+         <span i18n="@@textGeneratorAdditionalOptionsDescription">Ein kurz Beschreibung der Optionen, die Sie auswählen können, um den generierten Text anzupassen.</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title> <h3>Anweisungen</h3> </mat-panel-title>
+          <mat-panel-title> <h3 i18n="@@commonInstructionsTitle">Anweisungen</h3> </mat-panel-title>
         </mat-expansion-panel-header>
-        <h2>Kurzanleitung zur Nutzung der Textgenerierungsseite</h2>
+        <h2 i18n="@@textGeneratorQuickGuideTitle">Kurzanleitung zur Nutzung der Textgenerierungsseite</h2>
         <ol>
           <li>
-            <strong>Grundlegende Optionen festlegen:</strong>
+            <strong i18n="@@textGeneratorGuideBasicOptions">Grundlegende Optionen festlegen:</strong>
             <ul>
-              <li>Öffnen Sie das Panel <strong>"Grundlegende Optionen"</strong>.</li>
-              <li>Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</li>
-              <li>Füllen Sie die Felder <strong>"Quellwörter"</strong> und <strong>"Betreff des Textes"</strong> aus (Pflichtfelder).</li>
+              <li i18n="@@textGeneratorGuideOpenBasic">Öffnen Sie das Panel <strong>"Grundlegende Optionen"</strong>.</li>
+              <li i18n="@@textGeneratorGuideChooseOptions">Wählen Sie die Sprache, die Satzanzahl, das Sprachniveau, den Texttyp und die Zeitform aus.</li>
+              <li i18n="@@textGeneratorGuideFillFields">Füllen Sie die Felder <strong>"Quellwörter"</strong> und <strong>"Betreff des Textes"</strong> aus (Pflichtfelder).</li>
             </ul>
           </li>
           <li>
-            <strong>Zusätzliche Optionen konfigurieren (optional):</strong>
+            <strong i18n="@@textGeneratorGuideAdditionalOptions">Zusätzliche Optionen konfigurieren (optional):</strong>
             <ul>
-              <li>Erweitern Sie die Panels <strong>"Adjektive"</strong>, <strong>"Nomen"</strong>, <strong>"Präpositionen"</strong>, <strong>"Verben"</strong> oder <strong>"Sätze"</strong>, um spezifische grammatikalische Präferenzen festzulegen.</li>
+              <li i18n="@@textGeneratorGuideConfigureGrammar">Erweitern Sie die Panels <strong>"Adjektive"</strong>, <strong>"Nomen"</strong>, <strong>"Präpositionen"</strong>, <strong>"Verben"</strong> oder <strong>"Sätze"</strong>, um spezifische grammatikalische Präferenzen festzulegen.</li>
             </ul>
           </li>
           <li>
-            <strong>Text generieren:</strong>
+            <strong i18n="@@textGeneratorGuideGenerateText">Text generieren:</strong>
             <ul>
-              <li>Klicken Sie auf die Schaltfläche <strong>"Text generieren"</strong>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</li>
+              <li i18n="@@textGeneratorGuideClickGenerate">Klicken Sie auf die Schaltfläche <strong>"Text generieren"</strong>, um den Text basierend auf den ausgewählten Optionen zu erstellen.</li>
             </ul>
           </li>
           <li>
-            <strong>Generierten Text anzeigen und bearbeiten:</strong>
+            <strong i18n="@@textGeneratorGuideViewEdit">Generierten Text anzeigen und bearbeiten:</strong>
             <ul>
-              <li>Der generierte Text wird im Abschnitt <strong>"Generiert Text"</strong> angezeigt.</li>
-              <li>Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</li>
+              <li i18n="@@textGeneratorGuideGeneratedShown">Der generierte Text wird im Abschnitt <strong>"Generiert Text"</strong> angezeigt.</li>
+              <li i18n="@@textGeneratorGuideUseEditor">Nutzen Sie den eingebetteten Editor, um Änderungen am Text vorzunehmen.</li>
             </ul>
           </li>
           <li>
-            <strong>Text speichern oder übertragen:</strong>
+            <strong i18n="@@textGeneratorGuideSaveOrPass">Text speichern oder übertragen:</strong>
             <ul>
-              <li>Klicken Sie auf <strong>"Text speichern"</strong>, um den Text zu speichern.</li>
-              <li>Klicken Sie auf <strong>"Text zur Bearbeitung übertragen"</strong>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</li>
+              <li i18n="@@textGeneratorGuideSaveText">Klicken Sie auf <strong>"Text speichern"</strong>, um den Text zu speichern.</li>
+              <li i18n="@@textGeneratorGuidePassText">Klicken Sie auf <strong>"Text zur Bearbeitung übertragen"</strong>, um den Text an einen anderen Editor zur weiteren Bearbeitung zu übergeben.</li>
             </ul>
           </li>
         </ol>
@@ -145,7 +145,7 @@
             <mat-form-field>
               <mat-label>Kasus</mat-label>
               <mat-select formControlName="kasus">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of kasus; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -157,7 +157,7 @@
             <mat-form-field>
               <mat-label>Steigerungsform</mat-label>
               <mat-select formControlName="comparison">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of comparisons; track $index) {
                   <mat-option [value]="item.comparison">{{item.title}}</mat-option>
                 }
@@ -189,7 +189,7 @@
             <mat-form-field>
               <mat-label>Kasus</mat-label>
               <mat-select formControlName="kasus">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of kasus; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -211,7 +211,7 @@
             <mat-form-field>
               <mat-label>Arten von Präpositionen</mat-label>
               <mat-select formControlName="type">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of prepositionsType; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -221,7 +221,7 @@
             <mat-form-field>
               <mat-label>Kasus</mat-label>
               <mat-select formControlName="kasus">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of kasus; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -246,7 +246,7 @@
             <mat-form-field>
               <mat-label>Vollverb</mat-label>
               <mat-select formControlName="verbForm">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of verbForm; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -256,7 +256,7 @@
             <mat-form-field>
               <mat-label>Modalverb</mat-label>
               <mat-select formControlName="modalVerb">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of modalsVerbs; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -266,7 +266,7 @@
             <mat-form-field>
               <mat-label>Modus</mat-label>
               <mat-select formControlName="modus">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of modus; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -276,7 +276,7 @@
             <mat-form-field>
               <mat-label>Kasus</mat-label>
               <mat-select formControlName="kasus">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of kasus; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -286,7 +286,7 @@
             <mat-form-field>
               <mat-label>Form</mat-label>
               <mat-select formControlName="activeForm">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (type of formTypes; track $index) {
                   <mat-option [value]="type">{{ type }}</mat-option>
                 }
@@ -309,7 +309,7 @@
             <mat-form-field>
               <mat-label>Arten von Sätzen</mat-label>
               <mat-select formControlName="type">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of typeOfSentences; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -319,7 +319,7 @@
             <mat-form-field>
               <mat-label>Konnektoren</mat-label>
               <mat-select formControlName="konnektor">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of konnektoren; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -329,7 +329,7 @@
             <mat-form-field>
               <mat-label>Doppelkonnektor</mat-label>
               <mat-select formControlName="doppelKonnektor">
-                <mat-option [value]="null">None</mat-option>
+                <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                 @for (item of doppelKonnektoren; track $index) {
                   <mat-option [value]="item">{{item}}</mat-option>
                 }
@@ -341,34 +341,34 @@
     </mat-expansion-panel>
   </mat-accordion>
 </form>
-<button mat-stroked-button (click)="submit()" [disabled]="isLoading()">Text generieren<mat-icon>smart_toy</mat-icon></button>
+<button mat-stroked-button (click)="submit()" [disabled]="isLoading()"><span i18n="@@textGeneratorGenerateButton">Text generieren</span><mat-icon>smart_toy</mat-icon></button>
 
 <form [formGroup]="resultForm" class="preview-card" *ngIf="generatedResult()">
   <mat-accordion>
     <mat-expansion-panel [expanded]="!!generatedResult()">
       <mat-expansion-panel-header>
-        <mat-panel-title> Generiert Text </mat-panel-title>
+        <mat-panel-title i18n="@@textGeneratorGeneratedTextTitle"> Generiert Text </mat-panel-title>
         <mat-panel-description>
-          {{generatedResult() ? 'Erledigt' : 'Stellen Sie zuerst die Optionen ein'}}
+          {{getGeneratedTextStatus()}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-form-field class="wide">
-        <mat-label>Name des Textes</mat-label>
-        <input matInput formControlName="textName" placeholder="Geben Sie den Name des Textes ein...">
+        <mat-label i18n="@@textGeneratorTextNameLabel">Name des Textes</mat-label>
+        <input matInput formControlName="textName" placeholder="Geben Sie den Name des Textes ein..." i18n-placeholder="@@textGeneratorTextNamePlaceholder">
         <mat-error *ngIf="resultForm.get('textName')?.invalid">
-          Bitte geben Sie den Name des Textes ein.
+          <span i18n="@@textGeneratorTextNameRequired">Bitte geben Sie den Name des Textes ein.</span>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="width-100">
-        <mat-label>Generiert Text</mat-label>
+        <mat-label i18n="@@textGeneratorGeneratedTextLabel">Generiert Text</mat-label>
         <textarea matInput formControlName="textResult" rows="10"></textarea>
         <mat-error *ngIf="resultForm.get('textResult')?.invalid">
-          Die Feld ist erforderlich.
+          <span i18n="@@commonFieldRequired">Die Feld ist erforderlich.</span>
         </mat-error>
       </mat-form-field>
       <footer class="preview-footer">
-        <button mat-stroked-button (click)="saveTextAction()" [disabled]="resultForm.invalid">Text speichern <mat-icon>save</mat-icon></button>
-        <button mat-stroked-button (click)="passTextToEditor()" [disabled]="resultForm.invalid">Text zur Bearbeitung übertragen <mat-icon>arrow_forward</mat-icon></button>
+        <button mat-stroked-button (click)="saveTextAction()" [disabled]="resultForm.invalid"><span i18n="@@textGeneratorSaveTextButton">Text speichern</span> <mat-icon>save</mat-icon></button>
+        <button mat-stroked-button (click)="passTextToEditor()" [disabled]="resultForm.invalid"><span i18n="@@textGeneratorPassTextButton">Text zur Bearbeitung übertragen</span> <mat-icon>arrow_forward</mat-icon></button>
       </footer>
     </mat-expansion-panel>
   </mat-accordion>

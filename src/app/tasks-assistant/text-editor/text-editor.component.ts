@@ -11,20 +11,18 @@ import {MatInput} from '@angular/material/input';
 import {AsyncPipe, NgIf} from '@angular/common';
 import {
   MatAccordion,
-  MatExpansionPanel, MatExpansionPanelDescription,
+  MatExpansionPanel,
   MatExpansionPanelHeader, MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatCheckbox} from '@angular/material/checkbox';
-import {MatDivider} from '@angular/material/divider';
 import {TextInputComponent} from '../text-input/text-input.component';
 import {GrammarOptionsService} from '../services/grammar-options.service';
 import {AssistantService} from '../services/assistant.service';
 import {BaseText} from '../../types/editor.interface';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {MatTab, MatTabGroup} from '@angular/material/tabs';
-import {ContentPreviewComponent} from '../../editor-page/content-preview/content-preview.component';
 
 @Component({
   selector: 'dl-text-editor',
@@ -45,14 +43,11 @@ import {ContentPreviewComponent} from '../../editor-page/content-preview/content
     MatIcon,
     TextInputComponent,
     MatCheckbox,
-    MatDivider,
     AsyncPipe,
     MatRadioGroup,
     MatRadioButton,
-    MatExpansionPanelDescription,
     MatTabGroup,
     MatTab,
-    ContentPreviewComponent
   ],
   templateUrl: './text-editor.component.html',
   styleUrl: './text-editor.component.scss'

@@ -133,7 +133,7 @@ export class EditorPageComponent implements OnInit{
         this.settingsForm.get('text')?.updateValueAndValidity();
         this.settingsForm.get('context')?.updateValueAndValidity();
       }
-      this.toastr.info('Bitte beachten Sie, dass die Einstellungen für die Aufgabengenerierung geändert wurden. Bitte wählen Sie mindestens einen Aufgabentyp aus.');
+      this.toastr.info($localize`:@@editorSettingsChangedToast:Bitte beachten Sie, dass die Einstellungen für die Aufgabengenerierung geändert wurden. Bitte wählen Sie mindestens einen Aufgabentyp aus.`);
     });
   }
 
@@ -143,11 +143,11 @@ export class EditorPageComponent implements OnInit{
       next: (data: any) => {
         // todo: need to clarify the returned Type of the data. Is it really only JSON?
         console.log(JSON.parse(data));
-        this.toastr.success('Aufgabe erfolgreich generiert.');
+        this.toastr.success($localize`:@@editorTaskGeneratedToast:Aufgabe erfolgreich generiert.`);
         this.generatedContent.set(JSON.parse(data));
       },
       error: () => {
-        this.toastr.error('Beim Generieren der Aufgabe ist ein Fehler aufgetreten.');
+        this.toastr.error($localize`:@@editorTaskGenerationErrorToast:Beim Generieren der Aufgabe ist ein Fehler aufgetreten.`);
       },
       complete: () => {
         this.isLoading.set(false);
@@ -161,7 +161,7 @@ export class EditorPageComponent implements OnInit{
     if (text) {
       this.printService.printSelectedTextWithStyles(text);
     } else {
-      this.toastr.error('Bitte geben Sie den Text ein, um ihn zu drucken.');
+      this.toastr.error($localize`:@@editorPrintTextRequiredToast:Bitte geben Sie den Text ein, um ihn zu drucken.`);
       return
     }
   }

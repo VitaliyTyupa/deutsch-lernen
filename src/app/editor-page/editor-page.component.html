@@ -1,30 +1,30 @@
 <dl-editor-settings [settingsForm]="settingsForm"></dl-editor-settings>
 <section class="control-buttons">
-  <button mat-flat-button (click)="submit()">Erzeugen</button>
-  <button mat-button (click)="resetForm()">Zurücksetzen</button>
+  <button mat-flat-button (click)="submit()" i18n="@@editorGenerateButton">Erzeugen</button>
+  <button mat-button (click)="resetForm()" i18n="@@editorResetButton">Zurücksetzen</button>
 </section>
 <mat-progress-bar mode="indeterminate" *ngIf="isLoading()"></mat-progress-bar>
 <section>
   <mat-card>
     <mat-form-field class="input-text">
-      <mat-label>Quellwörter</mat-label>
+      <mat-label i18n="@@commonSourceWordsLabel">Quellwörter</mat-label>
       <textarea matInput [formControl]="getControl('sourceWords')"></textarea>
       <mat-error *ngIf="getControl('sourceWords').invalid">
-        Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.
+        <span i18n="@@commonSourceWordsRequired">Bitte geben Sie ein Wort ein, bevor Sie eine Aufgabe generieren.</span>
       </mat-error>
     </mat-form-field>
-    <mat-slide-toggle [formControl]="getControl('autogenerateText')">Text automatisch generieren</mat-slide-toggle>
+    <mat-slide-toggle [formControl]="getControl('autogenerateText')" i18n="@@editorAutogenerateText">Text automatisch generieren</mat-slide-toggle>
     @if (getControl('autogenerateText').value) {
       <mat-form-field>
-        <mat-label>Betreff des Textes</mat-label>
-        <input matInput [formControl]="getControl('context')" placeholder="Geben Sie den Betreff des Textes ein...">
+        <mat-label i18n="@@commonTextSubjectLabel">Betreff des Textes</mat-label>
+        <input matInput [formControl]="getControl('context')" placeholder="Geben Sie den Betreff des Textes ein..." i18n-placeholder="@@commonTextSubjectPlaceholder">
         <mat-error *ngIf="getControl('context').invalid">
-          Bitte geben Sie den Betreff des Textes ein.
+          <span i18n="@@commonTextSubjectRequired">Bitte geben Sie den Betreff des Textes ein.</span>
         </mat-error>
       </mat-form-field>
     } @else {
       <dl-text-input [textControl]="getControl('text')" (onSelect)="addSelectedWords($event)"></dl-text-input>
-      <button class="calligraphy-btn" mat-stroked-button (click)="print()">Print Calligraphy</button>
+      <button class="calligraphy-btn" mat-stroked-button (click)="print()" i18n="@@editorPrintCalligraphy">Print Calligraphy</button>
     }
   </mat-card>
   <mat-card>

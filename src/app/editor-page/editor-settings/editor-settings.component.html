@@ -1,18 +1,18 @@
 <form [formGroup]="settingsForm">
   <section>
     <mat-form-field class="task-type-field">
-      <mat-label>Aufgabentyp auswählen</mat-label>
+      <mat-label i18n="@@editorSettingsTaskTypeLabel">Aufgabentyp auswählen</mat-label>
       <mat-select formControlName="taskType" multiple>
         @for (task of taskTypesList; track $index) {
           <mat-option [value]="task.id">{{task.description}}</mat-option>
         }
       </mat-select>
       <mat-error *ngIf="settingsForm.get('taskType')?.invalid">
-        Bitte wählen Sie mindestens einen Aufgabentyp aus.
+        <span i18n="@@editorSettingsTaskTypeRequired">Bitte wählen Sie mindestens einen Aufgabentyp aus.</span>
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Zeitformen</mat-label>
+      <mat-label i18n="@@grammarTensesLabel">Zeitformen</mat-label>
       <mat-select multiple formControlName="tenses">
         @for (tens of tenses; track $index) {
           <mat-option [value]="tens">{{tens}}</mat-option>
@@ -20,7 +20,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Form</mat-label>
+      <mat-label i18n="@@grammarFormLabel">Form</mat-label>
       <mat-select formControlName="activeForm" multiple>
         @for (type of formTypes; track $index) {
           <mat-option [value]="type">{{ type }}</mat-option>
@@ -65,7 +65,7 @@
   <section>
     <mat-button-toggle-group formControlName="count">
       @for (item of countList; track $index) {
-        <mat-button-toggle [value]="item">{{item}} Sätze</mat-button-toggle>
+        <mat-button-toggle [value]="item">{{item}} <ng-container i18n="@@commonSentencesUnit">Sätze</ng-container></mat-button-toggle>
       }
     </mat-button-toggle-group>
     <mat-radio-group formControlName="language">

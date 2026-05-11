@@ -41,7 +41,7 @@ export const appConfig: ApplicationConfig = {
         ]
       },
       formats: ['font', 'bold', 'underline', 'size', 'background', 'image'],
-      placeholder: 'Beginnen Sie hier mit der Eingabe ...'
+      placeholder: $localize`:@@textInputPlaceholder:Beginnen Sie hier mit der Eingabe ...`
     }),
   ]
 };

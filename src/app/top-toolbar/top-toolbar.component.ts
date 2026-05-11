@@ -29,6 +29,8 @@ import {NgIf, TitleCasePipe} from '@angular/common';
   styleUrl: './top-toolbar.component.scss'
 })
 export class TopToolbarComponent {
+  readonly supportedLanguages = ['de', 'uk', 'en'] as const;
+  readonly activeLanguage = this.getActiveLanguage();
   private textGenerator = inject(TextGeneratorApiService);
   private sessionService = inject(SessionService);
   private router = inject(Router);
@@ -45,5 +47,15 @@ export class TopToolbarComponent {
   logout() {
     this.sessionService.unsetToken();
     this.router.navigate(['/']);
+  }
+
+  switchLanguage(lang: 'de' | 'uk' | 'en'): void {
+    const path = window.location.pathname.replace(/^\/(de|uk|en)(?=\/|$)/, '') || '/';
+    window.location.href = `/${lang}${path}${window.location.search}${window.location.hash}`;
+  }
+
+  private getActiveLanguage(): 'de' | 'uk' | 'en' {
+    const locale = window.location.pathname.match(/^\/(de|uk|en)(?=\/|$)/)?.[1];
+    return locale === 'uk' || locale === 'en' ? locale : 'de';
   }
 }

@@ -14,3 +14,15 @@
   display: inline-block;
   margin-right: 5px;
 }
+.language-switcher {
+  display: inline-flex;
+  gap: 2px;
+  margin-right: 8px;
+}
+.language-button {
+  min-width: 42px;
+  padding: 0 8px;
+}
+.language-button.active {
+  font-weight: 700;
+}
