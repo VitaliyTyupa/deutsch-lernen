@@ -23,7 +23,7 @@ jobs:
         run: echo "OWNER=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build frontend
-        run: docker build -t ghcr.io/${{ env.OWNER }}/korrektur-server:latest .
+        run: docker build -t ghcr.io/${{ env.OWNER }}/deutsch-lernen:latest .
 
       - name: Push frontend
-        run: docker push ghcr.io/${{ env.OWNER }}/korrektur-server:latest
+        run: docker push ghcr.io/${{ env.OWNER }}/deutsch-lernen:latest
