@@ -1640,6 +1640,42 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
           <context context-type="linenumber">318</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="textEditorAddTaskButton" datatype="html">
+        <source>Додати завдання</source>
+        <target>Add task</target>
+      </trans-unit>
+      <trans-unit id="textEditorGapOptionSelectLabel" datatype="html">
+        <source>Тип пропусків</source>
+        <target>Gap type</target>
+      </trans-unit>
+      <trans-unit id="textEditorSelectOptionButton" datatype="html">
+        <source>Вибрати опцію</source>
+        <target>Select option</target>
+      </trans-unit>
+      <trans-unit id="gapTextWordListComment" datatype="html">
+        <source>Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</source>
+        <target>Double-click the required word in the base text to add it to the list, or type the words separated by commas.</target>
+      </trans-unit>
+      <trans-unit id="gapTextVerbComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Choose and configure a condition. Verbs in the text that match the condition will be replaced with a gap.</target>
+      </trans-unit>
+      <trans-unit id="gapTextConditionLabel" datatype="html">
+        <source>Умова</source>
+        <target>Condition</target>
+      </trans-unit>
+      <trans-unit id="gapTextAdjectiveComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Choose and configure a condition. Adjectives in the text that match the condition will be replaced with a gap.</target>
+      </trans-unit>
+      <trans-unit id="gapTextNounComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Choose and configure a condition. Nouns in the text that match the condition will be replaced with a gap.</target>
+      </trans-unit>
+      <trans-unit id="textEditorWordDefinitionCardComment" datatype="html">
+        <source>До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</source>
+        <target>Contextual definitions will be created for the listed words. Enter words separated by commas or double-click a word in the base text.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

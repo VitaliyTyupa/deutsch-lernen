@@ -1,0 +1,47 @@
+.preview-card {
+  display: block;
+  margin-top: 16px;
+}
+
+.exercise-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.exercise-card {
+  flex: 1 1 calc(50% - 8px);
+  min-width: 400px;
+}
+
+mat-card-content {
+  display: block;
+  padding-top: 12px;
+}
+
+h4 {
+  margin: 16px 0 8px;
+}
+
+p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+@media (max-width: 840px) {
+  .exercise-card {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+}

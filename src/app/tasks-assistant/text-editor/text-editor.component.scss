@@ -12,3 +12,74 @@ quill-editor  {
   display: flex;
   gap: 16px;
 }
+
+.task-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.task-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.task-card {
+  width: 47%;
+  min-width: 400px;
+}
+
+mat-card-header {
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+
+mat-card-title {
+  font-size: 18px;
+}
+
+.remove-card-button {
+  flex: 0 0 auto;
+}
+
+.card-form,
+.gap-option {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gap-option {
+  border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  padding-top: 12px;
+}
+
+.gap-option-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.gap-option-header h4 {
+  margin: 0;
+}
+
+.form-comment {
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .task-card {
+    min-width: 0;
+    width: 100%;
+  }
+}

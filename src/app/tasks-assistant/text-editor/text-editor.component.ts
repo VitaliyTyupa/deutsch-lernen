@@ -14,15 +14,24 @@ import {
   MatExpansionPanel,
   MatExpansionPanelHeader, MatExpansionPanelTitle
 } from '@angular/material/expansion';
-import {MatButton} from '@angular/material/button';
+import {MatButtonModule} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
-import {MatCheckbox} from '@angular/material/checkbox';
 import {TextInputComponent} from '../text-input/text-input.component';
 import {GrammarOptionsService} from '../services/grammar-options.service';
 import {AssistantService} from '../services/assistant.service';
 import {BaseText} from '../../types/editor.interface';
-import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
-import {MatTab, MatTabGroup} from '@angular/material/tabs';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {
+  ExercisePreviewResult,
+  PreviewExerciseComponent
+} from './preview-exercise/preview-exercise.component';
+
+type TaskCardType = 'gap_text' | 'word_definition' | 'true_false' | 'question_answer' | 'translate';
+type GapOptionType = 'wordList' | 'verb' | 'adjective' | 'noun';
+type VerbCondition = 'verbForm' | 'modalVerb' | 'modus' | 'kasus' | 'activeForm';
+type AdjectiveCondition = 'article' | 'kasus' | 'comparison';
+type NounCondition = 'article' | 'kasus';
 
 @Component({
   selector: 'dl-text-editor',
@@ -36,18 +45,16 @@ import {MatTab, MatTabGroup} from '@angular/material/tabs';
     MatInput,
     NgIf,
     MatAccordion,
-    MatButton,
+    MatButtonModule,
     MatExpansionPanel,
     MatExpansionPanelHeader,
     MatExpansionPanelTitle,
     MatIcon,
     TextInputComponent,
-    MatCheckbox,
     AsyncPipe,
-    MatRadioGroup,
-    MatRadioButton,
-    MatTabGroup,
-    MatTab,
+    MatMenuModule,
+    MatCardModule,
+    PreviewExerciseComponent,
   ],
   templateUrl: './text-editor.component.html',
   styleUrl: './text-editor.component.scss'
@@ -57,10 +64,46 @@ export class TextEditorComponent implements OnInit{
   private grammarOptions = inject(GrammarOptionsService);
   private assistantService = inject(AssistantService);
 
-  generatedTasks: any = signal([]);
+  generatedTasks = signal<ExercisePreviewResult | null>(null);
   rawText = new FormControl('', {nonNullable:true});
   wordList = new FormControl('');
   textlist$ = this.assistantService.getTexts();
+  selectedTaskCards: TaskCardType[] = [];
+  selectedGapOptions: GapOptionType[] = [];
+  selectedVerbCondition: VerbCondition | null = null;
+  selectedAdjectiveCondition: AdjectiveCondition | null = null;
+  selectedNounCondition: NounCondition | null = null;
+
+  readonly taskOptions: { id: TaskCardType; label: string }[] = [
+    {id: 'gap_text', label: 'Lückentext'},
+    {id: 'word_definition', label: 'Wortdefinition'},
+    {id: 'true_false', label: 'Richtig/Falsch-Aussage'},
+    {id: 'question_answer', label: 'Frage Antwort'},
+    {id: 'translate', label: 'Übersetzung'},
+  ];
+  readonly gapOptions: { id: GapOptionType; label: string }[] = [
+    {id: 'wordList', label: 'Пропуски вибраних слів з тексту'},
+    {id: 'verb', label: 'Пропуски замість дієслів'},
+    {id: 'adjective', label: 'Пропуски замість прикметників'},
+    {id: 'noun', label: 'Пропуски замість іменників'},
+  ];
+  readonly verbConditions: { id: VerbCondition; label: string }[] = [
+    {id: 'verbForm', label: 'Vollverb'},
+    {id: 'modalVerb', label: 'Modalverb'},
+    {id: 'modus', label: 'Modus'},
+    {id: 'kasus', label: 'Kasus'},
+    {id: 'activeForm', label: 'Form'},
+  ];
+  readonly adjectiveConditions: { id: AdjectiveCondition; label: string }[] = [
+    {id: 'article', label: 'Artikel'},
+    {id: 'kasus', label: 'Kasus'},
+    {id: 'comparison', label: 'Steigerungsform'},
+  ];
+  readonly nounConditions: { id: NounCondition; label: string }[] = [
+    {id: 'article', label: 'Artikel'},
+    {id: 'kasus', label: 'Kasus'},
+  ];
+
   taskListForm = this.fb.group({
     gap_text: false,
     true_false: false,
@@ -69,7 +112,7 @@ export class TextEditorComponent implements OnInit{
     word_definition: false
   });
   gapTextForm = this.fb.group({
-    selectedType: [],
+    selectedType: this.fb.control<GapOptionType[]>([]),
     adjective: this.fb.group({
       article: [],
       kasus: [],
@@ -140,7 +183,7 @@ export class TextEditorComponent implements OnInit{
       body['word_definition'] = {wordList: this.wordList?.value};
     }
     this.assistantService.generateTasks(body).subscribe(res => {
-      console.log(res);
+      this.generatedTasks.set(res);
     })
   }
 
@@ -153,4 +196,93 @@ export class TextEditorComponent implements OnInit{
     this.wordList.setValue(newValue);
   }
 
+  addTaskCard(type: TaskCardType) {
+    if (this.selectedTaskCards.includes(type)) {
+      return;
+    }
+
+    this.selectedTaskCards = [...this.selectedTaskCards, type];
+    this.taskListForm.get(type)?.setValue(true);
+  }
+
+  removeTaskCard(type: TaskCardType) {
+    this.selectedTaskCards = this.selectedTaskCards.filter(item => item !== type);
+    this.taskListForm.get(type)?.setValue(false);
+
+    if (type === 'gap_text') {
+      this.selectedGapOptions = [];
+      this.selectedVerbCondition = null;
+      this.selectedAdjectiveCondition = null;
+      this.selectedNounCondition = null;
+      this.gapTextForm.reset({selectedType: []});
+    }
+  }
+
+  isTaskCardSelected(type: TaskCardType): boolean {
+    return this.selectedTaskCards.includes(type);
+  }
+
+  getTaskLabel(type: TaskCardType): string {
+    return this.taskOptions.find(item => item.id === type)?.label || type;
+  }
+
+  selectGapOption(option: GapOptionType) {
+    if (this.selectedGapOptions[0] === option) {
+      return;
+    }
+
+    this.clearSelectedGapControls();
+    this.selectedGapOptions = [option];
+    this.syncSelectedGapOptions();
+  }
+
+  removeGapOption(option: GapOptionType) {
+    this.selectedGapOptions = this.selectedGapOptions.filter(item => item !== option);
+    this.clearSelectedGapControls();
+    this.syncSelectedGapOptions();
+  }
+
+  isGapOptionSelected(option: GapOptionType): boolean {
+    return this.selectedGapOptions.includes(option);
+  }
+
+  getGapOptionLabel(option: GapOptionType): string {
+    return this.gapOptions.find(item => item.id === option)?.label || option;
+  }
+
+  selectVerbCondition(condition: VerbCondition) {
+    this.selectedVerbCondition = condition;
+    this.resetControlsExcept(this.gapTextForm.controls.verb.controls, condition);
+  }
+
+  selectAdjectiveCondition(condition: AdjectiveCondition) {
+    this.selectedAdjectiveCondition = condition;
+    this.resetControlsExcept(this.gapTextForm.controls.adjective.controls, condition);
+  }
+
+  selectNounCondition(condition: NounCondition) {
+    this.selectedNounCondition = condition;
+    this.resetControlsExcept(this.gapTextForm.controls.noun.controls, condition);
+  }
+
+  private syncSelectedGapOptions() {
+    this.gapTextForm.controls.selectedType.setValue(this.selectedGapOptions);
+  }
+
+  private clearSelectedGapControls() {
+    this.selectedVerbCondition = null;
+    this.selectedAdjectiveCondition = null;
+    this.selectedNounCondition = null;
+    this.gapTextForm.controls.verb.reset();
+    this.gapTextForm.controls.adjective.reset();
+    this.gapTextForm.controls.noun.reset();
+  }
+
+  private resetControlsExcept(controls: Record<string, FormControl>, activeControl: string) {
+    Object.entries(controls).forEach(([key, control]) => {
+      if (key !== activeControl) {
+        control.reset();
+      }
+    });
+  }
 }

@@ -1640,6 +1640,42 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
           <context context-type="linenumber">318</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="textEditorAddTaskButton" datatype="html">
+        <source>Додати завдання</source>
+        <target>Додати завдання</target>
+      </trans-unit>
+      <trans-unit id="textEditorGapOptionSelectLabel" datatype="html">
+        <source>Тип пропусків</source>
+        <target>Тип пропусків</target>
+      </trans-unit>
+      <trans-unit id="textEditorSelectOptionButton" datatype="html">
+        <source>Вибрати опцію</source>
+        <target>Вибрати опцію</target>
+      </trans-unit>
+      <trans-unit id="gapTextWordListComment" datatype="html">
+        <source>Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</source>
+        <target>Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</target>
+      </trans-unit>
+      <trans-unit id="gapTextVerbComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
+      </trans-unit>
+      <trans-unit id="gapTextConditionLabel" datatype="html">
+        <source>Умова</source>
+        <target>Умова</target>
+      </trans-unit>
+      <trans-unit id="gapTextAdjectiveComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
+      </trans-unit>
+      <trans-unit id="gapTextNounComment" datatype="html">
+        <source>Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <target>Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
+      </trans-unit>
+      <trans-unit id="textEditorWordDefinitionCardComment" datatype="html">
+        <source>До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</source>
+        <target>До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
