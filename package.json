@@ -11,7 +11,7 @@
     "start:en": "ng serve --configuration=en",
     "start:prod": "ng serve --configuration=production",
     "build": "ng build",
-    "build:localize": "ng build --localize",
+    "build:localize": "ng build --localize && mv dist/deutsch-lernen/uk dist/deutsch-lernen/ua",
     "extract-i18n": "ng extract-i18n --format=xlf --output-path src/locale",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

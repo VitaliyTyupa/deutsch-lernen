@@ -11,7 +11,7 @@
           "baseHref": "/de/"
         },
         "locales": {
-          "ua": {
+          "uk": {
             "translation": "src/locale/messages.ua.xlf",
             "baseHref": "/ua/"
           },
@@ -99,7 +99,7 @@
             },
             "ua": {
               "localize": [
-                "ua"
+                "uk"
               ]
             },
             "en": {

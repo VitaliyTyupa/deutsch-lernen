@@ -136,10 +136,10 @@ export class TextGeneratorComponent implements OnInit {
     textType: 'text',
     tens: 'Präsens',
   };
-  accordion: Signal<MatAccordion> = viewChild.required(MatAccordion);
   readonly formValue: any = signal(null);
   generatedResult = signal('');
   isLoading = signal(false);
+  isSavedResult = signal(true);
 
   constructor(
     private textGeneratorApi: TextGeneratorApiService,
@@ -163,7 +163,6 @@ export class TextGeneratorComponent implements OnInit {
       this.textGeneratorForm.markAllAsTouched();
       return;
     }
-    this.accordion().closeAll();
     const formData = this.textGeneratorForm.getRawValue();
     this.isLoading.set(true);
     this.textGeneratorApi.generateText_V2(formData).pipe(
@@ -171,6 +170,7 @@ export class TextGeneratorComponent implements OnInit {
         this.isLoading.set(false);
         this.generatedResult.set(res.text);
         this.resultForm.get('textResult')?.setValue(res.text);
+        this.isSavedResult.set(false);
       }),
       catchError((error) => {
         this.isLoading.set(false);
@@ -192,7 +192,8 @@ export class TextGeneratorComponent implements OnInit {
   }
 
   saveTextAction() {
-    this.saveText().subscribe();
+    if(this.isSavedResult()) return;
+    this.saveText().subscribe(() => this.isSavedResult.set(true));
   }
 
   saveText() {
