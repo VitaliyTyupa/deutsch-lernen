@@ -11,9 +11,9 @@
           "baseHref": "/de/"
         },
         "locales": {
-          "uk": {
-            "translation": "src/locale/messages.uk.xlf",
-            "baseHref": "/uk/"
+          "ua": {
+            "translation": "src/locale/messages.ua.xlf",
+            "baseHref": "/ua/"
           },
           "en": {
             "translation": "src/locale/messages.en.xlf",
@@ -97,9 +97,9 @@
                 "de"
               ]
             },
-            "uk": {
+            "ua": {
               "localize": [
-                "uk"
+                "ua"
               ]
             },
             "en": {
@@ -122,8 +122,8 @@
             "de": {
               "buildTarget": "deutsch-lernen:build:development,de"
             },
-            "uk": {
-              "buildTarget": "deutsch-lernen:build:development,uk"
+            "ua": {
+              "buildTarget": "deutsch-lernen:build:development,ua"
             },
             "en": {
               "buildTarget": "deutsch-lernen:build:development,en"

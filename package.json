@@ -7,7 +7,7 @@
     "start": "ng serve",
     "start:dev": "ng serve --configuration=development",
     "start:de": "ng serve --configuration=de",
-    "start:uk": "ng serve --configuration=uk",
+    "start:ua": "ng serve --configuration=ua",
     "start:en": "ng serve --configuration=en",
     "start:prod": "ng serve --configuration=production",
     "build": "ng build",

@@ -27,7 +27,7 @@ import {NgIf, TitleCasePipe} from '@angular/common';
   styleUrl: './top-toolbar.component.scss'
 })
 export class TopToolbarComponent {
-  readonly supportedLanguages = ['de', 'uk', 'en'] as const;
+  readonly supportedLanguages = ['de', 'ua', 'en'] as const;
   readonly activeLanguage = this.getActiveLanguage();
   private textGenerator = inject(TextGeneratorApiService);
   private sessionService = inject(SessionService);
@@ -47,17 +47,17 @@ export class TopToolbarComponent {
     this.router.navigate(['/']);
   }
 
-  switchLanguage(lang: 'de' | 'uk' | 'en'): void {
+  switchLanguage(lang: 'de' | 'ua' | 'en'): void {
     if (lang === this.activeLanguage) {
       return;
     }
 
-    const path = window.location.pathname.replace(/^\/(de|uk|en)(?=\/|$)/, '') || '/';
+    const path = window.location.pathname.replace(/^\/(de|ua|en)(?=\/|$)/, '') || '/';
     window.location.href = `/${lang}${path}${window.location.search}${window.location.hash}`;
   }
 
-  private getActiveLanguage(): 'de' | 'uk' | 'en' {
-    const locale = window.location.pathname.match(/^\/(de|uk|en)(?=\/|$)/)?.[1];
-    return locale === 'uk' || locale === 'en' ? locale : 'de';
+  private getActiveLanguage(): 'de' | 'ua' | 'en' {
+    const locale = window.location.pathname.match(/^\/(de|ua|en)(?=\/|$)/)?.[1];
+    return locale === 'ua' || locale === 'en' ? locale : 'de';
   }
 }
