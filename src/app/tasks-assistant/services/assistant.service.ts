@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {TextGeneratorApiService} from '../../common-services/api-services/text-generator-api.service';
 import {Observable} from 'rxjs';
-import {BaseText} from '../../types/editor.interface';
-import {Params} from '@angular/router';
+import {BaseText, ExercisePreviewResult, ExerciseRequestDto} from '../../types/editor.interface';
 import {TaskGeneratorApiService} from '../../common-services/api-services/task-generator-api.service';
 
 @Injectable({
@@ -19,7 +18,7 @@ export class AssistantService {
     return this.textGeneratorApi.getTexts();
   }
 
-  generateTasks(body: Params): Observable<any> {
+  generateTasks(body: ExerciseRequestDto): Observable<ExercisePreviewResult> {
     return this.taskGeneratorApi.generateTask(body);
   }
 }

@@ -6,35 +6,7 @@ import {
   MatExpansionPanelTitle
 } from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
-
-interface GapTextResult {
-  text: string;
-  answers: { id: number; answer: string }[];
-}
-
-interface TrueFalseResult {
-  statements: { id: number; statement: string; answer: boolean }[];
-}
-
-interface QuestionAnswerResult {
-  questions: { id: number; question: string; answer: string }[];
-}
-
-interface TranslateResult {
-  translations: { id: number; source: string; target: string }[];
-}
-
-interface WordDefinitionResult {
-  definitions: { word: string; definition: string }[];
-}
-
-export interface ExercisePreviewResult {
-  gap_text?: GapTextResult;
-  true_false?: TrueFalseResult;
-  question_answer?: QuestionAnswerResult;
-  translate?: TranslateResult;
-  word_definition?: WordDefinitionResult;
-}
+import {ExercisePreviewResult} from '../../../types/editor.interface';
 
 @Component({
   selector: 'dl-preview-exercise',

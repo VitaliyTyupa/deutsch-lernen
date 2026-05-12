@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {GlobalApiService} from './global-api.service';
-import {Params} from '@angular/router';
+import {Observable} from 'rxjs';
+import {ExercisePreviewResult, ExerciseRequestDto} from '../../types/editor.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TaskGeneratorApiService {
     private globalApi: GlobalApiService
   ) { }
 
-  generateTask(body: Params) {
-    return this.http.post(this.globalApi.url + '/ai-factory/generate-task', body);
+  generateTask(body: ExerciseRequestDto): Observable<ExercisePreviewResult> {
+    return this.http.post<ExercisePreviewResult>(this.globalApi.url + '/ai-factory/generate-task', body);
   }
 }

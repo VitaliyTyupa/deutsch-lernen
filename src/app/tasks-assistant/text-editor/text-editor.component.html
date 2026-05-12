@@ -37,7 +37,7 @@
               @if (task === 'gap_text') {
                 <form [formGroup]="gapTextForm" class="card-form">
                   <button mat-stroked-button type="button" [matMenuTriggerFor]="gapOptionMenu">
-                    <span i18n="@@textEditorSelectOptionButton">Вибрати опцію</span>
+                    <span i18n="@@textEditorSelectOptionButton">Option wählen</span>
                   </button>
                   <mat-menu #gapOptionMenu="matMenu">
                     @for (option of gapOptions; track option.id) {
@@ -54,7 +54,7 @@
                       </div>
 
                       @if (option === 'wordList') {
-                        <p class="form-comment" i18n="@@gapTextWordListComment">Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</p>
+                        <p class="form-comment" i18n="@@gapTextWordListComment">Doppelklicken Sie auf das gewünschte Wort im Basistext, um es zur Liste hinzuzufügen, oder geben Sie die Wörter durch Kommas getrennt ein.</p>
                         <mat-form-field class="width-100">
                           <mat-label i18n="@@commonSelectedWordsLabel">Ausgewählte Wörter</mat-label>
                           <textarea matInput [formControl]="wordList"></textarea>
@@ -65,10 +65,10 @@
                       }
 
                       @if (option === 'verb') {
-                        <p class="form-comment" i18n="@@gapTextVerbComment">Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</p>
+                        <p class="form-comment" i18n="@@gapTextVerbComment">Wählen und konfigurieren Sie eine Bedingung. Verben aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</p>
                         <div formGroupName="verb">
                           <mat-form-field class="width-100">
-                            <mat-label i18n="@@gapTextConditionLabel">Умова</mat-label>
+                            <mat-label i18n="@@gapTextConditionLabel">Bedingung</mat-label>
                             <mat-select [value]="selectedVerbCondition" (selectionChange)="selectVerbCondition($event.value)">
                               @for (condition of verbConditions; track condition.id) {
                                 <mat-option [value]="condition.id">{{ condition.label }}</mat-option>
@@ -78,7 +78,7 @@
 
                           @if (selectedVerbCondition === 'verbForm') {
                             <mat-form-field class="width-100">
-                              <mat-label>Vollverb</mat-label>
+                              <mat-label i18n="@@grammarVerbFormLabel">Vollverb</mat-label>
                               <mat-select formControlName="verbForm">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of verbForm; track $index) {
@@ -89,7 +89,7 @@
                           }
                           @if (selectedVerbCondition === 'modalVerb') {
                             <mat-form-field class="width-100">
-                              <mat-label>Modalverb</mat-label>
+                              <mat-label i18n="@@grammarModalVerbLabel">Modalverb</mat-label>
                               <mat-select formControlName="modalVerb">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of modalsVerbs; track $index) {
@@ -100,7 +100,7 @@
                           }
                           @if (selectedVerbCondition === 'modus') {
                             <mat-form-field class="width-100">
-                              <mat-label>Modus</mat-label>
+                              <mat-label i18n="@@grammarModusLabel">Modus</mat-label>
                               <mat-select formControlName="modus">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of modus; track $index) {
@@ -111,7 +111,7 @@
                           }
                           @if (selectedVerbCondition === 'kasus') {
                             <mat-form-field class="width-100">
-                              <mat-label>Kasus</mat-label>
+                              <mat-label i18n="@@grammarCaseLabel">Kasus</mat-label>
                               <mat-select formControlName="kasus">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of kasus; track $index) {
@@ -122,7 +122,7 @@
                           }
                           @if (selectedVerbCondition === 'activeForm') {
                             <mat-form-field class="width-100">
-                              <mat-label>Form</mat-label>
+                              <mat-label i18n="@@grammarFormLabel">Form</mat-label>
                               <mat-select formControlName="activeForm">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (type of formTypes; track $index) {
@@ -135,10 +135,10 @@
                       }
 
                       @if (option === 'adjective') {
-                        <p class="form-comment" i18n="@@gapTextAdjectiveComment">Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</p>
+                        <p class="form-comment" i18n="@@gapTextAdjectiveComment">Wählen und konfigurieren Sie eine Bedingung. Adjektive aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</p>
                         <div formGroupName="adjective">
                           <mat-form-field class="width-100">
-                            <mat-label i18n="@@gapTextConditionLabel">Умова</mat-label>
+                            <mat-label i18n="@@gapTextConditionLabel">Bedingung</mat-label>
                             <mat-select [value]="selectedAdjectiveCondition" (selectionChange)="selectAdjectiveCondition($event.value)">
                               @for (condition of adjectiveConditions; track condition.id) {
                                 <mat-option [value]="condition.id">{{ condition.label }}</mat-option>
@@ -148,7 +148,7 @@
 
                           @if (selectedAdjectiveCondition === 'article') {
                             <mat-form-field class="width-100">
-                              <mat-label>Artikel</mat-label>
+                              <mat-label i18n="@@grammarArticleLabel">Artikel</mat-label>
                               <mat-select formControlName="article">
                                 @for (item of article; track $index) {
                                   <mat-option [value]="item.article">{{ item.title }}</mat-option>
@@ -158,7 +158,7 @@
                           }
                           @if (selectedAdjectiveCondition === 'kasus') {
                             <mat-form-field class="width-100">
-                              <mat-label>Kasus</mat-label>
+                              <mat-label i18n="@@grammarCaseLabel">Kasus</mat-label>
                               <mat-select formControlName="kasus">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of kasus; track $index) {
@@ -169,7 +169,7 @@
                           }
                           @if (selectedAdjectiveCondition === 'comparison') {
                             <mat-form-field class="width-100">
-                              <mat-label>Steigerungsform</mat-label>
+                              <mat-label i18n="@@grammarComparisonLabel">Steigerungsform</mat-label>
                               <mat-select formControlName="comparison">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of comparisons; track $index) {
@@ -182,10 +182,10 @@
                       }
 
                       @if (option === 'noun') {
-                        <p class="form-comment" i18n="@@gapTextNounComment">Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</p>
+                        <p class="form-comment" i18n="@@gapTextNounComment">Wählen und konfigurieren Sie eine Bedingung. Nomen aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</p>
                         <div formGroupName="noun">
                           <mat-form-field class="width-100">
-                            <mat-label i18n="@@gapTextConditionLabel">Умова</mat-label>
+                            <mat-label i18n="@@gapTextConditionLabel">Bedingung</mat-label>
                             <mat-select [value]="selectedNounCondition" (selectionChange)="selectNounCondition($event.value)">
                               @for (condition of nounConditions; track condition.id) {
                                 <mat-option [value]="condition.id">{{ condition.label }}</mat-option>
@@ -195,7 +195,7 @@
 
                           @if (selectedNounCondition === 'article') {
                             <mat-form-field class="width-100">
-                              <mat-label>Artikel</mat-label>
+                              <mat-label i18n="@@grammarArticleLabel">Artikel</mat-label>
                               <mat-select formControlName="article">
                                 @for (item of article; track $index) {
                                   <mat-option [value]="item.article">{{ item.title }}</mat-option>
@@ -205,7 +205,7 @@
                           }
                           @if (selectedNounCondition === 'kasus') {
                             <mat-form-field class="width-100">
-                              <mat-label>Kasus</mat-label>
+                              <mat-label i18n="@@grammarCaseLabel">Kasus</mat-label>
                               <mat-select formControlName="kasus">
                                 <mat-option [value]="null" i18n="@@commonNoneOption">None</mat-option>
                                 @for (item of kasus; track $index) {
@@ -222,7 +222,7 @@
               }
 
               @if (task === 'word_definition') {
-                <p class="form-comment" i18n="@@textEditorWordDefinitionCardComment">До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</p>
+                <p class="form-comment" i18n="@@textEditorWordDefinitionCardComment">Für die aufgeführten Wörter wird eine kontextbezogene Definition erstellt. Geben Sie Wörter durch Kommas getrennt ein oder doppelklicken Sie auf ein Wort im Basistext.</p>
                 <mat-form-field class="width-100">
                   <mat-label i18n="@@commonSelectedWordsLabel">Ausgewählte Wörter</mat-label>
                   <textarea matInput [formControl]="wordList"></textarea>
@@ -280,7 +280,7 @@
         <div class="task-actions">
           <button mat-fab extended type="button" [matMenuTriggerFor]="taskTypeMenu">
             <mat-icon>add</mat-icon>
-            <span i18n="@@textEditorAddTaskButton">Додати завдання</span>
+            <span i18n="@@textEditorAddTaskButton">Aufgabe hinzufügen</span>
           </button>
           <mat-menu #taskTypeMenu="matMenu">
             @for (option of taskOptions; track option.id) {

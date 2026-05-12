@@ -1641,7 +1641,7 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
         </context-group>
       </trans-unit>
       <trans-unit id="textEditorAddTaskButton" datatype="html">
-        <source>Додати завдання</source>
+        <source>Aufgabe hinzufügen</source>
         <target>Додати завдання</target>
       </trans-unit>
       <trans-unit id="textEditorGapOptionSelectLabel" datatype="html">
@@ -1649,32 +1649,104 @@ Message: <x id="INTERPOLATION_1" equiv-text="error.message"/></target>
         <target>Тип пропусків</target>
       </trans-unit>
       <trans-unit id="textEditorSelectOptionButton" datatype="html">
-        <source>Вибрати опцію</source>
+        <source>Option wählen</source>
         <target>Вибрати опцію</target>
       </trans-unit>
       <trans-unit id="gapTextWordListComment" datatype="html">
-        <source>Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</source>
+        <source>Doppelklicken Sie auf das gewünschte Wort im Basistext, um es zur Liste hinzuzufügen, oder geben Sie die Wörter durch Kommas getrennt ein.</source>
         <target>Двічі клацніть потрібне слово у базовому тексті, щоб додати його до списку або просто надрукуйте через кому.</target>
       </trans-unit>
       <trans-unit id="gapTextVerbComment" datatype="html">
-        <source>Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <source>Wählen und konfigurieren Sie eine Bedingung. Verben aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</source>
         <target>Оберіть і налаштуйте умову. Дієслова з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
       </trans-unit>
       <trans-unit id="gapTextConditionLabel" datatype="html">
-        <source>Умова</source>
+        <source>Bedingung</source>
         <target>Умова</target>
       </trans-unit>
       <trans-unit id="gapTextAdjectiveComment" datatype="html">
-        <source>Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <source>Wählen und konfigurieren Sie eine Bedingung. Adjektive aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</source>
         <target>Оберіть і налаштуйте умову. Прикметники з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
       </trans-unit>
       <trans-unit id="gapTextNounComment" datatype="html">
-        <source>Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</source>
+        <source>Wählen und konfigurieren Sie eine Bedingung. Nomen aus dem Text, die der Bedingung entsprechen, werden durch eine Lücke ersetzt.</source>
         <target>Оберіть і налаштуйте умову. Іменники з тексту які відповідатимуть умові будуть замінені на пропуск.</target>
       </trans-unit>
       <trans-unit id="textEditorWordDefinitionCardComment" datatype="html">
-        <source>До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</source>
+        <source>Für die aufgeführten Wörter wird eine kontextbezogene Definition erstellt. Geben Sie Wörter durch Kommas getrennt ein oder doppelklicken Sie auf ein Wort im Basistext.</source>
         <target>До перелічених слів буде створено контекстне визначення. Введіть слова у поле через кому або двічі клікніть на слово у базовому тексті.</target>
+      </trans-unit>
+      <trans-unit id="taskCardGapTextLabel" datatype="html">
+        <source>Lückentext</source>
+        <target>Текст із пропусками</target>
+      </trans-unit>
+      <trans-unit id="taskCardWordDefinitionLabel" datatype="html">
+        <source>Wortdefinition</source>
+        <target>Визначення слова</target>
+      </trans-unit>
+      <trans-unit id="taskCardTrueFalseLabel" datatype="html">
+        <source>Richtig/Falsch-Aussage</source>
+        <target>Твердження правильно/неправильно</target>
+      </trans-unit>
+      <trans-unit id="taskCardQuestionAnswerLabel" datatype="html">
+        <source>Frage Antwort</source>
+        <target>Питання відповідь</target>
+      </trans-unit>
+      <trans-unit id="taskCardTranslationLabel" datatype="html">
+        <source>Übersetzung</source>
+        <target>Переклад</target>
+      </trans-unit>
+      <trans-unit id="gapOptionWordListLabel" datatype="html">
+        <source>Lücken für ausgewählte Wörter aus dem Text</source>
+        <target>Пропуски вибраних слів з тексту</target>
+      </trans-unit>
+      <trans-unit id="gapOptionVerbLabel" datatype="html">
+        <source>Lücken anstelle von Verben</source>
+        <target>Пропуски замість дієслів</target>
+      </trans-unit>
+      <trans-unit id="gapOptionAdjectiveLabel" datatype="html">
+        <source>Lücken anstelle von Adjektiven</source>
+        <target>Пропуски замість прикметників</target>
+      </trans-unit>
+      <trans-unit id="gapOptionNounLabel" datatype="html">
+        <source>Lücken anstelle von Nomen</source>
+        <target>Пропуски замість іменників</target>
+      </trans-unit>
+      <trans-unit id="grammarVerbFormLabel" datatype="html">
+        <source>Vollverb</source>
+        <target>Повнозначне дієслово</target>
+      </trans-unit>
+      <trans-unit id="grammarModalVerbLabel" datatype="html">
+        <source>Modalverb</source>
+        <target>Модальне дієслово</target>
+      </trans-unit>
+      <trans-unit id="grammarModusLabel" datatype="html">
+        <source>Modus</source>
+        <target>Спосіб</target>
+      </trans-unit>
+      <trans-unit id="grammarCaseLabel" datatype="html">
+        <source>Kasus</source>
+        <target>Відмінок</target>
+      </trans-unit>
+      <trans-unit id="grammarArticleLabel" datatype="html">
+        <source>Artikel</source>
+        <target>Артикль</target>
+      </trans-unit>
+      <trans-unit id="grammarComparisonLabel" datatype="html">
+        <source>Steigerungsform</source>
+        <target>Ступінь порівняння</target>
+      </trans-unit>
+      <trans-unit id="previewExerciseGeneratedTasksTitle" datatype="html">
+        <source>Generierte Aufgaben</source>
+        <target>Згенеровані завдання</target>
+      </trans-unit>
+      <trans-unit id="previewExerciseTaskHeading" datatype="html">
+        <source>Aufgabe</source>
+        <target>Завдання</target>
+      </trans-unit>
+      <trans-unit id="previewExerciseAnswersHeading" datatype="html">
+        <source>Richtige Antworten</source>
+        <target>Правильні відповіді</target>
       </trans-unit>
     </body>
   </file>

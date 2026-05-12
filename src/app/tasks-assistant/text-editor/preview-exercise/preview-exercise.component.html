@@ -3,7 +3,7 @@
     <mat-accordion>
       <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
-          <mat-panel-title>Згенеровані завдання</mat-panel-title>
+          <mat-panel-title i18n="@@previewExerciseGeneratedTasksTitle">Generierte Aufgaben</mat-panel-title>
         </mat-expansion-panel-header>
 
         <div class="exercise-list">
@@ -13,10 +13,10 @@
                 <mat-card-title>Lückentext</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <h4>Завдання</h4>
+                <h4 i18n="@@previewExerciseTaskHeading">Aufgabe</h4>
                 <p>{{ result.gap_text.text }}</p>
 
-                <h4>Правильні відповіді</h4>
+                <h4 i18n="@@previewExerciseAnswersHeading">Richtige Antworten</h4>
                 <ul>
                   @for (item of result.gap_text.answers; track item.id) {
                     <li>{{ item.id }}: {{ item.answer }}</li>
@@ -32,14 +32,14 @@
                 <mat-card-title>Wortdefinition</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <h4>Завдання</h4>
+                <h4 i18n="@@previewExerciseTaskHeading">Aufgabe</h4>
                 <ol>
                   @for (item of result.word_definition.definitions; track item.word) {
                     <li>{{ item.definition }}</li>
                   }
                 </ol>
 
-                <h4>Правильні відповіді</h4>
+                <h4 i18n="@@previewExerciseAnswersHeading">Richtige Antworten</h4>
                 <ol>
                   @for (item of result.word_definition.definitions; track item.word) {
                     <li>{{ item.word }}</li>
@@ -55,14 +55,14 @@
                 <mat-card-title>Richtig/Falsch-Aussage</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <h4>Завдання</h4>
+                <h4 i18n="@@previewExerciseTaskHeading">Aufgabe</h4>
                 <ol>
                   @for (item of result.true_false.statements; track item.id) {
                     <li [value]="item.id">{{ item.statement }}</li>
                   }
                 </ol>
 
-                <h4>Правильні відповіді</h4>
+                <h4 i18n="@@previewExerciseAnswersHeading">Richtige Antworten</h4>
                 <ol>
                   @for (item of result.true_false.statements; track item.id) {
                     <li [value]="item.id">{{ item.answer }}</li>
@@ -78,14 +78,14 @@
                 <mat-card-title>Frage Antwort</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <h4>Завдання</h4>
+                <h4 i18n="@@previewExerciseTaskHeading">Aufgabe</h4>
                 <ol>
                   @for (item of result.question_answer.questions; track item.id) {
                     <li [value]="item.id">{{ item.question }}</li>
                   }
                 </ol>
 
-                <h4>Правильні відповіді</h4>
+                <h4 i18n="@@previewExerciseAnswersHeading">Richtige Antworten</h4>
                 <ol>
                   @for (item of result.question_answer.questions; track item.id) {
                     <li [value]="item.id">{{ item.answer }}</li>
@@ -101,14 +101,14 @@
                 <mat-card-title>Übersetzung</mat-card-title>
               </mat-card-header>
               <mat-card-content>
-                <h4>Завдання</h4>
+                <h4 i18n="@@previewExerciseTaskHeading">Aufgabe</h4>
                 <ol>
                   @for (item of result.translate.translations; track item.id) {
                     <li [value]="item.id">{{ item.target }}</li>
                   }
                 </ol>
 
-                <h4>Правильні відповіді</h4>
+                <h4 i18n="@@previewExerciseAnswersHeading">Richtige Antworten</h4>
                 <ol>
                   @for (item of result.translate.translations; track item.id) {
                     <li [value]="item.id">{{ item.source }}</li>

@@ -19,19 +19,21 @@ import {MatIcon} from '@angular/material/icon';
 import {TextInputComponent} from '../text-input/text-input.component';
 import {GrammarOptionsService} from '../services/grammar-options.service';
 import {AssistantService} from '../services/assistant.service';
-import {BaseText} from '../../types/editor.interface';
+import {
+  AdjectiveConditionKey,
+  BaseText,
+  ExerciseConditionOption,
+  ExercisePreviewResult,
+  ExerciseRequestDto,
+  ExerciseType,
+  GapTextType,
+  NounConditionKey,
+  TaskCardOption,
+  VerbConditionKey
+} from '../../types/editor.interface';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
-import {
-  ExercisePreviewResult,
-  PreviewExerciseComponent
-} from './preview-exercise/preview-exercise.component';
-
-type TaskCardType = 'gap_text' | 'word_definition' | 'true_false' | 'question_answer' | 'translate';
-type GapOptionType = 'wordList' | 'verb' | 'adjective' | 'noun';
-type VerbCondition = 'verbForm' | 'modalVerb' | 'modus' | 'kasus' | 'activeForm';
-type AdjectiveCondition = 'article' | 'kasus' | 'comparison';
-type NounCondition = 'article' | 'kasus';
+import {PreviewExerciseComponent} from './preview-exercise/preview-exercise.component';
 
 @Component({
   selector: 'dl-text-editor',
@@ -68,40 +70,40 @@ export class TextEditorComponent implements OnInit{
   rawText = new FormControl('', {nonNullable:true});
   wordList = new FormControl('');
   textlist$ = this.assistantService.getTexts();
-  selectedTaskCards: TaskCardType[] = [];
-  selectedGapOptions: GapOptionType[] = [];
-  selectedVerbCondition: VerbCondition | null = null;
-  selectedAdjectiveCondition: AdjectiveCondition | null = null;
-  selectedNounCondition: NounCondition | null = null;
+  selectedTaskCards: ExerciseType[] = [];
+  selectedGapOptions: GapTextType[] = [];
+  selectedVerbCondition: VerbConditionKey | null = null;
+  selectedAdjectiveCondition: AdjectiveConditionKey | null = null;
+  selectedNounCondition: NounConditionKey | null = null;
 
-  readonly taskOptions: { id: TaskCardType; label: string }[] = [
-    {id: 'gap_text', label: 'Lückentext'},
-    {id: 'word_definition', label: 'Wortdefinition'},
-    {id: 'true_false', label: 'Richtig/Falsch-Aussage'},
-    {id: 'question_answer', label: 'Frage Antwort'},
-    {id: 'translate', label: 'Übersetzung'},
+  readonly taskOptions: TaskCardOption[] = [
+    {id: 'gap_text', label: $localize`:@@taskCardGapTextLabel:Lückentext`},
+    {id: 'word_definition', label: $localize`:@@taskCardWordDefinitionLabel:Wortdefinition`},
+    {id: 'true_false', label: $localize`:@@taskCardTrueFalseLabel:Richtig/Falsch-Aussage`},
+    {id: 'question_answer', label: $localize`:@@taskCardQuestionAnswerLabel:Frage Antwort`},
+    {id: 'translate', label: $localize`:@@taskCardTranslationLabel:Übersetzung`},
   ];
-  readonly gapOptions: { id: GapOptionType; label: string }[] = [
-    {id: 'wordList', label: 'Пропуски вибраних слів з тексту'},
-    {id: 'verb', label: 'Пропуски замість дієслів'},
-    {id: 'adjective', label: 'Пропуски замість прикметників'},
-    {id: 'noun', label: 'Пропуски замість іменників'},
+  readonly gapOptions: ExerciseConditionOption<GapTextType>[] = [
+    {id: 'wordList', label: $localize`:@@gapOptionWordListLabel:Lücken für ausgewählte Wörter aus dem Text`},
+    {id: 'verb', label: $localize`:@@gapOptionVerbLabel:Lücken anstelle von Verben`},
+    {id: 'adjective', label: $localize`:@@gapOptionAdjectiveLabel:Lücken anstelle von Adjektiven`},
+    {id: 'noun', label: $localize`:@@gapOptionNounLabel:Lücken anstelle von Nomen`},
   ];
-  readonly verbConditions: { id: VerbCondition; label: string }[] = [
-    {id: 'verbForm', label: 'Vollverb'},
-    {id: 'modalVerb', label: 'Modalverb'},
-    {id: 'modus', label: 'Modus'},
-    {id: 'kasus', label: 'Kasus'},
-    {id: 'activeForm', label: 'Form'},
+  readonly verbConditions: ExerciseConditionOption<VerbConditionKey>[] = [
+    {id: 'verbForm', label: $localize`:@@grammarVerbFormLabel:Vollverb`},
+    {id: 'modalVerb', label: $localize`:@@grammarModalVerbLabel:Modalverb`},
+    {id: 'modus', label: $localize`:@@grammarModusLabel:Modus`},
+    {id: 'kasus', label: $localize`:@@grammarCaseLabel:Kasus`},
+    {id: 'activeForm', label: $localize`:@@grammarFormLabel:Form`},
   ];
-  readonly adjectiveConditions: { id: AdjectiveCondition; label: string }[] = [
-    {id: 'article', label: 'Artikel'},
-    {id: 'kasus', label: 'Kasus'},
-    {id: 'comparison', label: 'Steigerungsform'},
+  readonly adjectiveConditions: ExerciseConditionOption<AdjectiveConditionKey>[] = [
+    {id: 'article', label: $localize`:@@grammarArticleLabel:Artikel`},
+    {id: 'kasus', label: $localize`:@@grammarCaseLabel:Kasus`},
+    {id: 'comparison', label: $localize`:@@grammarComparisonLabel:Steigerungsform`},
   ];
-  readonly nounConditions: { id: NounCondition; label: string }[] = [
-    {id: 'article', label: 'Artikel'},
-    {id: 'kasus', label: 'Kasus'},
+  readonly nounConditions: ExerciseConditionOption<NounConditionKey>[] = [
+    {id: 'article', label: $localize`:@@grammarArticleLabel:Artikel`},
+    {id: 'kasus', label: $localize`:@@grammarCaseLabel:Kasus`},
   ];
 
   taskListForm = this.fb.group({
@@ -112,7 +114,7 @@ export class TextEditorComponent implements OnInit{
     word_definition: false
   });
   gapTextForm = this.fb.group({
-    selectedType: this.fb.control<GapOptionType[]>([]),
+    selectedType: this.fb.control<GapTextType[]>([]),
     adjective: this.fb.group({
       article: [],
       kasus: [],
@@ -162,9 +164,9 @@ export class TextEditorComponent implements OnInit{
     })
   }
 
-  submit() {
+  submit(): void {
     const taskList = this.taskListForm.getRawValue();
-    const body: any = {
+    const body: ExerciseRequestDto = {
       text: this.rawText.value
     };
     if (taskList.gap_text) {
@@ -187,16 +189,16 @@ export class TextEditorComponent implements OnInit{
     })
   }
 
-  setText(data: BaseText) {
+  setText(data: BaseText): void {
     this.rawText.setValue(data.text);
   }
 
-  addSelectedWords(word: string) {
+  addSelectedWords(word: string): void {
     const newValue = this.wordList?.value ? `${this.wordList.value}, ${word}` : word;
     this.wordList.setValue(newValue);
   }
 
-  addTaskCard(type: TaskCardType) {
+  addTaskCard(type: ExerciseType): void {
     if (this.selectedTaskCards.includes(type)) {
       return;
     }
@@ -205,7 +207,7 @@ export class TextEditorComponent implements OnInit{
     this.taskListForm.get(type)?.setValue(true);
   }
 
-  removeTaskCard(type: TaskCardType) {
+  removeTaskCard(type: ExerciseType): void {
     this.selectedTaskCards = this.selectedTaskCards.filter(item => item !== type);
     this.taskListForm.get(type)?.setValue(false);
 
@@ -218,15 +220,15 @@ export class TextEditorComponent implements OnInit{
     }
   }
 
-  isTaskCardSelected(type: TaskCardType): boolean {
+  isTaskCardSelected(type: ExerciseType): boolean {
     return this.selectedTaskCards.includes(type);
   }
 
-  getTaskLabel(type: TaskCardType): string {
+  getTaskLabel(type: ExerciseType): string {
     return this.taskOptions.find(item => item.id === type)?.label || type;
   }
 
-  selectGapOption(option: GapOptionType) {
+  selectGapOption(option: GapTextType): void {
     if (this.selectedGapOptions[0] === option) {
       return;
     }
@@ -236,40 +238,40 @@ export class TextEditorComponent implements OnInit{
     this.syncSelectedGapOptions();
   }
 
-  removeGapOption(option: GapOptionType) {
+  removeGapOption(option: GapTextType): void {
     this.selectedGapOptions = this.selectedGapOptions.filter(item => item !== option);
     this.clearSelectedGapControls();
     this.syncSelectedGapOptions();
   }
 
-  isGapOptionSelected(option: GapOptionType): boolean {
+  isGapOptionSelected(option: GapTextType): boolean {
     return this.selectedGapOptions.includes(option);
   }
 
-  getGapOptionLabel(option: GapOptionType): string {
+  getGapOptionLabel(option: GapTextType): string {
     return this.gapOptions.find(item => item.id === option)?.label || option;
   }
 
-  selectVerbCondition(condition: VerbCondition) {
+  selectVerbCondition(condition: VerbConditionKey): void {
     this.selectedVerbCondition = condition;
     this.resetControlsExcept(this.gapTextForm.controls.verb.controls, condition);
   }
 
-  selectAdjectiveCondition(condition: AdjectiveCondition) {
+  selectAdjectiveCondition(condition: AdjectiveConditionKey): void {
     this.selectedAdjectiveCondition = condition;
     this.resetControlsExcept(this.gapTextForm.controls.adjective.controls, condition);
   }
 
-  selectNounCondition(condition: NounCondition) {
+  selectNounCondition(condition: NounConditionKey): void {
     this.selectedNounCondition = condition;
     this.resetControlsExcept(this.gapTextForm.controls.noun.controls, condition);
   }
 
-  private syncSelectedGapOptions() {
+  private syncSelectedGapOptions(): void {
     this.gapTextForm.controls.selectedType.setValue(this.selectedGapOptions);
   }
 
-  private clearSelectedGapControls() {
+  private clearSelectedGapControls(): void {
     this.selectedVerbCondition = null;
     this.selectedAdjectiveCondition = null;
     this.selectedNounCondition = null;
@@ -278,7 +280,7 @@ export class TextEditorComponent implements OnInit{
     this.gapTextForm.controls.noun.reset();
   }
 
-  private resetControlsExcept(controls: Record<string, FormControl>, activeControl: string) {
+  private resetControlsExcept(controls: Record<string, FormControl>, activeControl: string): void {
     Object.entries(controls).forEach(([key, control]) => {
       if (key !== activeControl) {
         control.reset();
